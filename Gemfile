@@ -18,10 +18,10 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem 'execjs'
   gem 'uglifier', '>= 1.0.3'
-  gem "less-rails"
-  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
   
 end
+  gem "less-rails"
+  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem 'jquery-rails'
 
