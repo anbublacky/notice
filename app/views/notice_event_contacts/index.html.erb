@@ -1,0 +1,31 @@
+<h1>Listing notice_event_contacts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Mobile</th>
+    <th>Telephone</th>
+    <th>Notice display</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notice_event_contacts.each do |notice_event_contact| %>
+  <tr>
+    <td><%= notice_event_contact.name %></td>
+    <td><%= notice_event_contact.country %></td>
+    <td><%= notice_event_contact.mobile %></td>
+    <td><%= notice_event_contact.telephone %></td>
+    <td><%= notice_event_contact.notice_display_id %></td>
+    <td><%= link_to 'Show', notice_event_contact %></td>
+    <td><%= link_to 'Edit', edit_notice_event_contact_path(notice_event_contact) %></td>
+    <td><%= link_to 'Destroy', notice_event_contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Notice event contact', new_notice_event_contact_path %>

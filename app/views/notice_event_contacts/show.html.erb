@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @notice_event_contact.name %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @notice_event_contact.country %>
+</p>
+
+<p>
+  <b>Mobile:</b>
+  <%= @notice_event_contact.mobile %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @notice_event_contact.telephone %>
+</p>
+
+<p>
+  <b>Notice display:</b>
+  <%= @notice_event_contact.notice_display_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_notice_event_contact_path(@notice_event_contact) %> |
+<%= link_to 'Back', notice_event_contacts_path %>

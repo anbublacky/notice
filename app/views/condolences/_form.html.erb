@@ -1,0 +1,41 @@
+<%= form_for(@condolence) do |f| %>
+  <% if @condolence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@condolence.errors.count, "error") %> prohibited this condolence from being saved:</h2>
+
+      <ul>
+      <% @condolence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :flower %><br />
+    <%= f.text_field :flower %>
+  </div>
+  <div class="field">
+    <%= f.label :share_content %><br />
+    <%= f.text_field :share_content %>
+  </div>
+  <div class="field">
+    <%= f.label :orbituarysite_id %><br />
+    <%= f.number_field :orbituarysite_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

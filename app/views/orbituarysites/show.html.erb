@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+<div class="span12">
+  <div class="span5 notice">
+    <h3 class="center">அமரர்</h3>
+<h1 class="center">
+  <%= @orbituarysite.name %>
+</h1>
+<p></p>
+<p>
+  <%= image_tag(@orbituarysite.orbiturerimage_url) if @orbituarysite.orbiturerimage? %>
+</p>
+<h4 class="center">மண்ணில் - விண்ணில்</h4>
+<h4 class="center">
+  <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
+  <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
+</h4>
+<h4 class="center">
+பிறந்த இடம்: 
+</h4>
+
+<h4 class="center">
+  <%= @orbituarysite.birth_place %>
+</h4>
+<h4 class="center">
+வாழ்ந்த இடம்: 
+</h4>
+<h4 class="center">
+  <%= @orbituarysite.living_place %>
+</h4>
+<h4 class="center">
+இறைவனடி சேர்ந்த இடம்: 
+</h4>
+
+<h4 class="center">
+  <%= @orbituarysite.death_place %>
+</h4>
+<p>
+<%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite) %> |
+<%= link_to 'Back', orbituarysites_path %>
+</p>
+</div>
+<div class="span7">
+ <div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள</a></li>
+    <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
+    <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
+    <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்்</a></li>
+    <li><a href="#tab5" data-toggle="tab">படங்கள</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>I'm in Section 1.</p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p>Howdy, I'm in Section 2.</p>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <p>I'm in Section 3.</p>
+    </div>
+    <div class="tab-pane" id="tab4">
+      <p>I'm in Section 4.</p>
+    </div>
+    <div class="tab-pane" id="tab5">
+      <p>I'm in Section 5.</p>
+    </div>
+  </div>
+ </div>
+</div>
+
+</div>

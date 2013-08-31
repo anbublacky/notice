@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Notice type:</b>
+  <%= @notice_display.notice_type %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @notice_display.message %>
+</p>
+
+<p>
+  <b>Posted by:</b>
+  <%= @notice_display.posted_by %>
+</p>
+
+<p>
+  <b>Orbituarysite:</b>
+  <%= @notice_display.orbituarysite_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_notice_display_path(@notice_display) %> |
+<%= link_to 'Back', notice_displays_path %>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event type:</b>
+  <%= @notice_event_place.event_type %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @notice_event_place.country %>
+</p>
+
+<p>
+  <b>Address1:</b>
+  <%= @notice_event_place.address1 %>
+</p>
+
+<p>
+  <b>Address2:</b>
+  <%= @notice_event_place.address2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @notice_event_place.city %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @notice_event_place.county %>
+</p>
+
+<p>
+  <b>Postcode:</b>
+  <%= @notice_event_place.postcode %>
+</p>
+
+<p>
+  <b>Eventdate:</b>
+  <%= @notice_event_place.eventdate %>
+</p>
+
+<p>
+  <b>Eventtime:</b>
+  <%= @notice_event_place.eventtime %>
+</p>
+
+<p>
+  <b>Notice display:</b>
+  <%= @notice_event_place.notice_display_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_notice_event_place_path(@notice_event_place) %> |
+<%= link_to 'Back', notice_event_places_path %>

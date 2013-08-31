@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  salutation: MyString
+  full_name: MyString
+  orbiturerimage: MyString
+  dob: 2013-08-31 11:56:35
+  dod: 2013-08-31 11:56:35
+  birth_place: MyString
+  living_place: MyString
+  death_place: MyString
+  user_id: 1
+
+two:
+  salutation: MyString
+  full_name: MyString
+  orbiturerimage: MyString
+  dob: 2013-08-31 11:56:35
+  dod: 2013-08-31 11:56:35
+  birth_place: MyString
+  living_place: MyString
+  death_place: MyString
+  user_id: 1

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_type: MyString
+  country: MyString
+  address1: MyString
+  address2: MyString
+  city: MyString
+  county: MyString
+  postcode: MyString
+  eventdate: 2013-08-31 12:04:10
+  eventtime: 2013-08-31 12:04:10
+  notice_display_id: 1
+
+two:
+  event_type: MyString
+  country: MyString
+  address1: MyString
+  address2: MyString
+  city: MyString
+  county: MyString
+  postcode: MyString
+  eventdate: 2013-08-31 12:04:10
+  eventtime: 2013-08-31 12:04:10
+  notice_display_id: 1

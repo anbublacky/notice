@@ -1,0 +1,60 @@
+<%= form_for(@orbituarysite) do |f| %>
+  <% if @orbituarysite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@orbituarysite.errors.count, "error") %> prohibited this orbituarysite from being saved:</h2>
+
+      <ul>
+      <% @orbituarysite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :salutation %><br />
+    <%= f.text_field :salutation %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <% f.label :orbiturerimage %><br />
+    <% f.text_field :orbiturerimage %>
+  </div>
+      <label>Photo</label>
+    <%= image_tag(@orbituarysite.orbiturerimage_url(:thumb)) if @orbituarysite.orbiturerimage? %>
+    <%= f.file_field :orbiturerimage %>
+  </p>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.datetime_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :dod %><br />
+    <%= f.datetime_select :dod %>
+  </div>
+  <div class="field">
+    பிறந்த இடம்:
+<br />
+    <%= f.text_field :birth_place %>
+  </div>
+  <div class="field">
+    வாழ்ந்த இடம்<br />
+    <%= f.text_field :living_place %>
+  </div>
+    <div class="field">
+    இறைவனடி சேர்ந்த இடம்<br />
+    <%= f.text_field :death_place %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.hidden_field :user_id %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  notice_type: MyString
+  message: 
+  posted_by: MyString
+  orbituarysite_id: 1
+
+two:
+  notice_type: MyString
+  message: 
+  posted_by: MyString
+  orbituarysite_id: 1

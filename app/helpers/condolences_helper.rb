@@ -1,0 +1,2 @@
+module CondolencesHelper
+end

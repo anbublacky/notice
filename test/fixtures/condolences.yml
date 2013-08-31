@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  country: MyString
+  address: MyString
+  flower: MyString
+  share_content: 
+  orbituarysite_id: 1
+
+two:
+  name: MyString
+  country: MyString
+  address: MyString
+  flower: MyString
+  share_content: 
+  orbituarysite_id: 1

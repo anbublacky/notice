@@ -1,0 +1,29 @@
+<h1>Listing notice_displays</h1>
+
+<table>
+  <tr>
+    <th>Notice type</th>
+    <th>Message</th>
+    <th>Posted by</th>
+    <th>Orbituarysite</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notice_displays.each do |notice_display| %>
+  <tr>
+    <td><%= notice_display.notice_type %></td>
+    <td><%= notice_display.message %></td>
+    <td><%= notice_display.posted_by %></td>
+    <td><%= notice_display.orbituarysite_id %></td>
+    <td><%= link_to 'Show', notice_display %></td>
+    <td><%= link_to 'Edit', edit_notice_display_path(notice_display) %></td>
+    <td><%= link_to 'Destroy', notice_display, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Notice display', new_notice_display_path %>

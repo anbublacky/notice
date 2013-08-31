@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body:</b>
+  <%= @memory.body %>
+</p>
+
+<p>
+  <b>Orbituarysite:</b>
+  <%= @memory.orbituarysite_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_memory_path(@memory) %> |
+<%= link_to 'Back', memories_path %>

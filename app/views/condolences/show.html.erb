@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @condolence.name %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @condolence.country %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @condolence.address %>
+</p>
+
+<p>
+  <b>Flower:</b>
+  <%= @condolence.flower %>
+</p>
+
+<p>
+  <b>Share content:</b>
+  <%= @condolence.share_content %>
+</p>
+
+<p>
+  <b>Orbituarysite:</b>
+  <%= @condolence.orbituarysite_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_condolence_path(@condolence) %> |
+<%= link_to 'Back', condolences_path %>

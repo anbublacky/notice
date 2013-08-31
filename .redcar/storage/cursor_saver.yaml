@@ -1,0 +1,170 @@
+--- 
+cursor_positions: 
+  - :path: app/assets/stylesheets/application.css
+    :cursor_offset: 523
+    :timestamp: 2013-08-31 07:31:50 +05:30
+  - :path: app/uploaders/userimage_uploader.rb
+    :cursor_offset: 652
+    :timestamp: 2013-08-31 07:50:45 +05:30
+    :selection_offset: 546
+    :block_selection_mode: false
+  - :path: db/migrate/20130831025117_create_orbituarysites.rb
+    :cursor_offset: 188
+    :timestamp: 2013-08-31 08:21:17 +05:30
+    :selection_offset: 173
+    :block_selection_mode: false
+  - :path: app/controllers/users/omniauth_callbacks_controller.rb
+    :cursor_offset: 622
+    :timestamp: 2013-08-31 07:20:04 +05:30
+  - :path: config/initializers/devise.rb
+    :cursor_offset: 822
+    :timestamp: 2013-08-31 07:45:42 +05:30
+  - :path: config/environments/development.rb
+    :cursor_offset: 795
+    :timestamp: 2013-08-31 06:53:43 +05:30
+  - :path: db/migrate/20130831114157_create_orbiturer_share_images.rb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 12:08:44 +05:30
+  - :path: db/migrate/20130831114155_create_memories.rb
+    :cursor_offset: 106
+    :timestamp: 2013-08-31 12:12:41 +05:30
+  - :path: db/migrate/20130831114154_create_histories.rb
+    :cursor_offset: 130
+    :timestamp: 2013-08-31 12:12:35 +05:30
+  - :path: db/migrate/20130831114153_create_notice_event_contacts.rb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 12:05:02 +05:30
+  - :path: db/migrate/20130831114152_create_notice_event_places.rb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 12:04:10 +05:30
+  - :path: db/migrate/20130831114151_create_notice_displays.rb
+    :cursor_offset: 147
+    :timestamp: 2013-08-31 12:12:11 +05:30
+  - :path: app/views/devise/sessions/_sign_in.html.erb
+    :cursor_offset: 462
+    :timestamp: 2013-08-31 12:37:49 +05:30
+  - :path: app/views/devise/sessions/new.html.erb
+    :cursor_offset: 2
+    :timestamp: 2013-08-31 12:38:02 +05:30
+  - :path: app/views/user/sessions/_sign_in.html.erb
+    :cursor_offset: 461
+    :timestamp: 2013-08-31 12:35:35 +05:30
+  - :path: app/views/user/sessions/new.html.erb
+    :cursor_offset: 22
+    :timestamp: 2013-08-31 12:36:01 +05:30
+    :selection_offset: 0
+    :block_selection_mode: false
+  - :path: app/views/orbituarysites/new.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 11:56:35 +05:30
+  - :path: app/views/orbituarysites/edit.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 11:56:35 +05:30
+  - :path: app/views/orbituarysites/index.html.erb
+    :cursor_offset: 502
+    :timestamp: 2013-08-31 12:25:21 +05:30
+  - :path: db/migrate/20130831114150_create_orbituarysites.rb
+    :cursor_offset: 149
+    :timestamp: 2013-08-31 12:16:32 +05:30
+  - :path: app/assets/javascripts/application.js
+    :cursor_offset: 677
+    :timestamp: 2013-08-31 11:43:18 +05:30
+  - :path: config/application.rb
+    :cursor_offset: 843
+    :timestamp: 2013-08-31 11:42:48 +05:30
+  - :path: config/routes.rb
+    :cursor_offset: 458
+    :timestamp: 2013-08-31 12:08:44 +05:30
+  - :path: Gemfile
+    :cursor_offset: 964
+    :timestamp: 2013-08-31 11:40:08 +05:30
+  - :path: app/controllers/home_controller.rb
+    :cursor_offset: 97
+    :timestamp: 2013-08-31 10:49:49 +05:30
+    :selection_offset: 57
+    :block_selection_mode: false
+  - :path: app/views/histories/_form.html.erb
+    :cursor_offset: 558
+    :timestamp: 2013-08-31 12:54:59 +05:30
+  - :path: app/views/layouts/application.html.erb
+    :cursor_offset: 2689
+    :timestamp: 2013-08-31 12:49:49 +05:30
+  - :path: app/views/orbituarysites/_form.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 12:40:27 +05:30
+  - :path: db/migrate/20130831114156_create_condolences.rb
+    :cursor_offset: 204
+    :timestamp: 2013-08-31 12:12:48 +05:30
+  - :path: db/migrate/20130831012520_devise_create_users.rb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 07:04:11 +05:30
+  - :path: app/models/view.rb
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 06:55:19 +05:30
+  - :path: app/models/user.rb
+    :cursor_offset: 630
+    :timestamp: 2013-08-31 11:59:41 +05:30
+  - :path: app/models/notice_event_place.rb
+    :cursor_offset: 205
+    :timestamp: 2013-08-31 13:00:53 +05:30
+  - :path: app/models/notice_event_contact.rb
+    :cursor_offset: 149
+    :timestamp: 2013-08-31 13:00:40 +05:30
+  - :path: app/models/notice_display.rb
+    :cursor_offset: 194
+    :timestamp: 2013-08-31 13:01:57 +05:30
+  - :path: app/models/memory.rb
+    :cursor_offset: 77
+    :timestamp: 2013-08-31 13:00:14 +05:30
+  - :path: app/models/history.rb
+    :cursor_offset: 113
+    :timestamp: 2013-08-31 13:00:20 +05:30
+  - :path: app/models/condolence.rb
+    :cursor_offset: 153
+    :timestamp: 2013-08-31 13:02:48 +05:30
+  - :path: app/models/orbiturer_share_image.rb
+    :cursor_offset: 108
+    :timestamp: 2013-08-31 13:00:00 +05:30
+    :selection_offset: 135
+    :block_selection_mode: false
+  - :path: app/models/orbituarysite.rb
+    :cursor_offset: 332
+    :timestamp: 2013-08-31 13:13:40 +05:30
+  - :path: app/assets/javascripts/orbituarysites.js.coffee
+    :cursor_offset: 0
+    :timestamp: 2013-08-31 11:56:35 +05:30
+  - :path: app/controllers/orbiturer_share_images_controller.rb
+    :cursor_offset: 165
+    :timestamp: 2013-08-31 13:08:11 +05:30
+  - :path: app/controllers/notice_event_places_controller.rb
+    :cursor_offset: 156
+    :timestamp: 2013-08-31 13:07:58 +05:30
+  - :path: app/controllers/notice_event_contacts_controller.rb
+    :cursor_offset: 162
+    :timestamp: 2013-08-31 13:07:52 +05:30
+  - :path: app/controllers/notice_displays_controller.rb
+    :cursor_offset: 145
+    :timestamp: 2013-08-31 13:07:44 +05:30
+  - :path: app/controllers/memories_controller.rb
+    :cursor_offset: 125
+    :timestamp: 2013-08-31 13:07:34 +05:30
+  - :path: app/controllers/histories_controller.rb
+    :cursor_offset: 128
+    :timestamp: 2013-08-31 13:07:25 +05:30
+  - :path: app/controllers/orbituarysites_controller.rb
+    :cursor_offset: 143
+    :timestamp: 2013-08-31 13:11:25 +05:30
+    :selection_offset: 108
+    :block_selection_mode: false
+  - :path: app/views/home/index.html.erb
+    :cursor_offset: 713
+    :timestamp: 2013-08-31 12:48:15 +05:30
+  - :path: app/uploaders/orbiturer_uploader.rb
+    :cursor_offset: 546
+    :timestamp: 2013-08-31 14:55:23 +05:30
+  - :path: app/views/orbituarysites/show.html.erb
+    :cursor_offset: 542
+    :timestamp: 2013-08-31 15:13:45 +05:30
+    :selection_offset: 541
+    :block_selection_mode: false
+files_to_retain: 0

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  country: MyString
+  mobile: MyString
+  telephone: MyString
+  notice_display_id: 1
+
+two:
+  name: MyString
+  country: MyString
+  mobile: MyString
+  telephone: MyString
+  notice_display_id: 1

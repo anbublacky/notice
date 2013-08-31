@@ -1,0 +1,39 @@
+<h1>Listing orbituarysites</h1>
+
+<table>
+  <tr>
+    <th>Salutation</th>
+    <th>name</th>
+    <th>Orbiturerimage</th>
+    <th>Dob</th>
+    <th>Dod</th>
+    <th>Birth place</th>
+    <th>Living place</th>
+    <th>Death place</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orbituarysites.each do |orbituarysite| %>
+  <tr>
+    <td><%= orbituarysite.salutation %></td>
+    <td><%= orbituarysite.name %></td>
+    <td><<%= image_tag(orbituarysite.orbiturerimage_url(:thumb)) if orbituarysite.orbiturerimage? %></td>
+    <td><%= orbituarysite.dob %></td>
+    <td><%= orbituarysite.dod %></td>
+    <td><%= orbituarysite.birth_place %></td>
+    <td><%= orbituarysite.living_place %></td>
+    <td><%= orbituarysite.death_place %></td>
+    <td><%= orbituarysite.user_id %></td>
+    <td><%= link_to 'Show', orbituarysite %></td>
+    <td><%= link_to 'Edit', edit_orbituarysite_path(orbituarysite) %></td>
+    <td><%= link_to 'Destroy', orbituarysite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Orbituarysite', new_orbituarysite_path %>
