@@ -20,8 +20,8 @@
     <%= f.cktext_area :body, :ckeditor => {:language => "en"} %>
   </div>
   <div class="field">
-    <%= f.label :orbituarysite_id %><br />
-    <%= f.number_field :orbituarysite_id %>
+    <% f.label :orbituarysite_id %><br />
+    <%= f.hidden_field :orbituarysite_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

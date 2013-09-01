@@ -26,6 +26,8 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/new.json
   def new
     @notice_display = NoticeDisplay.new
+    event_place = @notice_display.notice_event_places.build
+
 
     respond_to do |format|
       format.html # new.html.erb

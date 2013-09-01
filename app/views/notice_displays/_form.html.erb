@@ -13,20 +13,30 @@
 
   <div class="field">
     <%= f.label :notice_type %><br />
-    <%= f.text_field :notice_type %>
+    <select id="notice_type" name="notice_type">
+      <option value="மரண அறிவித்தல்">மரண அறிவித்தல்</option>
+      <option value="நினைவு கூரல்">நினைவு கூரல்</option>
+    </select>
   </div>
   <div class="field">
     <%= f.label :message %><br />
-    <%= f.text_field :message %>
+    <%= f.cktext_area :message, :ckeditor => {:language => "en"} %>
   </div>
   <div class="field">
     <%= f.label :posted_by %><br />
     <%= f.text_field :posted_by %>
   </div>
   <div class="field">
-    <%= f.label :orbituarysite_id %><br />
-    <%= f.number_field :orbituarysite_id %>
+    <% f.label :orbituarysite_id %><br />
+    <%= f.hidden_field :orbituarysite_id %>
   </div>
+  <%= f.fields_for :notice_event_contacts do |builder| %>
+   <%# render 'notice_displays/event_contact', :f => builder %>
+  <% end %>
+  <%= f.fields_for :notice_event_places do |builder| %>
+   <%# render 'notice_displays/event_place', :f => builder %>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

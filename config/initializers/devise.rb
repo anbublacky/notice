@@ -16,9 +16,12 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   require 'carrierwave/orm/activerecord'
   require "omniauth-facebook"
+  require 'omniauth-twitter'
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :facebook, '580493612010185', 'b9f2e05515297257999910e5e36da15d'
-
+  config.omniauth :twitter, 'mVYXGi8bINdKKmsi8Vz0g', 'AmBAUgfAX5BjKlN08MoWsuZNfLdWuncEw4yBPF8p5TA'
+  require "omniauth-google-oauth2"
+  config.omniauth :google_oauth2, "929325251981.apps.googleusercontent.com", "YP_IlYH_BhIHQAWA7Dw0idM6", { access_type: "offline", approval_prompt: "" }
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

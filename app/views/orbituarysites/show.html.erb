@@ -38,6 +38,12 @@
 <%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite) %> |
 <%= link_to 'Back', orbituarysites_path %>
 </p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:3000/orbituarysites/1" data-text=<%= @orbituarysite.name %> data-via="anbublacky">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="fb-like" data-href="http://notice.tamil.com" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+
 </div>
 <div class="span7">
  <div class="tabbable">
@@ -51,26 +57,119 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
       <p>I'm in Section 1.
-        <a class="btn btn-primary" href="/notice_displays/new">Post Notice</a>
+        <a data-toggle="modal" href="#myModal1" class="btn btn-primary" href="/notice_displays/new">Post Notice</a>
       </p>
+       <!-- Modal -->
+  <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'notice_displays/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
     </div>
     <div class="tab-pane" id="tab2">
       <p>Howdy, I'm in Section 2.
-      <a class="btn btn-primary" href="/histories/new">Post Notice</a>
+      <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post Notice</a>
       </p>
+             <!-- Modal -->
+  <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'histories/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
     <div class="tab-pane" id="tab3">
       <p>I'm in Section 3.
-      <a class="btn btn-primary" href="/memories/new">Post Notice</a>
+      <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a>
       </p>
+        <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'memories/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
     <div class="tab-pane" id="tab4">
       <p>I'm in Section 4.
-              <a class="btn btn-primary" href="/condolences/new">Post Notice</a>
+              <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a>
       </p>
+              <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'condolences/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
     <div class="tab-pane" id="tab5">
-      <p>I'm in Section 5.</p>
+      <p>I'm in Section 5.
+        <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a>
+      </p>
+  <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'orbiturer_share_images/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
   </div>
  </div>

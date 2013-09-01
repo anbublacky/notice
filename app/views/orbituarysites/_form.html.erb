@@ -13,7 +13,13 @@
 
   <div class="field">
     <%= f.label :salutation %><br />
-    <%= f.text_field :salutation %>
+<select id="salutation" name="salutation">
+  <option value="திரு.">திரு.</option>
+  <option value="திருமதி">திருமதி</option>
+  <option value="செல்வி">செல்வி</option>
+  <option value="செல்வன">செல்வன்</option>
+  <option value="வீர வேங்கை">வீர வேங்கை</option>  
+</select>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -50,7 +56,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :user_id %><br />
+    <% f.label :user_id %><br />
     <%= f.hidden_field :user_id %>
   </div>
   
