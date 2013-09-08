@@ -5,4 +5,5 @@ class NoticeDisplay < ActiveRecord::Base
   has_many :notice_event_places, :dependent => :destroy
   accepts_nested_attributes_for :notice_event_contacts, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :notice_event_places, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
 end

@@ -42,10 +42,10 @@ class CondolencesController < ApplicationController
   # POST /condolences.json
   def create
     @condolence = Condolence.new(params[:condolence])
-
+    @orbituarysite = @condolence.orbituarysite
     respond_to do |format|
       if @condolence.save
-        format.html { redirect_to @condolence, notice: 'Condolence was successfully created.' }
+        format.html { redirect_to @orbituarysite, notice: 'Condolence was successfully created.' }
         format.json { render json: @condolence, status: :created, location: @condolence }
       else
         format.html { render action: "new" }

@@ -12,12 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :orbiturer_other_images %><br />
-    <%= f.text_field :orbiturer_other_images %>
+    <%# f.label :orbiturer_other_images %><br />
+    <%# f.text_field :orbiturer_other_images %>
+     <p>
+    <label>Share Images</label>
+    <%= image_tag(@orbiturer_share_image.orbiturer_other_images_url) if @orbiturer_share_image.orbiturer_other_images? %>
+    <%= f.file_field :orbiturer_other_images %>
+  </p>
+
+  <p>
+    <label>
+      <%# f.check_box :orbiturer_other_images %>
+      Remove avatar
+    </label>
+  </p>
   </div>
   <div class="field">
-    <%= f.label :orbituarysite_id %><br />
-    <%= f.number_field :orbituarysite_id %>
+    <% f.label :orbituarysite_id %><br />
+    <%= f.hidden_field :orbituarysite_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

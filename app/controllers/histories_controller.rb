@@ -42,11 +42,11 @@ class HistoriesController < ApplicationController
   # POST /histories.json
   def create
     @history = History.new(params[:history])
-
+    @orbituarysite = @history.orbituarysite
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'History was successfully created.' }
-        format.json { render json: @history, status: :created, location: @history }
+        format.html { redirect_to @orbituarysite, notice: 'History was successfully created.' }
+        format.json { render json: @orbituarysite, status: :created, location: @history }
       else
         format.html { render action: "new" }
         format.json { render json: @history.errors, status: :unprocessable_entity }

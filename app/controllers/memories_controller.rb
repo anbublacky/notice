@@ -42,10 +42,10 @@ class MemoriesController < ApplicationController
   # POST /memories.json
   def create
     @memory = Memory.new(params[:memory])
-
+    @orbituarysite = @memory.orbituarysite
     respond_to do |format|
       if @memory.save
-        format.html { redirect_to @memory, notice: 'Memory was successfully created.' }
+        format.html { redirect_to @orbituarysite, notice: 'Memory was successfully created.' }
         format.json { render json: @memory, status: :created, location: @memory }
       else
         format.html { render action: "new" }

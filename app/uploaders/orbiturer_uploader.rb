@@ -3,8 +3,9 @@
 class OrbiturerUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-   include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -15,11 +16,28 @@ class OrbiturerUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  process :resize_to_fit => [430, 430]
+  process :resize_to_fit => [440, 620]
 
   version :thumb do
     process :resize_to_fill => [200,200]
   end
+  
+    %w[red green blue purple black].each do |color|
+    version(color) { process stamp: color }
+  end
+
+  def stamp(color)
+#    manipulate! do |source|
+#      overlay_path = Rails.root.join("app/assets/images/flower_frames_5.png")
+#      overlay = Magick::Image.read(overlay_path).first
+#      puts source
+#      source = source.resize_to_fill(70, 70).quantize(256, Magick::GRAYColorspace).contrast(true)
+#      source.composite!(overlay, 0, 0, Magick::OverCompositeOp)
+#      colored = Magick::Image.new(70, 70) { self.background_color = color }
+#      colored.composite(source, 0, 0, Magick::CopyOpacityCompositeOp)
+#    end
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

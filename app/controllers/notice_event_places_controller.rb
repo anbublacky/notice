@@ -15,6 +15,8 @@ class NoticeEventPlacesController < ApplicationController
   # GET /notice_event_places/1.json
   def show
     @notice_event_place = NoticeEventPlace.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new    
+    @json = NoticeEventPlace.all.to_gmaps4rails    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,7 @@ class NoticeEventPlacesController < ApplicationController
   # GET /notice_event_places/new.json
   def new
     @notice_event_place = NoticeEventPlace.new
+    @orbituarysite = current_user.orbituarysites.new    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +45,8 @@ class NoticeEventPlacesController < ApplicationController
   # POST /notice_event_places.json
   def create
     @notice_event_place = NoticeEventPlace.new(params[:notice_event_place])
+    @orbituarysite = current_user.orbituarysites.new    
+#    @json = NoticeEventPlace.all.to_gmaps4rails        
 
     respond_to do |format|
       if @notice_event_place.save

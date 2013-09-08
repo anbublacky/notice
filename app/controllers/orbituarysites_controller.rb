@@ -16,12 +16,13 @@ class OrbituarysitesController < ApplicationController
   # GET /orbituarysites/1.json
   def show
     @orbituarysite = Orbituarysite.find(params[:id])
-    @notice_display = @orbituarysite.build_notice_display
-    @history = @orbituarysite.build_history
+    @notice_display = @orbituarysite.notice_display.build
+    @notice_event_contact = @notice_display.notice_event_contacts.build
+    @history = @orbituarysite.history.build
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build
     @orbiturer_share_image = @orbituarysite.orbiturer_share_images.build
-#        event_place = @notice_display.notice_event_places.build
+#    event_place = @notice_display.notice_event_places.build
 #    @orbituarysite = Orbituarysite.find(params[:orbituarysite])
     respond_to do |format|
       format.html # show.html.erb

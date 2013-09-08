@@ -2,8 +2,7 @@
 
 <p>
   <b>Orbiturer other images:</b>
-  <%= @orbiturer_share_image.orbiturer_other_images %>
-</p>
+    <%= image_tag(@orbiturer_share_image.orbiturer_other_images_url) if @orbiturer_share_image.orbiturer_other_images? %></p>
 
 <p>
   <b>Orbituarysite:</b>

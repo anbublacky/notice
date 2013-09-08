@@ -11,8 +11,8 @@
 </p>
 <h4 class="center">மண்ணில் - விண்ணில்</h4>
 <h4 class="center">
-  <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
-  <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
+  <%= @orbituarysite.dob %>-
+  <%= @orbituarysite.dod %>
 </h4>
 <h4 class="center">
 பிறந்த இடம்: 
@@ -48,27 +48,32 @@
 <div class="span7">
  <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள</a></li>
+    <li class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
     <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
     <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
-    <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்்</a></li>
-    <li><a href="#tab5" data-toggle="tab">படங்கள</a></li>
+    <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
+    <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <p>I'm in Section 1.
-        <a data-toggle="modal" href="#myModal1" class="btn btn-primary" href="/notice_displays/new">Post Notice</a>
-      </p>
+    <p>            <%= image_tag('arivithalkal.png') %></p>
+    <p>
+      <% if @orbituarysite.notice_display.count < 1 %><a data-toggle="modal" href="#myModal1" class="btn btn-primary" href="/notice_displays/new">Post Notice</a><% end %>
+      <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal11" class="btn btn-primary" href="/notice_displays/new">Edit Notice</a><% end %>
+    </p>
+    <p><% if !@orbituarysite.notice_display.nil? %><% @orbituarysite.notice_display.each do |f| %><div class="well"><%= raw(f.message) %></div><% end %><% end %></p>
        <!-- Modal -->
   <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title">அறிவித்தல்கள்</h4>
         </div>
         <div class="modal-body">
-         <%= render 'notice_displays/form' , :remote => true %>
+
+            <%= render 'notice_displays/form' %>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -77,10 +82,35 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+    <div class="modal fade hide" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">அறிவித்தல்கள்</h4>
+        </div>
+        <div class="modal-body">
+          <%# @orbituarysite.notice_display %>
+          <% if @orbituarysite.notice_display.nil? %>
+            <%= render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
     <div class="tab-pane" id="tab2">
-      <p>Howdy, I'm in Section 2.
-      <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post Notice</a>
+      <p>            <%= image_tag('vaalkai_varalaaru.png') %></p>
+      <p>
+      <% if !@orbituarysite.history.nil? %><% @orbituarysite.history.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
+      <% if @orbituarysite.history.count < 1 %>
+      <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a><% end%>
+       <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a><% end %>
       </p>
              <!-- Modal -->
   <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,7 +118,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
         </div>
         <div class="modal-body">
          <%= render 'histories/form' , :remote => true %>
@@ -100,10 +130,32 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+             <!-- Modal -->
+  <div class="modal fade hide" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
+        </div>
+        <div class="modal-body">
+        <% if @orbituarysite.history.nil? %>
+         <%= render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.history.nil?  %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
     </div>
     <div class="tab-pane" id="tab3">
-      <p>I'm in Section 3.
+      <p>            <%= image_tag('ninaivalaikal.png') %></p>
+      <p>
+      <% if !@orbituarysite.memories.nil? %><% @orbituarysite.memories.each do |f| %><div class="well"><h2>Memory shared by <%= current_user.name %></h2><%= raw(f.body) %></div><% end %><% end %>
       <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a>
       </p>
         <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -111,7 +163,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title">நினைவலைகள்</h4>
         </div>
         <div class="modal-body">
          <%= render 'memories/form' , :remote => true %>
@@ -126,7 +178,10 @@
 
     </div>
     <div class="tab-pane" id="tab4">
-      <p>I'm in Section 4.
+      <p>            <%= image_tag('aaruthalkal.png') %></p>
+    <p>
+    <% if !@orbituarysite.condolences.nil? %><% @orbituarysite.condolences.each do |f| %><div class="well"><P>Condolence by <%= f.name %></p><% if f.flower == 1 %><%= image_tag('flower1.png') %><% else %><%= image_tag('lamp1.png') %><% end %><%= raw(f.share_content) %></div><% end %><% end %>
+
               <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a>
       </p>
               <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -134,7 +189,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title">ஆறுதல்கள்</h4>
         </div>
         <div class="modal-body">
          <%= render 'condolences/form' , :remote => true %>
@@ -149,7 +204,9 @@
 
     </div>
     <div class="tab-pane" id="tab5">
-      <p>I'm in Section 5.
+      <p>            <%= image_tag('padankal.png') %></p>
+      <p>
+      <% if !@orbituarysite.orbiturer_share_images.nil? %> <div class="well"><% @orbituarysite.orbiturer_share_images.each do |f| %> <%= image_tag(f.orbiturer_other_images_url(:thumb))  %><% end %></div><% end %>
         <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a>
       </p>
   <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -157,7 +214,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title">படங்கள்</h4>
         </div>
         <div class="modal-body">
          <%= render 'orbiturer_share_images/form' , :remote => true %>

@@ -14,4 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require ckeditor/init
+//= require bootstrap-datepicker
 //= require_tree .
+
+$(document).ready(function(){
+$('#dod').datepicker({
+  format: 'd-M-yyyy'
+});
+$('#dob').datepicker({
+  format: 'd-M-yyyy'  
+});
+});

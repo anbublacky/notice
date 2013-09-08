@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :orbituarysites
   
-    mount_uploader :userimage, UserimageUploader
+  mount_uploader :userimage, UserimageUploader
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
+                         password:Devise.friendly_token[0,20],
+                         first_name:auth.info.first_name,
+                         last_name:auth.info.last_name
                          )
   end
   user
@@ -40,6 +42,11 @@ def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
         uid:auth.uid,
         email:auth.uid+"@twitter.com",
         password:Devise.friendly_token[0,20],
+        first_name:auth.info.name,
+        last_name:auth.info.nickname,
+        remote_userimage_url:auth.info.image,
+        urls:auth.urls.twitter
+        
       )
     end
   end
@@ -60,6 +67,9 @@ def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
           email: data["email"],
           uid: access_token.uid ,
           password: Devise.friendly_token[0,20],
+          first_name:auth.info.first_name,
+          last_name:auth.info.last_name
+          
         )
       end
    end

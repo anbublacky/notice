@@ -30,16 +30,18 @@
     <% f.text_field :orbiturerimage %>
   </div>
       <label>Photo</label>
-    <%= image_tag(@orbituarysite.orbiturerimage_url(:thumb)) if @orbituarysite.orbiturerimage? %>
+    <%= image_tag(@orbituarysite.orbiturerimage_url()) if @orbituarysite.orbiturerimage? %>
     <%= f.file_field :orbiturerimage %>
   </p>
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.datetime_select :dob %>
+    <%# f.datetime_field :dob %>
+    <%= f.text_field :dob, :id => "dob" %>
   </div>
   <div class="field">
     <%= f.label :dod %><br />
-    <%= f.datetime_select :dod %>
+    <%# f.datetime_field :dod %>
+    <%= f.text_field :dod, :id => "dod" %>
   </div>
   <div class="field">
     பிறந்த இடம்:
@@ -57,7 +59,7 @@
 
   <div class="field">
     <% f.label :user_id %><br />
-    <%= f.hidden_field :user_id %>
+    <%= f.number_field :user_id %>
   </div>
   
   <div class="actions">

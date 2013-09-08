@@ -2,9 +2,10 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays
   # GET /notice_displays.json
   before_filter :authenticate_user!  
+  
   def index
     @notice_displays = NoticeDisplay.all
-
+    @orbituarysite = current_user.orbituarysites.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @notice_displays }
@@ -15,6 +16,7 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/1.json
   def show
     @notice_display = NoticeDisplay.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,9 +28,9 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/new.json
   def new
     @notice_display = NoticeDisplay.new
+    @orbituarysite = current_user.orbituarysites.new
     event_place = @notice_display.notice_event_places.build
-
-
+    @notice_event_contact = @notice_display.notice_event_contacts.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @notice_display }
@@ -38,17 +40,19 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/1/edit
   def edit
     @notice_display = NoticeDisplay.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new    
   end
 
   # POST /notice_displays
   # POST /notice_displays.json
   def create
     @notice_display = NoticeDisplay.new(params[:notice_display])
+    @orbituarysite = @notice_display.orbituarysite
 
     respond_to do |format|
       if @notice_display.save
-        format.html { redirect_to @notice_display, notice: 'Notice display was successfully created.' }
-        format.json { render json: @notice_display, status: :created, location: @notice_display }
+        format.html { redirect_to @orbituarysite, notice: 'Notice display was successfully created.' }
+        format.json { render json: @orbituarysite, status: :created, location: @notice_display }
       else
         format.html { render action: "new" }
         format.json { render json: @notice_display.errors, status: :unprocessable_entity }

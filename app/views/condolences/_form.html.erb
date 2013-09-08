@@ -26,7 +26,10 @@
   </div>
   <div class="field">
     <%= f.label :flower %><br />
-    <%= f.text_field :flower %>
+    <%= f.radio_button :flower, "1" %> Flower
+    <%= f.radio_button :flower, "2" %> Lamp
+    <%# f.radio_button :flower, "3" %>
+    <%# f.radio_button :flower, "4" %>
   </div>
   <div class="field">
     <%= f.label :share_content %><br />

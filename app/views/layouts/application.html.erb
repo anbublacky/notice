@@ -69,7 +69,11 @@
           <h4 class="modal-title">Modal title</h4>
         </div>
         <div class="modal-body">
-         <%= render 'orbituarysites/form' , :remote => true %>
+        <% if user_signed_in? %>
+          <%= render 'orbituarysites/form' , :remote => true %>
+        <% else %>
+          Please sign in to to create a new site
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -85,7 +89,7 @@
             <%= link_to('Logout', destroy_user_session_path) %>
         <% else %>
             <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:twitter) %>
+            <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
             <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
 
 
@@ -103,7 +107,7 @@
           <%= yield %>
 
       </div><!--/row-->
-
+<%= yield :scripts %>
       <footer>
         <p>&copy; Notice 2013</p>
       </footer>

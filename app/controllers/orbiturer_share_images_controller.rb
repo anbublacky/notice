@@ -42,11 +42,11 @@ class OrbiturerShareImagesController < ApplicationController
   # POST /orbiturer_share_images.json
   def create
     @orbiturer_share_image = OrbiturerShareImage.new(params[:orbiturer_share_image])
-
+    @orbituarysite = @orbiturer_share_image.orbituarysite
     respond_to do |format|
       if @orbiturer_share_image.save
-        format.html { redirect_to @orbiturer_share_image, notice: 'Orbiturer share image was successfully created.' }
-        format.json { render json: @orbiturer_share_image, status: :created, location: @orbiturer_share_image }
+        format.html { redirect_to @orbituarysite, notice: 'Orbiturer share image was successfully created.' }
+        format.json { render json: @orbituarysite, status: :created, location: @orbiturer_share_image }
       else
         format.html { render action: "new" }
         format.json { render json: @orbiturer_share_image.errors, status: :unprocessable_entity }

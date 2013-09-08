@@ -49,6 +49,7 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick'
+
 gem 'gmaps4rails'
 gem 'countries'
 gem 'country_select'
