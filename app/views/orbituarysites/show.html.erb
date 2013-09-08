@@ -206,7 +206,7 @@
     <div class="tab-pane" id="tab5">
       <p><%# image_tag('padankal.png') %></p>
       <p>
-      <% if !@orbituarysite.orbiturer_share_images.nil? %> <div class="well"><% @orbituarysite.orbiturer_share_images.each do |f| %> <%= image_tag(f.orbiturer_other_images_url(:thumb))  %><% end %></div><% end %>
+      <%# if !@orbituarysite.orbiturer_share_images.nil? %> <div class="well"><%# @orbituarysite.orbiturer_share_images.each do |f| %> <%# image_tag(f.orbiturer_other_images_url(:thumb))  %><%# end %></div><%# end %>
         <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a>
       </p>
   <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
