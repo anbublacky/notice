@@ -1,5 +1,5 @@
 class NoticeDisplay < ActiveRecord::Base
-  attr_accessible :message, :notice_type, :orbituarysite_id, :posted_by, :notice_event_places_attributes, :notice_event_contacts_attributes
+  attr_accessible :message, :notice_type, :orbituarysite_id, :posted_by, :notice_event_places_attributes, :notice_event_contacts_attributes, :address1, :address2, :city, :event_tyoe
   belongs_to :orbituarysite
   has_many :notice_event_contacts, :dependent => :destroy
   has_many :notice_event_places, :dependent => :destroy

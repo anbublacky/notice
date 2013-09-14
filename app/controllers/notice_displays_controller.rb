@@ -29,7 +29,7 @@ class NoticeDisplaysController < ApplicationController
   def new
     @notice_display = NoticeDisplay.new
     @orbituarysite = current_user.orbituarysites.new
-    event_place = @notice_display.notice_event_places.build
+     @notice_display.notice_event_places.build 
     @notice_event_contact = @notice_display.notice_event_contacts.build
     respond_to do |format|
       format.html # new.html.erb
@@ -51,6 +51,21 @@ class NoticeDisplaysController < ApplicationController
 
     respond_to do |format|
       if @notice_display.save
+        Rails.logger.info params[:notice_display]
+        Rails.logger.info params[:notice_display][:notice_event_contacts_attributes][:name]
+        params[:notice_display][:notice_event_contacts_attributes].each do |contacts_attrs|
+#          Rails.logger.info contacts_attrs.last
+          Rails.logger.info contacts_attrs.last
+          @notice_event_contact = @notice_display.notice_event_contacts.build(contacts_attrs.last)
+          @notice_event_contact.update_attributes(:id => @notice_display.id)
+        end
+        params[:notice_display][:notice_event_places_attributes].each do |contacts_places|
+#          Rails.logger.info contacts_attrs.last
+          Rails.logger.info contacts_places.last
+          @notice_event_place = @notice_display.notice_event_places.build(contacts_places.last)
+          @notice_event_place.update_attributes(:id => @notice_display.id)
+        end
+        
         format.html { redirect_to @orbituarysite, notice: 'Notice display was successfully created.' }
         format.json { render json: @orbituarysite, status: :created, location: @notice_display }
       else

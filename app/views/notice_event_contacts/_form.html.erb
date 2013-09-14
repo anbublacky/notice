@@ -1,15 +1,3 @@
-<%= form_for(@notice_event_contact) do |f| %>
-  <% if @notice_event_contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@notice_event_contact.errors.count, "error") %> prohibited this notice_event_contact from being saved:</h2>
-
-      <ul>
-      <% @notice_event_contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -17,7 +5,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= f.country_select  :country %>
   </div>
   <div class="field">
     <%= f.label :mobile %><br />
@@ -34,4 +22,3 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
