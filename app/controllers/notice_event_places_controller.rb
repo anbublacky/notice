@@ -4,6 +4,7 @@ class NoticeEventPlacesController < ApplicationController
   before_filter :authenticate_user!  
   def index
     @notice_event_places = NoticeEventPlace.all
+    @orbituarysite = current_user.orbituarysites.new    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,8 +17,7 @@ class NoticeEventPlacesController < ApplicationController
   def show
     @notice_event_place = NoticeEventPlace.find(params[:id])
     @orbituarysite = current_user.orbituarysites.new    
-    @json = NoticeEventPlace.all.to_gmaps4rails    
-
+    @notice_event_place_maps = @notice_event_place.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @notice_event_place }
@@ -46,8 +46,6 @@ class NoticeEventPlacesController < ApplicationController
   def create
     @notice_event_place = NoticeEventPlace.new(params[:notice_event_place])
     @orbituarysite = current_user.orbituarysites.new    
-#    @json = NoticeEventPlace.all.to_gmaps4rails        
-
     respond_to do |format|
       if @notice_event_place.save
         format.html { redirect_to @notice_event_place, notice: 'Notice event place was successfully created.' }

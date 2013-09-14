@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require bootstrap-datepicker
+//= require colorbox-rails
 //= require_tree .
 
 $(document).ready(function(){

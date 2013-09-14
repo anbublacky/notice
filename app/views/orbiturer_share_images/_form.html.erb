@@ -17,6 +17,7 @@
      <p>
     <label>Share Images</label>
     <%= image_tag(@orbiturer_share_image.orbiturer_other_images_url) if @orbiturer_share_image.orbiturer_other_images? %>
+    
     <%= f.file_field :orbiturer_other_images %>
   </p>
 
@@ -30,6 +31,14 @@
   <div class="field">
     <% f.label :orbituarysite_id %><br />
     <%= f.hidden_field :orbituarysite_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 3 %>
   </div>
   <div class="actions">
     <%= f.submit %>

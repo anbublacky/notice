@@ -4,6 +4,7 @@ class NoticeEventContactsController < ApplicationController
   before_filter :authenticate_user!  
   def index
     @notice_event_contacts = NoticeEventContact.all
+        @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,8 @@ class NoticeEventContactsController < ApplicationController
   # GET /notice_event_contacts/1.json
   def show
     @notice_event_contact = NoticeEventContact.find(params[:id])
-
+    @orbituarysite = current_user.orbituarysites.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @notice_event_contact }
@@ -26,6 +28,7 @@ class NoticeEventContactsController < ApplicationController
   # GET /notice_event_contacts/new.json
   def new
     @notice_event_contact = NoticeEventContact.new
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # new.html.erb

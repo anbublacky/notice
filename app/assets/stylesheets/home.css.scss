@@ -1,4 +1,116 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-facebook {
+width:215px !important;
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #2b4b90;
+*background-color: #133783;
+background-image: -moz-linear-gradient(top, #3b5998, #133783);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b5998), to(#133783));
+background-image: -webkit-linear-gradient(top, #3b5998, #133783);
+background-image: -o-linear-gradient(top, #3b5998, #133783);
+background-image: linear-gradient(to bottom, #3b5998, #133783);
+background-repeat: repeat-x;
+border-color: #133783 #133783 #091b40;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b5998', endColorstr='#ff133783', GradientType=0);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
 
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.btn-facebook.disabled,
+.btn-facebook[disabled] {
+color: #ffffff;
+background-color: #133783;
+*background-color: #102e6d;
+}
+
+.btn-facebook:active,
+.btn-facebook.active {
+background-color: #0d2456 \9;
+}
+.btn-google-plus {
+width:215px !important;
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #d34332;
+*background-color: #c53727;
+background-image: -moz-linear-gradient(top, #dd4b39, #c53727);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4b39), to(#c53727));
+background-image: -webkit-linear-gradient(top, #dd4b39, #c53727);
+background-image: -o-linear-gradient(top, #dd4b39, #c53727);
+background-image: linear-gradient(to bottom, #dd4b39, #c53727);
+background-repeat: repeat-x;
+border-color: #c53727 #c53727 #85251a;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4b39', endColorstr='#ffc53727', GradientType=0);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-google-plus:hover,
+.btn-google-plus:focus,
+.btn-google-plus:active,
+.btn-google-plus.active,
+.btn-google-plus.disabled,
+.btn-google-plus[disabled] {
+color: #ffffff;
+background-color: #c53727;
+*background-color: #b03123;
+}
+
+.btn-google-plus:active,
+.btn-google-plus.active {
+background-color: #9a2b1f \9;
+}
+.btn-twitter {
+width:215px !important;
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #1c95d0;
+*background-color: #0271bf;
+background-image: -moz-linear-gradient(top, #2daddc, #0271bf);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2daddc), to(#0271bf));
+background-image: -webkit-linear-gradient(top, #2daddc, #0271bf);
+background-image: -o-linear-gradient(top, #2daddc, #0271bf);
+background-image: linear-gradient(to bottom, #2daddc, #0271bf);
+background-repeat: repeat-x;
+border-color: #0271bf #0271bf #014473;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2daddc', endColorstr='#ff0271bf', GradientType=0);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active,
+.btn-twitter.active,
+.btn-twitter.disabled,
+.btn-twitter[disabled] {
+color: #ffffff;
+background-color: #0271bf;
+*background-color: #0262a6;
+}
+
+.btn-twitter:active,
+.btn-twitter.active {
+background-color: #01538d \9;
+}
+
+.social_button{
+	margin-left: auto;
+	margin-right: auto;
+	float: none;
+	text-align: center;
+	
+	a:visited{
+		color:white;
+	}
+	strong{
+		font-size:15px;
+	}
+}

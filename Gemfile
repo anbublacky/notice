@@ -5,8 +5,11 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+#gem 'pg'
+
+gem 'sqlite3'
+gem 'colorbox-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -51,5 +54,6 @@ gem 'rmagick'
 gem 'mini_magick'
 
 gem 'gmaps4rails'
+gem 'geocoder'
 gem 'countries'
 gem 'country_select'
