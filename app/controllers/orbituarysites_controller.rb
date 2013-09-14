@@ -18,10 +18,12 @@ class OrbituarysitesController < ApplicationController
     @orbituarysite = Orbituarysite.find(params[:id])
     @notice_display = @orbituarysite.notice_display.build
     @notice_event_contact = @notice_display.notice_event_contacts.build
+    @notice_event_place = @notice_display.notice_event_places.build
     @history = @orbituarysite.history.build
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build
     @orbiturer_share_image = @orbituarysite.orbiturer_share_images.build
+    @notice_event_place_maps = @notice_event_place.to_gmaps4rails
 #    event_place = @notice_display.notice_event_places.build
 #    @orbituarysite = Orbituarysite.find(params[:orbituarysite])
     respond_to do |format|

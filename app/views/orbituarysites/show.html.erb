@@ -94,6 +94,7 @@
           <% if @orbituarysite.notice_display.nil? %>
             <%= render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
           <% end %>
+          <%= gmaps4rails(@notice_event_place_maps) %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
