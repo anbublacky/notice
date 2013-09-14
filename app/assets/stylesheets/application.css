@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
- *= require gmaps4rails
  *= require datepicker
  *= require colorbox-rails
  *= require_tree .

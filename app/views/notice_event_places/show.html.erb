@@ -50,8 +50,7 @@
   <%= @notice_event_place.notice_display_id %>
 </p>
 
-<%= gmaps4rails('India') %>
-
+<%= gmaps4rails(@notice_event_place_maps) %>
 
 <%= link_to 'Edit', edit_notice_event_place_path(@notice_event_place) %> |
 <%= link_to 'Back', notice_event_places_path %>
