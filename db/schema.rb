@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20130831114157) do
     t.string   "city"
     t.string   "county"
     t.string   "postcode"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "eventdate"
     t.time     "eventtime"
     t.integer  "notice_display_id"
