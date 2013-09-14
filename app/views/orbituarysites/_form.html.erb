@@ -29,17 +29,17 @@
     <% f.label :orbiturerimage %><br />
     <% f.text_field :orbiturerimage %>
   </div>
-      <label>Photo</label>
+      <label>படம்</label>
     <%= image_tag(@orbituarysite.orbiturerimage_url()) if @orbituarysite.orbiturerimage? %>
     <%= f.file_field :orbiturerimage %>
   </p>
   <div class="field">
-    <%= f.label :dob %><br />
+    <%= f.label "பிறந்த திகதி" %><br />
     <%# f.datetime_field :dob %>
     <%= f.text_field :dob, :id => "dob" %>
   </div>
   <div class="field">
-    <%= f.label :dod %><br />
+    <%= f.label "இறந்த திகதி" %><br />
     <%# f.datetime_field :dod %>
     <%= f.text_field :dod, :id => "dod" %>
   </div>

@@ -4,6 +4,7 @@ class MemoriesController < ApplicationController
   before_filter :authenticate_user!  
   def index
     @memories = Memory.all
+    @orbituarysite = Orbituarysite.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class MemoriesController < ApplicationController
   # GET /memories/1.json
   def show
     @memory = Memory.find(params[:id])
+    @orbituarysite = Orbituarysite.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,7 @@ class MemoriesController < ApplicationController
   # GET /memories/new.json
   def new
     @memory = Memory.new
+    @orbituarysite = Orbituarysite.new
 
     respond_to do |format|
       format.html # new.html.erb

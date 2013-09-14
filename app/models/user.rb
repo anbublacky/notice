@@ -45,8 +45,7 @@ def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
         first_name:auth.info.name,
         last_name:auth.info.nickname,
         remote_userimage_url:auth.info.image,
-        urls:auth.urls.twitter
-        
+        urls:auth.info.urls.Twitter
       )
     end
   end
