@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20130831114157) do
     t.string   "city"
     t.string   "county"
     t.string   "postcode"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "eventdate"
     t.time     "eventtime"
     t.integer  "notice_display_id"
@@ -105,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20130831114157) do
 
   create_table "orbiturer_share_images", :force => true do |t|
     t.string   "orbiturer_other_images"
+    t.string   "title"
+    t.string   "description"
     t.integer  "orbituarysite_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
