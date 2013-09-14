@@ -18,6 +18,7 @@ class OrbituarysitesController < ApplicationController
     @orbituarysite = Orbituarysite.find(params[:id])
     @notice_display = @orbituarysite.notice_display.build
     @notice_event_contact = @notice_display.notice_event_contacts.build
+    @notice_event_place = @notice_display.notice_event_places.build
     @history = @orbituarysite.history.build
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build

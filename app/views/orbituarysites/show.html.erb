@@ -61,7 +61,26 @@
       <% if @orbituarysite.notice_display.count < 1 %><a data-toggle="modal" href="#myModal1" class="btn btn-primary" href="/notice_displays/new">Post Notice</a><% end %>
       <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal11" class="btn btn-primary" href="/notice_displays/new">Edit Notice</a><% end %>
     </p>
-    <p><% if !@orbituarysite.notice_display.nil? %><% @orbituarysite.notice_display.each do |f| %><div class="well"><%= raw(f.message) %></div><% end %><% end %></p>
+    <p><% if !@orbituarysite.notice_display.nil? %>
+      <% @orbituarysite.notice_display.each do |f| %>
+      <div class="well"><%= raw(f.message) %></div>
+      <% end %>
+      <% end %></p>
+        <p><% if !@orbituarysite.notice_display.nil? %>
+          <% @orbituarysite.notice_display.each do |f| %>
+          <div class="well"><%= raw(f.message) %></div>
+          <% f.notice_event_places.each do |plac| %>
+          <%= plac.event_type %>
+          <%= plac.country %>
+          <%= plac.address1 %>
+          <%= plac.address2 %>
+          <%= plac.city %>
+          <%= plac.county %>
+          <%= plac.eventdate %>
+          <%= plac.eventtime %>
+          <% end %>
+          <% end %>
+          <% end %></p>
        <!-- Modal -->
   <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -30,12 +30,37 @@
     <% f.label :orbituarysite_id %><br />
     <%= f.number_field :orbituarysite_id %>
   </div>
-     <%= render 'notice_event_contacts/form' %>
-  <% f.fields_for :notice_event_contacts do |builder| %>
-   <%= render 'notice_event_contacts/form', :f => builder %>
+     <%# render 'notice_event_contacts/form' %>
+  <%= f.fields_for :notice_event_contacts do |builder| %>
+  <fieldset>
+  <div class="field">
+    <%= builder.label :name %><br />
+    <%= builder.text_field :name %>
+  </div>
+  <div class="field">
+    <%= builder.label :country %><br />
+    <%= builder.country_select :country %>
+  </div>
+  <div class="field">
+    <%= builder.label :mobile %><br />
+    <%= builder.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= builder.label :telephone %><br />
+    <%= builder.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= builder.label :notice_display_id %><br />
+    <%= builder.number_field :notice_display_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+    
+  </div>
+</fieldset>
   <% end %>
-  <% f.fields_for :notice_event_places do |builder| %>
-   <%= render 'notice_event_places/form', :f => builder %>
+  <%= f.fields_for :notice_event_places do |builder| %>
+    <%= render 'notice_event_places/form'%>
   <% end %>
   
   <div class="actions">

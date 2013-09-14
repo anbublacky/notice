@@ -1,5 +1,5 @@
 class Orbituarysite < ActiveRecord::Base
-  attr_accessible :birth_place, :death_place, :dob, :dod, :name, :living_place, :orbiturerimage, :salutation, :user_id
+  attr_accessible :birth_place, :death_place, :dob, :dod, :name, :living_place, :orbiturerimage, :salutation, :user_id, :name
   belongs_to :user
   mount_uploader :orbiturerimage, OrbiturerUploader
   has_many :history
