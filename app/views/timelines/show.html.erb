@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @timeline.startdate %>
+</p>
+
+<p>
+  <b>Enddate:</b>
+  <%= @timeline.enddate %>
+</p>
+
+<p>
+  <b>Headline:</b>
+  <%= @timeline.headline %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @timeline.content %>
+</p>
+
+<p>
+  <b>Media:</b>
+  <%= @timeline.media %>
+</p>
+
+<p>
+  <b>Mediacredit:</b>
+  <%= @timeline.mediacredit %>
+</p>
+
+<p>
+  <b>Mediacaption:</b>
+  <%= @timeline.mediacaption %>
+</p>
+
+
+<%= link_to 'Edit', edit_timeline_path(@timeline) %> |
+<%= link_to 'Back', timelines_path %>

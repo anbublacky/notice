@@ -9,6 +9,8 @@ class CreateOrbituarysites < ActiveRecord::Migration
       t.string :birth_place
       t.string :living_place
       t.string :death_place
+      t.string :latitude
+      t.string :longitude
       t.integer :user_id
 
       t.timestamps

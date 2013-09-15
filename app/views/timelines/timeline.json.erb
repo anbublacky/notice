@@ -1,0 +1,30 @@
+[
+<% @timelines.each do |timeline| %>
+{ "timeline": 
+{
+    	"headline": "Default Headline",
+      "type": "default",
+      "text": "Default text",
+       "asset": {
+                "media":"<%= timeline.media.to_s %>",
+                "credit":"<%= timeline.mediacredit.to_s %>",
+                "caption":"<%= timeline.mediacaption.to_s %>"
+                },
+      "date": [{
+                "startDate":"2011,12,10",
+                "endDate":"2011,12,11",
+                "headline":"<%= timeline.headline.to_s %>",
+                "text":"<%= timeline.content.to_s %>",
+                "tag":"This is Optional",
+                "classname":"optionaluniqueclassnamecanbeaddedhere",
+                "asset": {
+                    "media":"http://twitter.com/ArjunaSoriano/status/164181156147900416",
+                    "thumbnail":"optional-32x32px.jpg",
+                    "credit":"Credit Name Goes Here",
+                    "caption":"Caption text goes here"
+              }]
+    		
+}
+}
+<% end %>
+]

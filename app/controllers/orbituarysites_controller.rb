@@ -5,6 +5,7 @@ class OrbituarysitesController < ApplicationController
   
   def index
     @orbituarysites = Orbituarysite.all
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,12 +24,42 @@ class OrbituarysitesController < ApplicationController
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build
     @orbiturer_share_image = @orbituarysite.orbiturer_share_images.build
-    @notice_event_place_maps = @notice_event_place.to_gmaps4rails
+    @notice_event_place_maps = @orbituarysite.notice_display.first.notice_event_places.to_gmaps4rails
+    @timeline = @orbituarysite.timelines.build
+    Rails.logger.info @notice_event_place_maps
+    
+    @timelines = Timeline.where(:orbituarysite_id => @orbituarysite.id)
+    
 #    event_place = @notice_display.notice_event_places.build
 #    @orbituarysite = Orbituarysite.find(params[:orbituarysite])
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @orbituarysite }
+      format.json { render json: json_out = {
+    "timeline"=>
+    {
+        "headline"=>"The Main Timeline Headline Goes here",
+        "type"=>"default",
+        "text"=>"<p>Intro body text goes here, some HTML is ok</p>",
+        "asset"=> {
+            "media"=>"http://www.exglam.com/wp-content/uploads/2013/02/Kajal-agarwal-in-Blue-and-white-Fade-Short-with-white-Top-and-a-Blue-bow-in-hair.jpg",
+            "credit"=>"Credit Name Goes Here",
+            "caption"=>"Caption text goes here"
+        },
+        "date"=> @timelines.map { |timeline| {"startDate" => timeline.startdate.strftime("%Y,%m,%d"),"endDate" => timeline.enddate.strftime("%Y,%m,%d"),"headline" => timeline.headline,"text" => timeline.content, "asset" => {"media" => timeline.media}}},
+
+        
+        "era"=> [
+            {
+                "startDate"=>"2011,12,10",
+                "endDate"=>"2011,12,11",
+                "headline"=>"Headline Goes Here",
+                "text"=>"<p>Body text goes here, some HTML is OK</p>",
+                "tag"=>"This is Optional"
+            }
+
+        ]
+    }
+} }
     end
   end
 

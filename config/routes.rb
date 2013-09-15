@@ -1,4 +1,7 @@
 Notice::Application.routes.draw do
+  resources :timelines
+
+
   resources :orbiturer_share_images
 
 

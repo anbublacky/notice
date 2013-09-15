@@ -16,6 +16,7 @@
 //= require ckeditor/init
 //= require bootstrap-datepicker
 //= require colorbox-rails
+//=require timelineJS/embed
 //= require_tree .
 
 $(document).ready(function(){

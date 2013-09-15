@@ -57,3 +57,5 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'countries'
 gem 'country_select'
+gem 'timelineJS-rails', '~> 1.1.1'
+

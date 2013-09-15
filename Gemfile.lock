@@ -169,6 +169,8 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    timelineJS-rails (1.1.1)
+      jquery-rails
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -205,5 +207,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
+  timelineJS-rails (~> 1.1.1)
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

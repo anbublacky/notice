@@ -1,0 +1,35 @@
+<h1>Listing timelines</h1>
+
+<table>
+  <tr>
+    <th>Startdate</th>
+    <th>Enddate</th>
+    <th>Headline</th>
+    <th>Content</th>
+    <th>Media</th>
+    <th>Mediacredit</th>
+    <th>Mediacaption</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @timelines.each do |timeline| %>
+  <tr>
+    <td><%= timeline.startdate %></td>
+    <td><%= timeline.enddate %></td>
+    <td><%= timeline.headline %></td>
+    <td><%= timeline.content %></td>
+    <td><%= timeline.media %></td>
+    <td><%= timeline.mediacredit %></td>
+    <td><%= timeline.mediacaption %></td>
+    <td><%= link_to 'Show', timeline %></td>
+    <td><%= link_to 'Edit', edit_timeline_path(timeline) %></td>
+    <td><%= link_to 'Destroy', timeline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<div id="time_line">
+<br />
+
+<%= link_to 'New Timeline', new_timeline_path %>

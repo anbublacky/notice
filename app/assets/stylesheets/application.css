@@ -12,5 +12,6 @@
  *= require bootstrap_and_overrides
  *= require datepicker
  *= require colorbox-rails
+ *= require timelineJS/timeline
  *= require_tree .
  */

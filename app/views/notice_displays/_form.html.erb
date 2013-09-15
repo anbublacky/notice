@@ -59,8 +59,44 @@
   </div>
 </fieldset>
   <% end %>
-  <%= f.fields_for :notice_event_places do |builder| %>
-    <%= render 'notice_event_places/form'%>
+  <%= f.fields_for :notice_event_places do |builder1| %>
+  <div class="field">
+    <%= builder1.label :event_type %><br />
+    <%= builder1.text_field :event_type %>
+  </div>
+  <div class="field">
+    <%= builder1.label :country %><br />
+    <%= builder1.country_select :country %>
+  </div>
+  <div class="field">
+    <%= builder1.label :address1 %><br />
+    <%= builder1.text_field :address1 %>
+  </div>
+  <div class="field">
+    <%= builder1.label :address2 %><br />
+    <%= builder1.text_field :address2 %>
+  </div>
+  <div class="field">
+    <%= builder1.label :city %><br />
+    <%= builder1.text_field :city %>
+  </div>
+  <div class="field">
+    <%= builder1.label :county %><br />
+    <%= builder1.text_field :county %>
+  </div>
+  <div class="field">
+    <%= builder1.label :postcode %><br />
+    <%= builder1.text_field :postcode %>
+  </div>
+  <div class="field">
+    <%= builder1.label :eventdate %><br />
+    <%= builder1.datetime_select :eventdate %>
+  </div>
+  <div class="field">
+    <%= builder1.label :eventtime %><br />
+    <%= builder1.time_select :eventtime %>
+  </div>
+
   <% end %>
   
   <div class="actions">
