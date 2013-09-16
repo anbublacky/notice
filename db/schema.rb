@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831114157) do
+ActiveRecord::Schema.define(:version => 20130915022118) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20130831114157) do
     t.string   "birth_place"
     t.string   "living_place"
     t.string   "death_place"
+    t.string   "latitude"
+    t.string   "longitude"
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
@@ -112,6 +114,19 @@ ActiveRecord::Schema.define(:version => 20130831114157) do
     t.integer  "orbituarysite_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+  end
+
+  create_table "timelines", :force => true do |t|
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.string   "headline"
+    t.text     "content"
+    t.string   "media"
+    t.string   "mediacredit"
+    t.string   "mediacaption"
+    t.string   "orbituarysite_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|

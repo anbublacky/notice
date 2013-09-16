@@ -1,3 +1,13 @@
 --- 
-open_files: []
-
+open_files: 
+  - app/controllers/timelines_controller.rb
+  - app/controllers/orbituarysites_controller.rb
+  - app/controllers/notice_displays_controller.rb
+  - app/views/timelines/_form.html.erb
+  - app/views/notice_displays/_form.html.erb
+  - app/views/orbituarysites/show.html.erb
+  - app/assets/javascripts/timelines.js.coffee
+  - app/assets/stylesheets/home.css.scss
+  - app/uploaders/orbiturer_uploader.rb
+  - config/routes.rb
+  - db/migrate/20130831114150_create_orbituarysites.rb
