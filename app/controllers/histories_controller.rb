@@ -4,6 +4,7 @@ class HistoriesController < ApplicationController
   before_filter :authenticate_user!  
   def index
     @histories = History.all
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class HistoriesController < ApplicationController
   # GET /histories/1.json
   def show
     @history = History.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,7 @@ class HistoriesController < ApplicationController
   # GET /histories/new.json
   def new
     @history = History.new
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +39,8 @@ class HistoriesController < ApplicationController
   # GET /histories/1/edit
   def edit
     @history = History.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
+    
   end
 
   # POST /histories

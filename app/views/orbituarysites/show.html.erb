@@ -15,8 +15,8 @@
 </p>
 <h4 class="center">மண்ணில் - விண்ணில்</h4>
 <h4 class="center">
-  <%= @orbituarysite.dob %>-
-  <%= @orbituarysite.dod %>
+  <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
+  <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
 </h4>
 <h4 class="center">
 பிறந்த இடம்: 
@@ -63,53 +63,39 @@
     <div class="tab-pane active" id="tab1">
     <p><%= image_tag('arivithalkal.png') %></p>
     <p>
-      <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal11" class="btn btn-primary" href="/notice_displays/new">Edit Notice</a><% end %>
-      <% if @orbituarysite.notice_display.count < 1 %><a data-toggle="modal" href="#myModal1" class="btn btn-primary" href="/notice_displays/new">Post Notice</a><% end %>
-    </p>
-    <% if !@orbituarysite.notice_display.nil? %><div class="well">
-      <% @orbituarysite.notice_display.each do |f| %>
-      <%= raw(f.message) %>
+    <% if @orbituarysite.notice_displays.count == 1 %><%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }%><% end %>
+      <% if @orbituarysite.notice_displays.count < 1 %>
+        <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }%>
       <% end %>
-      <% end %></div>
-        <p><div class="well"><% if !@orbituarysite.notice_display.nil? %>
-          <% @orbituarysite.notice_display.each do |f| %>
+    </p>
+    
+    <% if @orbituarysite.notice_displays.count > 0%>
+      <div class="well">
+        <% @orbituarysite.notice_displays.each do |f| %>
           <%= raw(f.message) %>
-          <% f.notice_event_places.each do |plac| %>
-          <%= plac.event_type %>
-          <%= plac.country %>
-          <%= plac.address1 %>
-          <%= plac.address2 %>
-          <%= plac.city %>
-          <%= plac.county %>
-          <%= plac.eventdate %>
-          <%= plac.eventtime %>
-          <%= plac.latitude %>
-          <%= plac.longitude %>
-          <%# @notice_event_place_maps = f.to_gmaps4rails %>
-          <%# plac.to_gmaps4rails %>
-          <div id="map-canvas"></div>
-          
-          
-          <script>
-            var map;
-            function initialize() {
-              var mapOptions = {
-                zoom: 8,
-                center: new google.maps.LatLng(<%= plac.latitude.to_f %>, <%= plac.longitude.to_f %>),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-              };
-              map = new google.maps.Map(document.getElementById('map-canvas'),
-                  mapOptions);
-            }
-            
-            google.maps.event.addDomListener(window, 'load', initialize);      
-          </script>
-          <%# gmaps4rails(plac.to_gmaps4rails) %>
-
+        <% end %>
+      </div>
+      <div class = "well">
+        <% @orbituarysite.notice_displays.each do |f| %>
+            <%= raw(f.message) %>
+            <% f.notice_event_places.each do |plac| %>
+              <%= plac.event_type %>
+              <%= plac.country %>
+              <%= plac.address1 %>
+              <%= plac.address2 %>
+              <%= plac.city %>
+              <%= plac.county %>
+              <%= plac.eventdate %>
+              <%= plac.eventtime %>
+              <%= plac.latitude %>
+              <%= plac.longitude %>
+              <%# @notice_event_place_maps = f.to_gmaps4rails %>
+              <%# plac.to_gmaps4rails %>
+            <% end %>
           <% end %>
-          </div>
-          <% end %>
-          <% end %></p>
+        </div>
+    <% end %>
+    
        <!-- Modal -->
   <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -139,7 +125,7 @@
         </div>
         <div class="modal-body">
           <%# @orbituarysite.notice_display %>
-          <% if @orbituarysite.notice_display.nil? %>
+          <% if @orbituarysite.notice_displays.count > 1 %>
             <%= render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
           <% end %>
           <%= gmaps4rails(@notice_event_place_maps) %>
@@ -154,12 +140,12 @@
 
     </div>
     <div class="tab-pane" id="tab2">
-      <p>            <%= image_tag('vaalkai_varalaaru.png') %></p>
+      <p><%= image_tag('vaalkai_varalaaru.png') %></p>
       <p>
-      <% if !@orbituarysite.history.nil? %><% @orbituarysite.history.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
-      <% if @orbituarysite.history.count < 1 %>
+      <% if @orbituarysite.histories.count > 0 %><% @orbituarysite.histories.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
+      <% if @orbituarysite.histories.count < 1 %>
       <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a><% end%>
-       <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a><% end %>
+       <% if @orbituarysite.histories.count == 1 %><a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a><% end %>
       </p>
              <!-- Modal -->
   <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -188,8 +174,8 @@
           <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
         </div>
         <div class="modal-body">
-        <% if @orbituarysite.history.nil? %>
-         <%= render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.history.nil?  %>
+        <% if @orbituarysite.histories.count > 1 %>
+         <%= render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.histories.count > 1  %>
         <% end %>
         </div>
         <div class="modal-footer">
@@ -204,7 +190,7 @@
     <div class="tab-pane" id="tab3">
       <p>            <%= image_tag('ninaivalaikal.png') %></p>
       <p>
-      <% if !@orbituarysite.memories.nil? %><% @orbituarysite.memories.each do |f| %><div class="well"><h2>Memory shared by <%= current_user.name %></h2><%= raw(f.body) %></div><% end %><% end %>
+      <% if @orbituarysite.memories.count > 0 %><% @orbituarysite.memories.each do |f| %><div class="well"><h2>Memory shared by <%= current_user.name %></h2><%= raw(f.body) %></div><% end %><% end %>
       <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a>
       </p>
         <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -229,7 +215,7 @@
     <div class="tab-pane" id="tab4">
       <p>            <%= image_tag('aaruthalkal.png') %></p>
     <p>
-    <% if !@orbituarysite.condolences.nil? %><% @orbituarysite.condolences.each do |f| %><div class="well"><P>Condolence by <%= f.name %></p><% if f.flower == 1 %><%= image_tag('flower1.png') %><% else %><%= image_tag('lamp1.png') %><% end %><%= raw(f.share_content) %></div><% end %><% end %>
+    <% if @orbituarysite.condolences.count > 0 %><% @orbituarysite.condolences.each do |f| %><div class="well"><P>Condolence by <%= f.name %></p><% if f.flower == 1 %><%= image_tag('flower1.png') %><% else %><%= image_tag('lamp1.png') %><% end %><%= raw(f.share_content) %></div><% end %><% end %>
 
               <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a>
       </p>
@@ -255,7 +241,7 @@
     <div class="tab-pane" id="tab5">
       <p><%= image_tag('padankal.png') %></p>
       <p>
-      <% if !@orbituarysite.orbiturer_share_images.nil? %> 
+      <% if @orbituarysite.orbiturer_share_images.count > 0 %> 
         <div class="well pull-left span11">
             <% @orbituarysite.orbiturer_share_images.each do |f| %> 
               <div class="span5 margin">

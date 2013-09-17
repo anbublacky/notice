@@ -27,10 +27,14 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/new
   # GET /notice_displays/new.json
   def new
-    @notice_display = NoticeDisplay.new
+    Rails.logger.info params[:id]
+    @orbituary = Orbituarysite.find(params[:id])
+    @notice_display = @orbituary.notice_displays.new
+#    @notice_display = current_user.orbituarysites.first.notice_display.new    
     @orbituarysite = current_user.orbituarysites.new
-     @notice_display.notice_event_places.build 
+    @notice_display.notice_event_places.build 
     @notice_event_contact = @notice_display.notice_event_contacts.build
+    @notice_event_place = @notice_display.notice_event_places.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @notice_display }
@@ -39,6 +43,7 @@ class NoticeDisplaysController < ApplicationController
 
   # GET /notice_displays/1/edit
   def edit
+    Rails.logger.info params[:id]
     @notice_display = NoticeDisplay.find(params[:id])
     @orbituarysite = current_user.orbituarysites.new    
   end
@@ -46,7 +51,8 @@ class NoticeDisplaysController < ApplicationController
   # POST /notice_displays
   # POST /notice_displays.json
   def create
-    @notice_display = NoticeDisplay.new(params[:notice_display])
+    @orbituary = Orbituarysite.find(params[:id])
+    @notice_display = @orbituary.notice_display.new
     @orbituarysite = @notice_display.orbituarysite
 
     respond_to do |format|

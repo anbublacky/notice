@@ -4,6 +4,7 @@ class CondolencesController < ApplicationController
   before_filter :authenticate_user!
   def index
     @condolences = Condolence.all
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class CondolencesController < ApplicationController
   # GET /condolences/1.json
   def show
     @condolence = Condolence.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,7 @@ class CondolencesController < ApplicationController
   # GET /condolences/new.json
   def new
     @condolence = Condolence.new
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +39,8 @@ class CondolencesController < ApplicationController
   # GET /condolences/1/edit
   def edit
     @condolence = Condolence.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
+    
   end
 
   # POST /condolences

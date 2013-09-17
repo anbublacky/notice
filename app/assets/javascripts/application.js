@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require ckeditor/init
+//= require ckeditor/config
 //= require bootstrap-datepicker
 //= require colorbox-rails
 //=require timelineJS/embed

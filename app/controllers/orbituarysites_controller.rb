@@ -17,14 +17,14 @@ class OrbituarysitesController < ApplicationController
   # GET /orbituarysites/1.json
   def show
     @orbituarysite = Orbituarysite.find(params[:id])
-    @notice_display = @orbituarysite.notice_display.build
+    @notice_display = @orbituarysite.notice_displays.build
     @notice_event_contact = @notice_display.notice_event_contacts.build
     @notice_event_place = @notice_display.notice_event_places.build
-    @history = @orbituarysite.history.build
+    @history = @orbituarysite.histories.build
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build
     @orbiturer_share_image = @orbituarysite.orbiturer_share_images.build
-    @notice_event_place_maps = @orbituarysite.notice_display.first.notice_event_places.to_gmaps4rails
+    @notice_event_place_maps = @orbituarysite.notice_displays.first.notice_event_places.to_gmaps4rails
     @timeline = @orbituarysite.timelines.build
     Rails.logger.info @notice_event_place_maps
     
@@ -45,6 +45,7 @@ class OrbituarysitesController < ApplicationController
             "credit"=>"Credit Name Goes Here",
             "caption"=>"Caption text goes here"
         },
+        
         "date"=> @timelines.map { |timeline| {"startDate" => timeline.startdate.strftime("%Y,%m,%d"),"endDate" => timeline.enddate.strftime("%Y,%m,%d"),"headline" => timeline.headline,"text" => timeline.content, "asset" => {"media" => timeline.media}}},
 
         

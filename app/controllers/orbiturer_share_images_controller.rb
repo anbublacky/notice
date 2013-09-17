@@ -4,6 +4,7 @@ class OrbiturerShareImagesController < ApplicationController
   before_filter :authenticate_user!  
   def index
     @orbiturer_share_images = OrbiturerShareImage.all
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class OrbiturerShareImagesController < ApplicationController
   # GET /orbiturer_share_images/1.json
   def show
     @orbiturer_share_image = OrbiturerShareImage.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +28,7 @@ class OrbiturerShareImagesController < ApplicationController
   # GET /orbiturer_share_images/new.json
   def new
     @orbiturer_share_image = OrbiturerShareImage.new
+    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +39,8 @@ class OrbiturerShareImagesController < ApplicationController
   # GET /orbiturer_share_images/1/edit
   def edit
     @orbiturer_share_image = OrbiturerShareImage.find(params[:id])
+    @orbituarysite = current_user.orbituarysites.new
+    
   end
 
   # POST /orbiturer_share_images
