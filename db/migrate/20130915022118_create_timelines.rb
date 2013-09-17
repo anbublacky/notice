@@ -8,7 +8,7 @@ class CreateTimelines < ActiveRecord::Migration
       t.string :media
       t.string :mediacredit
       t.string :mediacaption
-      t.string :orbituarysite_id
+      t.integer :orbituarysite_id
       
       t.timestamps
     end
