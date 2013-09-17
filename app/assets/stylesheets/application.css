@@ -13,5 +13,6 @@
  *= require datepicker
  *= require colorbox-rails
  *= require timelineJS/timeline
+ *= require gmaps4rails
  *= require_tree .
  */
