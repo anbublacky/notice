@@ -24,7 +24,7 @@ class OrbituarysitesController < ApplicationController
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build
     @orbiturer_share_image = @orbituarysite.orbiturer_share_images.build
-    @notice_event_place_maps = @orbituarysite.notice_displays.first.notice_event_places.to_gmaps4rails
+#    @notice_event_place_maps = @orbituarysite.notice_displays.first.notice_event_places.to_gmaps4rails
     @timeline = @orbituarysite.timelines.build
     Rails.logger.info @notice_event_place_maps
     
