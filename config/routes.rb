@@ -34,7 +34,7 @@ Notice::Application.routes.draw do
 
   devise_for :views
   
-  mount Ckeditor::Engine => "/ckeditor"
+#  mount Ckeditor::Engine => "/ckeditor"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
