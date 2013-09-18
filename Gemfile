@@ -10,6 +10,7 @@ gem 'rails', '4.0.0'
 
 #gem 'sqlite3'
 gem 'pg'
+gem 'protected_attributes'
 
 #gem 'sqlite3'
 gem 'colorbox-rails'
