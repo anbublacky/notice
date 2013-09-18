@@ -22,6 +22,7 @@ Devise.setup do |config|
   config.omniauth :twitter, 'mVYXGi8bINdKKmsi8Vz0g', 'AmBAUgfAX5BjKlN08MoWsuZNfLdWuncEw4yBPF8p5TA'
   require "omniauth-google-oauth2"
   config.omniauth :google_oauth2, "929325251981.apps.googleusercontent.com", "YP_IlYH_BhIHQAWA7Dw0idM6", { access_type: "offline", approval_prompt: "" }
+  config.secret_key = 'd4a266a17426ed4753e85f8e8ec4ee115728f1b7469a63d2bc7eeb4cd0373b5e8ade029a5bcbd60368e71822c7561ff0f7b13109bc52f98fa6156eaabeb47473'
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
