@@ -1,5 +1,7 @@
 require "bundler/capistrano"
 
+set :bundle_flags, "--deployment --quiet --binstubs"
+
 server "192.241.252.5", :web, :app, :db, primary: true
 
 set :application, "notice"
@@ -16,6 +18,10 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
+set :default_environment, {
+    'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+}
 
 namespace :deploy do
   %w[start stop restart].each do |command|
