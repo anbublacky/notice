@@ -39,7 +39,8 @@ class HistoriesController < ApplicationController
 
   # GET /histories/1/edit
   def edit
-    @history = History.find(params[:id])
+    @hist = Orbituarysite.find(params[:id])    
+    @history = History.find_by(:orbituarysite_id => @hist.id)
     @orbituarysite = current_user.orbituarysites.new
     
   end

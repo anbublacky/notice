@@ -45,7 +45,7 @@ class NoticeDisplaysController < ApplicationController
   def edit
     Rails.logger.info params[:id]
     @orbituary = Orbituarysite.find(params[:id])
-    @notice_display = NoticeDisplay.find(params[:id])
+    @notice_display = NoticeDisplay.find_by(:orbituarysite_id => @orbituary.id)
     @orbituarysite = current_user.orbituarysites.new    
     @notice_event_contact = @notice_display.notice_event_contacts.build
     @notice_event_place = @notice_display.notice_event_places.build

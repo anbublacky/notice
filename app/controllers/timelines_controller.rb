@@ -52,7 +52,8 @@ class TimelinesController < ApplicationController
   # GET /timelines/new
   # GET /timelines/new.json
   def new
-    @timeline = Timeline.new
+    @tln = Orbituarysite.find(params[:id])    
+    @timeline = @tln.timelines.new
     @orbituarysite = current_user.orbituarysites.new    
 
     respond_to do |format|
