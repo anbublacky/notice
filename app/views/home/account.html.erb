@@ -1,0 +1,33 @@
+<h5>Tribute to those are dear to heart but far from this world</h5>
+
+<h2>Obituary Sites</h2>
+
+<div class="span12">
+<% @orbituarysites.each do |f| %>
+<div class="span3 well">
+
+<p>
+  <%= link_to f.name, f %>
+</p>
+
+<p>
+  <%= image_tag(f.orbiturerimage_url(:thumb)) if f.orbiturerimage? %>
+</p>
+
+<p>
+  <b>பிறந்த இடம்:</b>
+  <%= f.birth_place %>
+</p>
+
+<p>
+  <b>வாழ்ந்த இடம்:</b>
+  <%= f.living_place %>
+</p>
+
+<p>
+  <b>இறைவனடி சேர்ந்த இடம்:</b>
+  <%= f.death_place %>
+</p>
+</div>
+<% end %>
+</div>

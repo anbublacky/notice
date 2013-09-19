@@ -7,4 +7,8 @@ class HomeController < ApplicationController
       @orbituarysite = Orbituarysite.new
     end
   end
+  
+  def account
+    @orbituarysites = current_user.orbituarysites.all
+  end
 end

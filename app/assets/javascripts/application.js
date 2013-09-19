@@ -27,4 +27,7 @@ $('#dod').datepicker({
 $('#dob').datepicker({
   format: 'd-M-yyyy'  
 });
+$('.date_select_jquery').datepicker({
+  format: 'd-M-yyyy'  
+});
 });

@@ -67,7 +67,8 @@
       <% if current_user.id == @orbituarysite.user_id %>
         <% if @orbituarysite.notice_displays.count == 1 %>
           <%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-        <% else %>
+        <% end %>
+        <% if  @orbituarysite.notice_displays.count < 1 %>
           <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
         <% end %>
       <% end %>
@@ -76,29 +77,52 @@
     
     <% if @orbituarysite.notice_displays.count > 0 %>
       <div class="well">          
+        <h5>மரண அறிவித்தல்</h5>
         <% @orbituarysite.notice_displays.each do |f| %>
           <%= raw(f.message) %>
+                    தகவல்:
+                    <%= f.posted_by %>
         <% end %>
       </div>
-
-        <% @orbituarysite.notice_displays.each do |f| %>
-
-            <% f.notice_event_places.each do |plac| %>
-              <%= plac.event_type %>
-              <%= plac.country %>
-              <%= plac.address1 %>
-              <%= plac.address2 %>
-              <%= plac.city %>
-              <%= plac.county %>
-              <%= plac.eventdate %>
-              <%= plac.eventtime %>
-              <%= plac.latitude %>
-              <%= plac.longitude %>
-              <%# @notice_event_place_maps = f.to_gmaps4rails %>
-              <%# plac.to_gmaps4rails %>
+      
+      <div class="well">
+        <div class="notice_contacts">
+          <h4>தொடர்புகளுக்கு: </h4>
+          <hr>
+          <% @orbituarysite.notice_displays.each do |f| %>
+              <% f.notice_event_contacts.each do |cont| %>
+                <h5><%= cont.name %>    <%= cont.country %></h5>
+                                கைத் தொலைபேசி: <%= cont.mobile %>
+                                தொலைபேசி எண்: <%= cont.telephone %>
+              <% end %>
             <% end %>
-          <% end %>
+        </div>
+      </div>
 
+      <div class="well">
+        <div class="notice_places">
+          <h4>நிகழ்வுகள்: </h4>
+          <hr>
+          <% @orbituarysite.notice_displays.each do |f| %>
+              <% f.notice_event_places.each do |plac| %>
+              <h6> <%= plac.event_type %></h6>
+                            திகதி: <%= plac.eventdate %>
+                   <%= plac.eventtime %>
+                  <br />
+                            இடம்: 
+                <%= plac.country %>
+                <%= plac.address1 %>
+                <%= plac.address2 %>
+                <%= plac.city %>
+                <%= plac.county %>
+                <%= plac.latitude %>
+                <%= plac.longitude %>
+                <%# @notice_event_place_maps = f.to_gmaps4rails %>
+                <%# plac.to_gmaps4rails %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
     <% end %>
     
        <!-- Modal -->
@@ -131,7 +155,7 @@
         <div class="modal-body">
           <%# @orbituarysite.notice_display %>
           <% if @orbituarysite.notice_displays.count > 1 %>
-            <%= render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
+            <%# render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
           <% end %>
           <%# gmaps4rails(@notice_event_place_maps) %>
         </div>
@@ -201,6 +225,7 @@
     <div class="tab-pane" id="tab3">
       <p>            <%= image_tag('ninaivalaikal.png') %></p>
       <p>
+      <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
       <% if @orbituarysite.memories.count > 0 %>
         <% @orbituarysite.memories.each do |f| %>
           <div class="well">
@@ -210,7 +235,6 @@
         <% end %>
       <% end %>
       
-      <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id } %>
       
       </p>
         <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -236,6 +260,7 @@
       <p><%= image_tag('aaruthalkal.png') %></p>
       
     <p>
+    <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
     <% if @orbituarysite.condolences.count > 0 %>
       <% @orbituarysite.condolences.each do |f| %>
         <div class="well">
@@ -248,9 +273,7 @@
         </div>
       <% end %>
     <% end %>
-
-      <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id } %>
-    </p>
+   </p>
               <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -273,6 +296,7 @@
     <div class="tab-pane" id="tab5">
       <p><%= image_tag('padankal.png') %></p>
       <p>
+      <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
       <% if @orbituarysite.orbiturer_share_images.count > 0 %> 
         <div class="well pull-left span11">
             <% @orbituarysite.orbiturer_share_images.each do |f| %> 
@@ -291,9 +315,6 @@
               
           </div>
       <% end %>
-
-        <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id } %>
-
       </p>
   <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -316,11 +337,13 @@
   
       <div class="tab-pane" id="tab6">
       <p>Timeline</p>
+        <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+        <br />
         <script>
             $(document).ready(function() {
                 createStoryJS({
                     type:       'timeline',
-                    width:      '800',
+                    width:      '650',
                     height:     '600',
                     source:     '<%= @orbituarysite.id %>',
                     embed_id:   'my-timeline'
@@ -329,10 +352,6 @@
         </script>
         <br />
          <div id="my-timeline"></div>
-      <p>
-        <a data-toggle="modal" href="#myModal7" class="btn btn-primary" href="/timelines/new">Post Notice</a>
-        <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id } %>
-      </p>
   <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

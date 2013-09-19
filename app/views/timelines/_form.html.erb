@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :startdate %><br />
-    <%= f.datetime_select :startdate %>
+    <%= f.text_field :startdate, :class => "date_select_jquery" %>
   </div>
   <div class="field">
     <%= f.label :enddate %><br />
-    <%= f.datetime_select :enddate %>
+    <%= f.text_field :enddate, :class => "date_select_jquery" %>
   </div>
   <div class="field">
     <%= f.label :headline %><br />
@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.cktext_area :content, :ckeditor => {:language => "en", :toolbar => "mini"} %>
   </div>
   <div class="field">
     <%= f.label :media %><br />
@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <% f.label :orbituarysite_id %><br />
-    <%= f.number_field :orbituarysite_id %>
+    <%= f.hidden_field :orbituarysite_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

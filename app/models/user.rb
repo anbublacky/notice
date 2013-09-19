@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :location, :first_name, :last_name, :remote_userimage_url, :urls
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :location, :first_name, :last_name, :remote_userimage_url, :urls, :oauth_token, :oauth_secret
   # attr_accessible :title, :body
   has_many :orbituarysites
   
@@ -15,13 +15,16 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
   unless user
+    Rails.logger.info auth
     user = User.create(name:auth.extra.raw_info.name,
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
                          password:Devise.friendly_token[0,20],
                          first_name:auth.info.first_name,
-                         last_name:auth.info.last_name
+                         last_name:auth.info.last_name,
+                         oauth_token:auth["credentials"]["token"],
+                         oauth_secret:auth["credentials"]["secret"]
                          )
   end
   user
@@ -37,6 +40,7 @@ def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     if registered_user
       return registered_user
     else
+      Rails.logger.info auth
       user = User.create(name:auth.info.name,
         provider:auth.provider,
         uid:auth.uid,
@@ -45,7 +49,10 @@ def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
         first_name:auth.info.name,
         last_name:auth.info.nickname,
         remote_userimage_url:auth.info.image,
-        urls:auth.info.urls.Twitter
+        urls:auth.info.urls.Twitter,
+        oauth_token:auth["credentials"]["token"],
+        oauth_secret:auth["credentials"]["secret"]
+        
       )
     end
   end
