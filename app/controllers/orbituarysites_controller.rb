@@ -1,7 +1,7 @@
 class OrbituarysitesController < ApplicationController
   # GET /orbituarysites
   # GET /orbituarysites.json
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show, :index]
   
   def index
     @orbituarysites = Orbituarysite.all

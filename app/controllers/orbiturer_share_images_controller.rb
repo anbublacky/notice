@@ -27,7 +27,8 @@ class OrbiturerShareImagesController < ApplicationController
   # GET /orbiturer_share_images/new
   # GET /orbiturer_share_images/new.json
   def new
-    @orbiturer_share_image = OrbiturerShareImage.new
+    @osi = Orbituarysite.find(params[:id])
+    @orbiturer_share_image = @osi.orbiturer_share_images.new
     @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|

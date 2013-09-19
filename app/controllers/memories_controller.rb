@@ -27,7 +27,8 @@ class MemoriesController < ApplicationController
   # GET /memories/new
   # GET /memories/new.json
   def new
-    @memory = Memory.new
+    @mem = Orbituarysite.find(params[:id])    
+    @memory = @mem.memories.new
     @orbituarysite = Orbituarysite.new
 
     respond_to do |format|

@@ -27,7 +27,8 @@ class HistoriesController < ApplicationController
   # GET /histories/new
   # GET /histories/new.json
   def new
-    @history = History.new
+    @hist = Orbituarysite.find(params[:id])    
+    @history = @hist.history.new
     @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|

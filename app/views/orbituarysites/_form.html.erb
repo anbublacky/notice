@@ -29,17 +29,18 @@
     <% f.label :orbiturerimage %><br />
     <% f.text_field :orbiturerimage %>
   </div>
-      <label>படம்</label>
+  <h3>படம்</h3>
+  <hr>
     <%= image_tag(@orbituarysite.orbiturerimage_url()) if @orbituarysite.orbiturerimage? %>
     <%= f.file_field :orbiturerimage %>
   </p>
   <div class="field">
-    <%= f.label "பிறந்த திகதி" %><br />
+    <h3>"பிறந்த திகதி"</h3><hr><br />
     <%# f.datetime_field :dob %>
     <%= f.text_field :dob, :id => "dob" %>
   </div>
   <div class="field">
-    <%= f.label "இறந்த திகதி" %><br />
+    <h3>"இறந்த திகதி"</h3><hr><br />
     <%# f.datetime_field :dod %>
     <%= f.text_field :dod, :id => "dod" %>
   </div>
@@ -59,10 +60,10 @@
 
   <div class="field">
     <% f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create orbituary", :class => "btn btn-primary" %>
   </div>
 <% end %>

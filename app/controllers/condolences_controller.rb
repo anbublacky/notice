@@ -27,7 +27,8 @@ class CondolencesController < ApplicationController
   # GET /condolences/new
   # GET /condolences/new.json
   def new
-    @condolence = Condolence.new
+    @cond = Orbituarysite.find(params[:id])    
+    @condolence = @cond.condolences.new
     @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|

@@ -63,13 +63,18 @@
     <div class="tab-pane active" id="tab1">
     <p><%= image_tag('arivithalkal.png') %></p>
     <p>
-    <% if @orbituarysite.notice_displays.count == 1 %><%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }%><% end %>
-      <% if @orbituarysite.notice_displays.count < 1 %>
-        <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }%>
+    <% if user_signed_in? %>
+      <% if current_user.id == @orbituarysite.user_id %>
+        <% if @orbituarysite.notice_displays.count == 1 %>
+          <%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }%>
+        <% else %>
+          <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }%>
+        <% end %>
       <% end %>
+    <% end %>
     </p>
     
-    <% if @orbituarysite.notice_displays.count > 0%>
+    <% if @orbituarysite.notice_displays.count > 0 %>
       <div class="well">
         <% @orbituarysite.notice_displays.each do |f| %>
           <%= raw(f.message) %>
@@ -144,8 +149,13 @@
       <p>
       <% if @orbituarysite.histories.count > 0 %><% @orbituarysite.histories.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
       <% if @orbituarysite.histories.count < 1 %>
-      <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a><% end%>
-       <% if @orbituarysite.histories.count == 1 %><a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a><% end %>
+        <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a> -->
+        <%= link_to "Post History", { :controller => "histories", :action => "new", :id => @orbituarysite.id }%>
+      <% end%>
+       <% if @orbituarysite.histories.count == 1 %>
+       <!--  <a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a> -->
+      
+       <% end %>
       </p>
              <!-- Modal -->
   <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -190,8 +200,18 @@
     <div class="tab-pane" id="tab3">
       <p>            <%= image_tag('ninaivalaikal.png') %></p>
       <p>
-      <% if @orbituarysite.memories.count > 0 %><% @orbituarysite.memories.each do |f| %><div class="well"><h2>Memory shared by <%= current_user.name %></h2><%= raw(f.body) %></div><% end %><% end %>
-      <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a>
+      <% if @orbituarysite.memories.count > 0 %>
+        <% @orbituarysite.memories.each do |f| %>
+          <div class="well">
+            <h2>Memory shared by <%= current_user.name %></h2>
+            <%= raw(f.body) %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if @orbituarysite.memories.count < 1 %>
+        <!-- <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a> -->
+        <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id } %>
+      <% end %>
       </p>
         <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -213,12 +233,27 @@
 
     </div>
     <div class="tab-pane" id="tab4">
-      <p>            <%= image_tag('aaruthalkal.png') %></p>
+      <p><%= image_tag('aaruthalkal.png') %></p>
+      
     <p>
-    <% if @orbituarysite.condolences.count > 0 %><% @orbituarysite.condolences.each do |f| %><div class="well"><P>Condolence by <%= f.name %></p><% if f.flower == 1 %><%= image_tag('flower1.png') %><% else %><%= image_tag('lamp1.png') %><% end %><%= raw(f.share_content) %></div><% end %><% end %>
+    <% if @orbituarysite.condolences.count > 0 %>
+      <% @orbituarysite.condolences.each do |f| %>
+        <div class="well">
+          <P>Condolence by <%= f.name %></p>
+          <% if f.flower == 1 %>
+            <%= image_tag('flower1.png') %>
+          <% else %>
+            <%= image_tag('lamp1.png') %>
+          <% end %><%= raw(f.share_content) %>
+        </div>
+      <% end %>
+    <% end %>
 
-              <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a>
-      </p>
+    <% if @orbituarysite.condolences.count < 1 %>
+      <!-- <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a> -->
+      <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id } %>
+    <% end %>
+    </p>
               <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -259,7 +294,10 @@
               
           </div>
       <% end %>
-        <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a>
+      <% if @orbituarysite.orbiturer_share_images.count < 1 %> 
+        <!-- <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a> -->
+        <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id } %>
+      <% end %>
       </p>
   <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

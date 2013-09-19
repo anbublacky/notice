@@ -16,7 +16,7 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/1.json
   def show
     @notice_display = NoticeDisplay.find(params[:id])
-    @orbituarysite = current_user.orbituarysites.new
+#    @orbituarysite = current_user.orbituarysites.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,8 +31,8 @@ class NoticeDisplaysController < ApplicationController
     @orbituary = Orbituarysite.find(params[:id])
     @notice_display = @orbituary.notice_displays.new
 #    @notice_display = current_user.orbituarysites.first.notice_display.new    
-    @orbituarysite = current_user.orbituarysites.new
-    @notice_display.notice_event_places.build 
+#    @orbituarysite = current_user.orbituarysites.new
+#    @notice_display.notice_event_places.build 
     @notice_event_contact = @notice_display.notice_event_contacts.build
     @notice_event_place = @notice_display.notice_event_places.build
     respond_to do |format|
@@ -44,15 +44,18 @@ class NoticeDisplaysController < ApplicationController
   # GET /notice_displays/1/edit
   def edit
     Rails.logger.info params[:id]
+    @orbituary = Orbituarysite.find(params[:id])
     @notice_display = NoticeDisplay.find(params[:id])
     @orbituarysite = current_user.orbituarysites.new    
+    @notice_event_contact = @notice_display.notice_event_contacts.build
+    @notice_event_place = @notice_display.notice_event_places.build
   end
 
   # POST /notice_displays
   # POST /notice_displays.json
   def create
-    @orbituary = Orbituarysite.find(params[:id])
-    @notice_display = @orbituary.notice_display.new
+#    @orbituary = Orbituarysite.find(params[:id])
+    @notice_display = NoticeDisplay.new(params[:notice_display])
     @orbituarysite = @notice_display.orbituarysite
 
     respond_to do |format|
@@ -63,16 +66,16 @@ class NoticeDisplaysController < ApplicationController
         params[:notice_display][:notice_event_contacts_attributes].each do |contacts_attrs|
 #          Rails.logger.info contacts_attrs.last
           Rails.logger.info contacts_attrs.last
-          @notice_event_contact = @notice_display.notice_event_contacts.build(contacts_attrs.last)
-          @notice_event_contact.update_attributes(:id => @notice_display.id)
+#          @notice_event_contact = @notice_display.notice_event_contacts.build(contacts_attrs.last)
+#          @notice_event_contact.update_attributes(:id => @notice_display.id)
         end
         Rails.logger.info params[:notice_display][:notice_event_place]
         params[:notice_display][:notice_event_places_attributes].each do |contacts_places|
 #          Rails.logger.info contacts_attrs.last
           Rails.logger.info contacts_places.last
-          @notice_event_place = @notice_display.notice_event_places.build(contacts_places.last)
-          @notice_event_place.update_attributes(:id => @notice_display.id, :orbituarysite_id => @orbituarysite.id)
-          @orbituarysite.update_attributes(:latitude => @notice_event_place.latitude, :longitude => @notice_event_place.longitude)
+#          @notice_event_place = @notice_display.notice_event_places.build(contacts_places.last)
+#          @notice_event_place.update_attributes(:id => @notice_display.id, :orbituarysite_id => @orbituarysite.id)
+#          @orbituarysite.update_attributes(:latitude => @notice_event_place.latitude, :longitude => @notice_event_place.longitude)
         end
         
         format.html { redirect_to @orbituarysite, notice: 'Notice display was successfully created.' }
