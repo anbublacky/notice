@@ -29,6 +29,8 @@ Notice::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   get "home/index"
+  
+  get "home/account"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
