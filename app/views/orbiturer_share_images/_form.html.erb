@@ -38,7 +38,7 @@
   </div>
   <div class="field">
     <%= f.label :description %>
-    <%= f.cktext_area :description, :rows => 3, :ckeditor => {:language => "en", :toolbar => "mini"} %>
+    <%= f.text_area :description, :rows => 3, :width => 300, :maxlength => "100" %>
   </div>
   <div class="actions">
     <%= f.submit "Share Images", :class => "btn btn-primary" %>
