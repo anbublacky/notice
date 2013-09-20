@@ -11,7 +11,7 @@ gem 'rails', '4.0.0'
 #gem 'sqlite3'
 gem 'pg'
 gem 'protected_attributes'
-
+gem 'will_paginate', '~> 3.0'
 #gem 'sqlite3'
 gem 'colorbox-rails'
 gem 'quiet_assets', :group => :development
