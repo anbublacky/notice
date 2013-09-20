@@ -1,2 +1,9 @@
 <% render 'sign_in' %>
-<%= render "devise/shared/links" %>
+                      <div class="span3 social_button">
+                        <p><strong>Please sign in to to create a new site</p></strong>
+                        <p><%= link_to raw("<i class=\"icon-facebook\"> | Sign in with Facebook</i>"), user_omniauth_authorize_path(:facebook),:class => "btn btn-facebook"%></p>
+                        <p><%= link_to raw("<i class=\"icon-twitter\"> | Sign in with Twitter</i>"), user_omniauth_authorize_path(:twitter),:class => "btn btn-twitter"%></p>
+                        <p><%= link_to raw("<i class=\"icon-google-plus\"> | Sign in with Google</i>"), user_omniauth_authorize_path(:google_oauth2),:class => "btn btn-google-plus" %></p>
+                      </div>
+
+<%# render "devise/shared/links" %>
