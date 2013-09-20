@@ -5,6 +5,7 @@ class CreateOrbiturerShareImages < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.integer :orbituarysite_id
+      t.integer :user_id
 
       t.timestamps
     end

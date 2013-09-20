@@ -84,8 +84,10 @@
         <h5><center>மரண அறிவித்தல் </center></h5>
         <% @orbituarysite.notice_displays.each do |f| %>
           <%= raw(f.message) %>
+          <% if f.posted_by? %>
                     தகவல்:
                     <%= f.posted_by %>
+          <% end %>
         <% end %>
       </div>
       
@@ -96,8 +98,10 @@
           <% @orbituarysite.notice_displays.each do |f| %>
               <% f.notice_event_contacts.each do |cont| %>
                 <h5><%= cont.name %>    <%= cont.country %></h5>
+                <% if cont.mobile? %>
                                 கைத் தொலைபேசி: <%= cont.mobile %>
                                 தொலைபேசி எண்: <%= cont.telephone %>
+                <% end %>
               <% end %>
             <% end %>
         </div>
@@ -110,6 +114,7 @@
           <% @orbituarysite.notice_displays.each do |f| %>
               <% f.notice_event_places.each do |plac| %>
               <h6> <%= plac.event_type %></h6>
+              <% if plac.eventdate? %>
                             திகதி: <%= plac.eventdate %>
                    <%= plac.eventtime %>
                   <br />
@@ -121,6 +126,7 @@
                 <%= plac.county %>
                 <%= plac.latitude %>
                 <%= plac.longitude %>
+                <% end %>
                 <%# @notice_event_place_maps = f.to_gmaps4rails %>
                 <%# plac.to_gmaps4rails %>
               <% end %>
@@ -184,7 +190,13 @@
         <%= link_to "Edit History", { :controller => "histories", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
        <% end %>
 
-      <% if @orbituarysite.histories.count > 0 %><% @orbituarysite.histories.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
+      <% if @orbituarysite.histories.count > 0 %>
+        <div class="well">
+          <% @orbituarysite.histories.each do |f| %>
+            <%= raw(f.body) %>
+          <% end %>
+        </div>
+      <% end %>
       </p>
              <!-- Modal -->
   <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -195,7 +207,7 @@
           <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
         </div>
         <div class="modal-body">
-         <%= render 'histories/form' , :remote => true %>
+         <%# render 'histories/form' , :remote => true %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -214,7 +226,7 @@
         </div>
         <div class="modal-body">
         <% if @orbituarysite.histories.count > 1 %>
-         <%= render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.histories.count > 1  %>
+         <%# render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.histories.count > 1  %>
         <% end %>
         </div>
         <div class="modal-footer">
@@ -231,12 +243,14 @@
       <p>
       <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
       <% if @orbituarysite.memories.count > 0 %>
-        <% @orbituarysite.memories.each do |f| %>
-          <div class="well">
-            <h2>Memory shared by <%= current_user.name %></h2>
-            <%= raw(f.body) %>
-          </div>
-        <% end %>
+        <div class="well">
+          <% @orbituarysite.memories.each do |f| %>
+            <% if f.body? %>
+              <h2>Memory shared by <%= f.user.name %></h2>
+            <% end %>
+              <%= raw(f.body) %>
+          <% end %>
+        </div>
       <% end %>
       
       
@@ -266,16 +280,18 @@
     <p>
     <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
     <% if @orbituarysite.condolences.count > 0 %>
-      <% @orbituarysite.condolences.each do |f| %>
-        <div class="well">
-          <P>Condolence by <%= f.name %></p>
-          <% if f.flower == 1 %>
-            <%= image_tag('flower1.png') %>
-          <% else %>
-            <%= image_tag('lamp1.png') %>
-          <% end %><%= raw(f.share_content) %>
-        </div>
-      <% end %>
+      <div class="well">
+        <% @orbituarysite.condolences.each do |f| %>
+          <% if f.name? %>
+            <P>Condolence by <%= f.name %></p>
+            <% if f.flower == 1 %>
+              <%= image_tag('flower1.png') %>
+            <% else %>
+              <%= image_tag('lamp1.png') %>
+            <% end %><%= raw(f.share_content) %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
    </p>
               <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -309,9 +325,9 @@
                   <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
                 </div>
                 <div class="span7">
-                  <b><%# f.title %></b><br />
+                  <b><%= f.title %></b><br />
                   <span class="line-break">
-                    <%# f.description %>
+                    <%= f.description %>
                   </span>
                 </div>
               </div>
@@ -355,7 +371,10 @@
             });
         </script>
         <br />
+        <br />
          <div id="my-timeline"></div>
+        <script>$('#my-timeline').trigger('resize');</script>
+        <script type="text/css">#my-timeline { float:left; position: fixed;}</script>
   <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

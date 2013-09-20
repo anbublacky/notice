@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :location, :first_name, :last_name, :remote_userimage_url, :urls, :oauth_token, :oauth_secret
   # attr_accessible :title, :body
   has_many :orbituarysites
+  has_many :memories
+  has_many :condolences
+  has_many :orbiturer_share_images
   
   mount_uploader :userimage, UserimageUploader
   

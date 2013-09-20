@@ -7,6 +7,7 @@ class CreateCondolences < ActiveRecord::Migration
       t.string :flower
       t.text :share_content
       t.integer :orbituarysite_id
+      t.integer :user_id
 
       t.timestamps
     end

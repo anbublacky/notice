@@ -3,6 +3,7 @@ class CreateMemories < ActiveRecord::Migration
     create_table :memories do |t|
       t.text :body
       t.integer :orbituarysite_id
+      t.integer :user_id
 
       t.timestamps
     end
