@@ -246,9 +246,11 @@
           <% @orbituarysite.memories.each do |f| %>
             <% if f.body? %>
               <h2>Memory shared by <%= f.user.name %></h2>
-              <% if f.user.id == current_user.id %>
-                <%= link_to 'Edit', edit_memory_path(f) %>
-                <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% if user_signed_in? %>
+                <% if f.user.id == current_user.id %>
+                  <%= link_to 'Edit', edit_memory_path(f) %>
+                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
               <% end %>
             <% end %>
               <%= raw(f.body) %>
@@ -286,10 +288,12 @@
       <div class="well">
         <% @orbituarysite.condolences.each do |f| %>
           <% if f.name? %>
+          <% if user_signed_in? %>
             <% if f.user.id == current_user.id %>
               <%= link_to 'Edit', edit_condolence_path(f) %>
               <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
+          <% end %>
             <P>Condolence by <%= f.name %></p>
             <% if f.flower == 1 %>
               <%= image_tag('flower1.png') %>
