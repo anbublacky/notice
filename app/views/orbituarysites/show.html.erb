@@ -252,9 +252,14 @@
                   <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
                 <% end %>
               <% end %>
+              <h5><%= f.title %></h5>
               <%= raw(f.body) %>
             <h6>Memory shared by <%= f.user.name %></h6>
             Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
+            <p></p>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://notice.tamil.com" data-via="anbublacky">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            <div class="fb-like" data-href="http://notice.tamil.com" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>
             </div>
           <% end %>              
          <% end %>
