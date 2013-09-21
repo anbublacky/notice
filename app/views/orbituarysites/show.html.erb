@@ -335,22 +335,27 @@
       <p>
       <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
       <% if @orbituarysite.orbiturer_share_images.count > 0 %> 
-        <div class="well pull-left span11">
             <% @orbituarysite.orbiturer_share_images.each do |f| %> 
-              <div class="span5 margin">
-              <div class="span4">
-                  <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
-                </div>
-                <div class="span7">
-                  <b><%= f.title %></b><br />
-                  <span class="line-break">
-                    <%= f.description %>
-                  </span>
+              <% if f.title? %>
+              <div class="well pull-left span11">
+                <div class="span5 margin">
+                  <div class="span4">
+                      <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
+                  </div>
+                  <div class="span7">
+                    <b><%= f.title %></b><br />
+                    <span class="line-break">
+                      <%= f.description %>
+                    </span>
+                    <%= link_to 'Edit', edit_orbiturer_share_image_path(f), :class => "btn btn-default pull-right color_black" %>
+                    <%= link_to 'Destroy',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+                  </div>
                 </div>
               </div>
                 <% end %>
-              
-          </div>
+              <% end %>
+          
       <% end %>
       </p>
   <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
