@@ -2,32 +2,20 @@
 
 <h2>Obituary Sites</h2>
 
-<div class="span12">
+
 <% @orbituarysites.each do |f| %>
-<div class="span3 well">
+  <div class="row well account_page">	
+    <div class="span12">
 
-<p>
-  <%= link_to f.name, f %>
-</p>
-
-<p>
-  <%= image_tag(f.orbiturerimage_url(:thumb)) if f.orbiturerimage? %>
-</p>
-
-<p>
-  <b>பிறந்த இடம்:</b>
-  <%= f.birth_place %>
-</p>
-
-<p>
-  <b>வாழ்ந்த இடம்:</b>
-  <%= f.living_place %>
-</p>
-
-<p>
-  <b>இறைவனடி சேர்ந்த இடம்:</b>
-  <%= f.death_place %>
-</p>
-</div>
-<% end %>
-</div>
+    <div class="span2 pull-left"> <%= image_tag(f.orbiturerimage_url(:thumb)) if f.orbiturerimage? %></div>
+			<div class="span8">
+			  <p>பெயர்:<%= link_to f.name %></p>
+			  <p>பிறந்த இடம்: <%= f.birth_place %></p>
+			  <p>வாழ்ந்த இடம்: <%= f.living_place %></p>
+			  <p>இறைவனடி சேர்ந்த இடம்: <%= f.death_place %></p>
+			  <p><%= link_to 'Edit', edit_orbituarysite_path(f), :class => "btn btn-default pull-right color_black" %></p>
+			  <p> <%= link_to 'Destroy',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+			</div>
+		</div>
+  </div>
+<% end %>	

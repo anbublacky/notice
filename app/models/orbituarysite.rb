@@ -8,9 +8,6 @@ class Orbituarysite < ActiveRecord::Base
   has_many :condolences
   has_many :memories
   has_many :orbiturer_share_images
-  has_many :notice_event_contacts, :dependent => :destroy
-  has_many :notice_event_places, :dependent => :destroy
-  accepts_nested_attributes_for :notice_event_contacts, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :notice_event_places, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  
   has_many :timelines
 end
