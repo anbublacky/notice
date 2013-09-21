@@ -1,4 +1,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
 <div class="span12">
   <div class="span5 notice">
     <h3 class="center">அமரர்</h3>
@@ -60,7 +61,7 @@
     <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
     <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
     <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
-    <li><a href="#tab6" data-toggle="tab">Timeline</a></li>
+    <li id="timelinetab"><a href="#tab6" data-toggle="tab">Timeline</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
@@ -242,20 +243,21 @@
       <p>
       <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
       <% if @orbituarysite.memories.count > 0 %>
-        <div class="well">
           <% @orbituarysite.memories.each do |f| %>
             <% if f.body? %>
-              <h2>Memory shared by <%= f.user.name %></h2>
+            <div class="well">
               <% if user_signed_in? %>
                 <% if f.user.id == current_user.id %>
-                  <%= link_to 'Edit', edit_memory_path(f) %>
-                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit', edit_memory_path(f), :class => "btn btn-default pull-right" %>
+                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
                 <% end %>
               <% end %>
-            <% end %>
               <%= raw(f.body) %>
-          <% end %>
-        </div>
+            <h6>Memory shared by <%= f.user.name %></h6>
+            Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
+            </div>
+          <% end %>              
+         <% end %>
       <% end %>
       
       
@@ -285,24 +287,28 @@
     <p>
     <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
     <% if @orbituarysite.condolences.count > 0 %>
-      <div class="well">
+
         <% @orbituarysite.condolences.each do |f| %>
           <% if f.name? %>
-          <% if user_signed_in? %>
-            <% if f.user.id == current_user.id %>
-              <%= link_to 'Edit', edit_condolence_path(f) %>
-              <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          <% end %>
-            <P>Condolence by <%= f.name %></p>
-            <% if f.flower == 1 %>
-              <%= image_tag('flower1.png') %>
-            <% else %>
-              <%= image_tag('lamp1.png') %>
-            <% end %><%= raw(f.share_content) %>
+            <div class="well">
+              <% if user_signed_in? %>
+                <% if f.user.id == current_user.id %>
+                  <%= link_to 'Edit', edit_condolence_path(f), :class => "btn btn-default pull-right" %>
+                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+                <% end %>
+              <% end %>
+              <P>Condolence by <%= f.name %></p>
+              <%= raw(f.share_content) %>
+              <% if f.flower == 1 %>
+                 <%= image_tag('flower1.png') %>
+              <% else %>
+                 <%= image_tag('lamp1.png') %>
+              <% end %>
+              <p>Posted on: <%= f.created_at.strftime("%d-%b-%Y") %></p>
+            </div>
           <% end %>
         <% end %>
-      </div>
+
     <% end %>
    </p>
               <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -367,25 +373,24 @@
     </div>
   
       <div class="tab-pane" id="tab6">
-      <p>Timeline</p>
+
         <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+        <br />
+        <br />
         <br />
         <script>
             $(document).ready(function() {
-                createStoryJS({
+              createStoryJS({
                     type:       'timeline',
-                    width:      '650',
-                    height:     '600',
+                    width:      '600',
+                    height:     '700',
                     source:     '<%= @orbituarysite.id %>',
                     embed_id:   'my-timeline'
                 });
             });
         </script>
-        <br />
-        <br />
+      
          <div id="my-timeline"></div>
-        <script>$('#my-timeline').trigger('resize');</script>
-        <script type="text/css">#my-timeline { float:left; position: fixed;}</script>
   <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -394,7 +399,8 @@
           <h4 class="modal-title">Timeline</h4>
         </div>
         <div class="modal-body">
-         <%= render 'timelines/form' , :remote => true %>
+          <%# render 'timelines/form' , :remote => true %>
+          <div id="my-timeline"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -29,7 +29,20 @@
   </tr>
 <% end %>
 </table>
-<div id="time_line">
+        <script>
+            $(document).ready(function() {
+                createStoryJS({
+                    type:       'timeline',
+                    width:      '600',
+                    height:     '700',
+                    source:     '<%= @orbituarysite.id %>',
+                    embed_id:   'my-timeline'
+                });
+            });
+        </script>
+        <br />
+        <br />
+         <div id="my-timeline"></div>
 <br />
 
 <%= link_to 'New Timeline', new_timeline_path %>

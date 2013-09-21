@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require ckeditor/config
@@ -30,4 +31,6 @@ $('#dob').datepicker({
 $('.date_select_jquery').datepicker({
   format: 'd-M-yyyy'  
 });
+
+
 });
