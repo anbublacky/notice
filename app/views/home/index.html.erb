@@ -28,7 +28,12 @@
   <b>இறைவனடி சேர்ந்த இடம்:</b>
   <%= f.death_place %>
 </p>
+<p>
+  <b>Posted on: </b>
+  <%= f.created_at.strftime("%d-%b-%Y")%>
+</p>
 </div>
+
 <% end %>
 </div>
 <%= will_paginate @orbituarysites %>

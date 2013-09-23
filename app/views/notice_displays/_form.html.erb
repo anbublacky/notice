@@ -36,51 +36,9 @@
     <h3>நிகழ்வுகள்</h3>
     <hr>
     <%= f.fields_for :notice_event_places do |builder1| %>
-      <div class="field">
-        <%= builder1.label :event_type %><br />
-        <%# builder1.text_field :event_type %>
-        <select id="event_type" name="event_type">
-          <option value="கிரியை.">கிரியை</option>
-          <option value="திருப்பலி">திருப்பலி</option>
-          <option value="நல்லடக்கம்">நல்லடக்கம்</option>
-          <option value="பார்வைக்கு">பார்வைக்கு</option>
-        </select>
-      </div>
-      <h4>இடம்</h4>
-      <hr>
-      <div class="field">
-        <%= builder1.label :country %><br />
-        <%= builder1.country_select :country %>
-      </div>
-      <div class="field">
-        <%= builder1.label :address1 %><br />
-        <%= builder1.text_field :address1 %>
-      </div>
-      <div class="field">
-        <%= builder1.label :address2 %><br />
-        <%= builder1.text_field :address2 %>
-      </div>
-      <div class="field">
-        <%= builder1.label :city %><br />
-        <%= builder1.text_field :city %>
-      </div>
-      <div class="field">
-        <%= builder1.label :county %><br />
-        <%= builder1.text_field :county %>
-      </div>
-      <div class="field">
-        <%= builder1.label :postcode %><br />
-        <%= builder1.text_field :postcode %>
-      </div>
-      <div class="field">
-        <%= builder1.label :eventdate %><br />
-        <%= builder1.text_field :eventdate, :class => "date_select_jquery" %>
-      </div>
-      <div class="field">
-        <%= builder1.label :eventtime %><br />
-        <%= builder1.time_select :eventtime %>
-      </div>
+      <%= render 'orbituarysites/notice_event_place_fields', f: builder1%>
     <% end %>
+    <%= link_to_add_fields "Add place", f, :notice_event_places %>
   </div>
     
   <div class="well">
@@ -88,28 +46,10 @@
     <hr>
       <%= f.fields_for :notice_event_contacts do |builder| %>
       <fieldset>
-        <div class="field">
-          <%= builder.label :name %><br />
-          <%= builder.text_field :name %>
-        </div>
-        <div class="field">
-          <%= builder.label :country %><br />
-          <%= builder.country_select :country %>
-        </div>
-        <div class="field">
-          <%= builder.label :mobile %><br />
-          <%= builder.text_field :mobile %>
-        </div>
-        <div class="field">
-          <%= builder.label :telephone %><br />
-          <%= builder.text_field :telephone %>
-        </div>
-        <div class="field">
-          <%# builder.label :notice_display_id %><br />
-          <%= builder.hidden_field :notice_display_id %>
-        </div>
+        <%= render 'notice_event_contact_fields', f: builder %>
       </fieldset>
     <% end %>
+    <%= link_to_add_fields "Add contact", f, :notice_event_contacts %>
   </div>
   
   <div class="actions">

@@ -48,8 +48,6 @@
   <b>Notice display:</b>
   <%= @notice_event_place.notice_display_id %>
 </p>
-<%= @notice_event_place_maps.to_s %>
-<%= gmaps4rails(@notice_event_place_maps) %>
-
+<%= render 'maps' %>
 <%= link_to 'Edit', edit_notice_event_place_path(@notice_event_place) %> |
 <%= link_to 'Back', notice_event_places_path %>

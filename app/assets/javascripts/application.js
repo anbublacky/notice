@@ -18,7 +18,9 @@
 //= require ckeditor/config
 //= require bootstrap-datepicker
 //= require colorbox-rails
-//=require timelineJS/embed
+//= require timelineJS/embed
+//= require readmore.js
+//= require readmore.min.js
 //= require_tree .
 
 $(document).ready(function(){
@@ -32,5 +34,25 @@ $('.date_select_jquery').datepicker({
   format: 'd-M-yyyy'  
 });
 
+$('.readmore').readmore({
+  speed: 75,
+  maxHeight: 500
+});
+
+$('article').readmore({
+  afterToggle: function(trigger, element, more) {
+    if(! more) { // The "Close" link was clicked
+      $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+    }
+  }
+});
+   $('#timelinetab').bind('change', function (e) {
+        // e.target is the new active tab according to docs
+        // so save the reference in case it's needed later on
+        window.activeTab = e.target;
+        // display the alert
+        alert("hello");
+        // Load data etc
+    });
 
 });

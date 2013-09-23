@@ -1,5 +1,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
 <div class="span12">
   <div class="span5 notice">
     <h3 class="center">அமரர்</h3>
@@ -10,10 +9,16 @@
 <p>
   <a href="#">
   <%= image_tag(@orbituarysite.orbiturerimage_url, :class => "image_left_side") if @orbituarysite.orbiturerimage? %>
-  <%= image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+  <% if @orbituarysite.frame == '1' %>
+    <%= image_tag('flower_frames_1.png', :class => "left_side_frame") %>
+  <% elsif @orbituarysite.frame == '2' %>
+    <%= image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+  <% else %>
+    <%= image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+  <% end %>
   </a>
 </p>
-<h4 class="center">மண்ணில் - விண்ணில்</h4>
+<h4 class="center"><%= @orbituarysite.slogan %></h4>
 <h4 class="center">
   <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
   <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
@@ -56,15 +61,15 @@
 <div class="span7">
  <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
+    <li  class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
     <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
     <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
     <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
     <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
-    <li id="timelinetab"><a href="#tab6" data-toggle="tab">Timeline</a></li>
+    <li id="timelinetab"><a href="#tab0" data-toggle="tab">Timeline</a></li>    
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
+    <div class="tab-pane  active" id="tab1">
     <p><%= image_tag('arivithalkal.png') %></p>
     <p>
     <% if user_signed_in? %>
@@ -99,8 +104,10 @@
               <% f.notice_event_contacts.each do |cont| %>
                 <h5><%= cont.name %>    <%= cont.country %></h5>
                 <% if cont.mobile? %>
-                                கைத் தொலைபேசி: <%= cont.mobile %>
-                                தொலைபேசி எண்: <%= cont.telephone %>
+              <span class="events">
+              <span class="eventtitle"> கைத் தொலைபேசி: </span> <span class="eventaction"><%= cont.mobile %></span>
+              <span class="eventtitle">   தொலைபேசி எண்: </span> <span class="eventaction"><%= cont.telephone %></span>
+            </span>
                 <% end %>
               <% end %>
             <% end %>
@@ -115,17 +122,23 @@
               <% f.notice_event_places.each do |plac| %>
               <h6> <%= plac.event_type %></h6>
               <% if plac.eventdate? %>
-                            திகதி: <%= plac.eventdate %>
-                   <%= plac.eventtime %>
-                  <br />
-                            இடம்: 
+              <span class="events">
+              <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= plac.eventdate %>
+                   <%= plac.eventtime %></span>
+              <span class="eventtitle">  இடம்: </span> <span class="eventaction">
                 <%= plac.country %>
                 <%= plac.address1 %>
                 <%= plac.address2 %>
                 <%= plac.city %>
                 <%= plac.county %>
-                <%= plac.latitude %>
-                <%= plac.longitude %>
+                <% plac.latitude %>
+                <% plac.longitude %></span>
+              </span>
+                <%# render 'notice_event_places/maps' %>
+                <%     @notice_event_place_maps = plac.to_gmaps4rails %>
+                <%= @notice_event_place_maps.to_s %>
+                <%= gmaps4rails(@notice_event_place_maps) %>
+
                 <% end %>
                 <%# @notice_event_place_maps = f.to_gmaps4rails %>
                 <%# plac.to_gmaps4rails %>
@@ -253,7 +266,10 @@
                 <% end %>
               <% end %>
               <h5><%= f.title %></h5>
-              <%= raw(f.body) %>
+              <div class="readmore">
+                <%= raw(f.body) %>
+                <%# link_to 'read more', '#', :class => "readmore-js-toggle" %> 
+              </div>
             <h6>Memory shared by <%= f.user.name %></h6>
             Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
             <p></p>
@@ -382,25 +398,13 @@
   </div><!-- /.modal -->
     </div>
   
-      <div class="tab-pane" id="tab6">
+      <div class="tab-pane active" id="tab0">
 
         <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
         <br />
         <br />
         <br />
-        <script>
-            $(document).ready(function() {
-              createStoryJS({
-                    type:       'timeline',
-                    width:      '600',
-                    height:     '700',
-                    source:     '<%= @orbituarysite.id %>',
-                    embed_id:   'my-timeline'
-                });
-            });
-        </script>
-      
-         <div id="my-timeline"></div>
+        <%= render 'timeline' %>
   <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -410,7 +414,6 @@
         </div>
         <div class="modal-body">
           <%# render 'timelines/form' , :remote => true %>
-          <div id="my-timeline"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

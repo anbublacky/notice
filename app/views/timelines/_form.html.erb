@@ -27,20 +27,35 @@
     <%= f.label :content %><br />
     <%= f.cktext_area :content, :ckeditor => {:language => "en", :toolbar => "mini"} %>
   </div>
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#url" data-toggle="tab">Url</a></li>
+  <li><a href="#upload" data-toggle="tab">Upload</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="url">
+    <div class="field">
+      <%= f.label :media %><br />
+      <%= f.text_field :media %>
+    </div>
+  </div>
+  <div class="tab-pane" id="upload">
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.text_field :image %>
+    </div>
+</div>
+</div>
   <div class="field">
-    <%= f.label :media %><br />
-    <%= f.text_field :media %>
+    <%# f.label :mediacredit %><br />
+    <%# f.text_field :mediacredit %>
   </div>
   <div class="field">
-    <%= f.label :mediacredit %><br />
-    <%= f.text_field :mediacredit %>
+    <%# f.label :mediacaption %><br />
+    <%# f.text_field :mediacaption %>
   </div>
   <div class="field">
-    <%= f.label :mediacaption %><br />
-    <%= f.text_field :mediacaption %>
-  </div>
-  <div class="field">
-    <% f.label :orbituarysite_id %><br />
+    <%# f.label :orbituarysite_id %><br />
     <%= f.hidden_field :orbituarysite_id %>
   </div>
   <div class="actions">

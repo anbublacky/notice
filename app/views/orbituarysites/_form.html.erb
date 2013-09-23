@@ -33,7 +33,16 @@
   <hr>
     <%= image_tag(@orbituarysite.orbiturerimage_url()) if @orbituarysite.orbiturerimage? %>
     <%= f.file_field :orbiturerimage %>
-  </p>
+  <div class="field">
+    <%= f.label "Please select" %>
+    <%= f.select :slogan, options_for_select(['மண்ணில் - விண்ணில் ','அன்னை மடியில் - ஆண்டவன் அடியில்','வீரப்பிறப்பு - வீரச்சாவு']) %>
+  </div>
+  <div class="field">
+    <%= f.label :frame %>
+    <%= f.radio_button :frame, '1', checked: true%><%= image_tag('flower_frames_1.png', size: "50x50")%>
+    <%= f.radio_button :frame, '2'%><%= image_tag('flower_frames_5.png', size: "50x50")%>
+    <%= f.radio_button :frame, '3'%><%= image_tag('flower_frames_6.png', size: "50x50")%>
+  </div>
   <div class="field">
     <h3>"பிறந்த திகதி"</h3><hr><br />
     <%# f.datetime_field :dob %>
