@@ -359,11 +359,11 @@
             <% @orbituarysite.orbiturer_share_images.each do |f| %> 
               <% if f.title? %>
               <div class="well pull-left span11">
-                <div class="span5 margin">
-                  <div class="span4">
+                <div class="span12 margin">
+                  <div class="span3">
                       <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
                   </div>
-                  <div class="span7">
+                  <div class="span9">
                     <b><%= f.title %></b><br />
                     <span class="line-break">
                       <%= f.description %>
