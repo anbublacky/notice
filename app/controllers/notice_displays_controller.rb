@@ -91,10 +91,11 @@ class NoticeDisplaysController < ApplicationController
   # PUT /notice_displays/1.json
   def update
     @notice_display = NoticeDisplay.find(params[:id])
+    @orbituarysite = @notice_display.orbituarysite
 
     respond_to do |format|
       if @notice_display.update_attributes(params[:notice_display])
-        format.html { redirect_to @notice_display, notice: 'Notice display was successfully updated.' }
+        format.html { redirect_to @orbituarysite, notice: 'Notice display was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

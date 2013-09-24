@@ -137,8 +137,8 @@
                 <%# render 'notice_event_places/maps' %>
                 <%     @notice_event_place_maps = plac.to_gmaps4rails %>
                 <%= @notice_event_place_maps.to_s %>
-                <%= gmaps4rails(@notice_event_place_maps) %>
-
+                <%# gmaps4rails(@notice_event_place_maps) %>
+                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15 }, "markers" => {"data" => @notice_event_place_maps}}) %>
                 <% end %>
                 <%# @notice_event_place_maps = f.to_gmaps4rails %>
                 <%# plac.to_gmaps4rails %>
@@ -158,7 +158,7 @@
         </div>
         <div class="modal-body">
 
-            <%= render 'notice_displays/form' %>
+            <%# render 'notice_displays/form' %>
 
         </div>
         <div class="modal-footer">

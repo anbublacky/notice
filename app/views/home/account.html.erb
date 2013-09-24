@@ -7,9 +7,9 @@
   <div class="row well account_page">	
     <div class="span12">
 
-    <div class="span2 pull-left"> <%= image_tag(f.orbiturerimage_url(:thumb)) if f.orbiturerimage? %></div>
+    <div class="span2 pull-left"> <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %></div>
 			<div class="span8">
-			  <p>பெயர்:<%= link_to f.name %></p>
+			  <p>பெயர்:<%= link_to f.name, f %></p>
 			  <p>பிறந்த இடம்: <%= f.birth_place %></p>
 			  <p>வாழ்ந்த இடம்: <%= f.living_place %></p>
 			  <p>இறைவனடி சேர்ந்த இடம்: <%= f.death_place %></p>

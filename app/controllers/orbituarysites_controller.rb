@@ -17,9 +17,9 @@ class OrbituarysitesController < ApplicationController
   # GET /orbituarysites/1.json
   def show
     @orbituarysite = Orbituarysite.find(params[:id])
-    @notice_display = @orbituarysite.notice_displays.build
-    @notice_event_contact = @notice_display.notice_event_contacts.build
-    @notice_event_place = @notice_display.notice_event_places.build
+#    @notice_display = @orbituarysite.notice_displays.build
+#    @notice_event_contact = @notice_display.notice_event_contacts.build
+#    @notice_event_place = @notice_display.notice_event_places.build
     @history = @orbituarysite.histories.build
     @memory = @orbituarysite.memories.build
     @condolence = @orbituarysite.condolences.build

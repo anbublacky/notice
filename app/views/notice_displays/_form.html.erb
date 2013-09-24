@@ -36,7 +36,7 @@
     <h3>நிகழ்வுகள்</h3>
     <hr>
     <%= f.fields_for :notice_event_places do |builder1| %>
-      <%= render 'orbituarysites/notice_event_place_fields', f: builder1%>
+      <%= render 'notice_event_place_fields', f: builder1 %>
     <% end %>
     <%= link_to_add_fields "Add place", f, :notice_event_places %>
   </div>

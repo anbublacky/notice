@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <%= image_tag(f.orbiturerimage_url(:thumb)) if f.orbiturerimage? %>
+  <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
 </p>
 
 <p>
