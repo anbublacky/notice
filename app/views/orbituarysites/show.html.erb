@@ -140,7 +140,7 @@
                 <%     @notice_event_place_maps = plac.to_gmaps4rails %>
                 <%= @notice_event_place_maps.to_s %>
                 <%# gmaps4rails(@notice_event_place_maps) %>
-                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15, "center_latitude" => plac.latitude, "center_longitude" => plac.longitude  }, "markers" => {"data" => @notice_event_place_maps}}) %>
+                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15, "center_latitude" => plac.latitude, "center_longitude" => plac.longitude  }, "markers" => {"data" => @notice_event_place_maps}, :last_map => true}) %>
                 <% end %>
                 <%# @notice_event_place_maps = f.to_gmaps4rails %>
                 <%# plac.to_gmaps4rails %>
