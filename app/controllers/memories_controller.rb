@@ -16,7 +16,7 @@ class MemoriesController < ApplicationController
   # GET /memories/1.json
   def show
     @memory = Memory.find(params[:id])
-    @orbituarysite = Orbituarysite.new
+    @orbituarysite = Orbituarysite.find_by(:id => @memory.orbituarysite_id)
 
     respond_to do |format|
       format.html # show.html.erb
