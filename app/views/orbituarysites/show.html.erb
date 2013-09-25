@@ -1,4 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
 <div class="span12">
   <div class="span5 notice">
     <h3 class="center">அமரர்</h3>
@@ -138,7 +140,7 @@
                 <%     @notice_event_place_maps = plac.to_gmaps4rails %>
                 <%= @notice_event_place_maps.to_s %>
                 <%# gmaps4rails(@notice_event_place_maps) %>
-                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15 }, "markers" => {"data" => @notice_event_place_maps}}) %>
+                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15, "center_latitude" => plac.latitude, "center_longitude" => plac.longitude  }, "markers" => {"data" => @notice_event_place_maps}}) %>
                 <% end %>
                 <%# @notice_event_place_maps = f.to_gmaps4rails %>
                 <%# plac.to_gmaps4rails %>
@@ -206,7 +208,7 @@
       <% if @orbituarysite.histories.count > 0 %>
         <div class="well">
           <% @orbituarysite.histories.each do |f| %>
-            <%= raw(f.body) %>
+             <%= raw(f.body) %>
           <% end %>
         </div>
       <% end %>
@@ -266,14 +268,20 @@
                 <% end %>
               <% end %>
               <h5><%= f.title %></h5>
-              <div class="readmore">
-                <%= raw(f.body) %>
+              <article>
+                           <% if f.body.length > 250 %>
+              <%= truncate(f.body, length: 250) %>
+              <%= link_to_function '...Read more', "$(this).parent().html('#{escape_javascript f.body}')" %>
+            <% else %>
+              <%= f.body %>
+            <% end %>
+                <%# raw(f.body) %>
                 <%# link_to 'read more', '#', :class => "readmore-js-toggle" %> 
-              </div>
+              </article>
             <h6>Memory shared by <%= f.user.name %></h6>
             Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
             <p></p>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://notice.tamil.com" data-via="anbublacky">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= f.title %> data-url=<%= "http://nabthat.com:3000/memories/"+f.id.to_s %> data-via="anbublacky">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             <div class="fb-like" data-href="http://notice.tamil.com" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>
             </div>

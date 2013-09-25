@@ -33,8 +33,8 @@ class NoticeDisplaysController < ApplicationController
 #    @notice_display = current_user.orbituarysites.first.notice_display.new    
 #    @orbituarysite = current_user.orbituarysites.new
 #    @notice_display.notice_event_places.build 
-    @notice_event_contact = @notice_display.notice_event_contacts.build
-    @notice_event_place = @notice_display.notice_event_places.build
+    @notice_event_contact = @notice_display.notice_event_contacts.new
+    @notice_event_place = @notice_display.notice_event_places.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @notice_display }
@@ -47,8 +47,6 @@ class NoticeDisplaysController < ApplicationController
     @orbituary = Orbituarysite.find(params[:id])
     @notice_display = NoticeDisplay.find_by(:orbituarysite_id => @orbituary.id)
     @orbituarysite = current_user.orbituarysites.new    
-    @notice_event_contact = @notice_display.notice_event_contacts.build
-    @notice_event_place = @notice_display.notice_event_places.build
   end
 
   # POST /notice_displays
@@ -73,9 +71,9 @@ class NoticeDisplaysController < ApplicationController
         params[:notice_display][:notice_event_places_attributes].each do |contacts_places|
 #          Rails.logger.info contacts_attrs.last
           Rails.logger.info contacts_places.last
-          @notice_event_place = @notice_display.notice_event_places.build(contacts_places.last)
-          @notice_event_place.update_attributes(:id => @notice_display.id)
-          @orbituarysite.update_attributes(:latitude => @notice_event_place.latitude, :longitude => @notice_event_place.longitude)
+#          @notice_event_place = @notice_display.notice_event_places.build(contacts_places.last)
+#          @notice_event_place.update_attributes(:id => @notice_display.id)
+#          @orbituarysite.update_attributes(:latitude => @notice_event_place.latitude, :longitude => @notice_event_place.longitude)
         end
         
         format.html { redirect_to @orbituarysite, notice: 'Notice display was successfully created.' }
