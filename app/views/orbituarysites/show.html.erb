@@ -62,7 +62,7 @@
 </div>
 <div class="span7">
  <div class="tabbable">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="noticetabs">
     <li  class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
     <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
     <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
@@ -108,7 +108,7 @@
                 <% if cont.mobile? %>
               <span class="events">
               <span class="eventtitle"> கைத் தொலைபேசி: </span> <span class="eventaction"><%= cont.mobile %></span>
-              <span class="eventtitle">   தொலைபேசி எண்: </span> <span class="eventaction"><%= cont.telephone %></span>
+              <span class="eventtitle"> தொலைபேசி எண்: </span> <span class="eventaction"><%= cont.telephone %></span>
             </span>
                 <% end %>
               <% end %>
@@ -121,30 +121,45 @@
           <h4>நிகழ்வுகள்: </h4>
           <hr>
           <% @orbituarysite.notice_displays.each do |f| %>
-              <% f.notice_event_places.each do |plac| %>
-              <h6> <%= plac.event_type %></h6>
-              <% if plac.eventdate? %>
+             <% a = NoticeEventPlace.where(:notice_display_id => f.id)%>
+						 <% b = a.first %>
+						 <h6><%= b.event_type %></h6>
               <span class="events">
-              <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= plac.eventdate %>
-                   <%= plac.eventtime %></span>
+							<span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= b.eventdate %>
+                   <%= b.eventtime %></span>
               <span class="eventtitle">  இடம்: </span> <span class="eventaction">
-                <%= plac.country %>
-                <%= plac.address1 %>
-                <%= plac.address2 %>
-                <%= plac.city %>
-                <%= plac.county %>
-                <% plac.latitude %>
-                <% plac.longitude %></span>
+                <%= b.country %>
+                <%= b.address1 %>
+                <%= b.address2 %>
+                <%= b.city %>
+                <%= b.county %>
+                <% b.latitude %>
+                <% b.longitude %></span>
+						</span>
+
+						<%= map(:center => {:latlng => [b.latitude, b.longitude], :zoom => 15 },
+										:markers => [{ :latlng => [b.latitude, b.longitude] }]) %>
+
+							<% c = a.second %>
+							<h6><%= c.event_type %></h6>
+              <span class="events">
+              <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%=  c.eventdate %>
+                   <%= c.eventtime %></span>
+              <span class="eventtitle">  இடம்: </span> <span class="eventaction">
+                <%= c.country %>
+                <%= c.address1 %>
+                <%= c.address2 %>
+                <%= c.city %>
+                <%= c.county %>
+                <% c.latitude %>
+                <% c.longitude %></span>
               </span>
-                <%# render 'notice_event_places/maps' %>
-                <%     @notice_event_place_maps = plac.to_gmaps4rails %>
-                <%= @notice_event_place_maps.to_s %>
-                <%# gmaps4rails(@notice_event_place_maps) %>
-                <%= gmaps({"map_options" => {"auto_adjust" => false, "zoom" => 15, "center_latitude" => plac.latitude, "center_longitude" => plac.longitude  }, "markers" => {"data" => @notice_event_place_maps}, :last_map => true}) %>
-                <% end %>
-                <%# @notice_event_place_maps = f.to_gmaps4rails %>
+
+							<%= map(:container_id => c.id, :center => {:latlng => [c.latitude, c.longitude], :zoom => 15 }, 
+											:markers => [{ :latlng => [c.latitude, c.longitude] }]) %>
+
                 <%# plac.to_gmaps4rails %>
-              <% end %>
+
             <% end %>
         </div>
       </div>

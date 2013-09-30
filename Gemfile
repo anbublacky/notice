@@ -8,7 +8,7 @@ gem 'rails', '4.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'pg'
 gem 'protected_attributes'
 gem 'will_paginate', '~> 3.0'
@@ -65,3 +65,4 @@ gem 'countries'
 gem 'country_select'
 gem 'timelineJS-rails', '~> 1.1.1'
 
+gem 'leaflet-rails', :path => 'lib/leaflet-rails'

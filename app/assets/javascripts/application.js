@@ -17,6 +17,7 @@
 //= require ckeditor/config
 //= require bootstrap-datepicker
 //= require colorbox-rails
+//= require leaflet
 //= require timelineJS/embed
 //= require readmore.js
 //= require readmore.min.js
@@ -33,18 +34,45 @@ $('.date_select_jquery').datepicker({
   format: 'd-M-yyyy'  
 });
 
-$('.readmore').readmore({
-  speed: 75,
-  maxHeight: 500
+var hash = document.location.hash;
+var prefix = "tab_";
+if (hash) {
+    $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+} 
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
 
+
+ $('[data-toggle="tab"]').click(function(e) {
+//        alert('click working');
+        localStorage.setItem('lastTab1', $(e.target).attr('href'));    
+
+//        e.preventDefault();
+        $this = $(this);
+        var loadurl = $(this).attr('href');
+//        var targ = $(this).attr('data-target');
+//        $(targ).load(loadurl, function(){
+            $this.tab('show');
+//        });
+        return false;
+    }); 
+    
+  //go to the latest tab, if it exists:
+  var lastTab1 = localStorage.getItem('lastTab1');  
+//  alert(lastTab1);
+  if (lastTab1) {
+    $('a[href="' + lastTab1 + '"]').click();
+  }  
+    
+
 $('article').readmore({
-  afterToggle: function(trigger, element, more) {
-    if(! more) { // The "Close" link was clicked
-      $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
-    }
-  }
+  speed: 75,
+  maxHeight: 50
 });
+
    $('#timelinetab').bind('change', function (e) {
         // e.target is the new active tab according to docs
         // so save the reference in case it's needed later on

@@ -1,6 +1,8 @@
 class TimelinesController < ApplicationController
   # GET /timelines
   # GET /timelines.json
+  before_filter :authenticate_user!
+
   def index
     @timelines = Timeline.all
     @orbituarysite = current_user.orbituarysites.new    
