@@ -79,9 +79,10 @@ class MemoriesController < ApplicationController
   def destroy
     @memory = Memory.find(params[:id])
     @memory.destroy
+    @orbituarysite = @memory.orbituarysite
 
     respond_to do |format|
-      format.html { redirect_to memories_url }
+      format.html { redirect_to @orbituarysite }
       format.json { head :no_content }
     end
   end

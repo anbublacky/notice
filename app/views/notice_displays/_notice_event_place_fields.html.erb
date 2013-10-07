@@ -1,45 +1,54 @@
-      <div class="field">
-        <%= f.label :event_type %><br />
-        <%# f.text_field :event_type %>
-        <select id="event_type" name="event_type">
-          <option value="கிரியை.">கிரியை</option>
-          <option value="திருப்பலி">திருப்பலி</option>
-          <option value="நல்லடக்கம்">நல்லடக்கம்</option>
-          <option value="பார்வைக்கு">பார்வைக்கு</option>
-        </select>
-      </div>
-      <h4>இடம்</h4>
-      <hr>
-      <div class="field">
-        <%= f.label :country %><br />
-        <%= f.country_select :country %>
-      </div>
-      <div class="field">
-        <%= f.label :address1 %><br />
-        <%= f.text_field :address1 %>
-      </div>
-      <div class="field">
-        <%= f.label :address2 %><br />
-        <%= f.text_field :address2 %>
-      </div>
-      <div class="field">
-        <%= f.label :city %><br />
-        <%= f.text_field :city %>
-      </div>
-      <div class="field">
-        <%= f.label :county %><br />
-        <%= f.text_field :county %>
-      </div>
-      <div class="field">
-        <%= f.label :postcode %><br />
-        <%= f.text_field :postcode %>
-      </div>
-      <div class="field">
-        <%= f.label :eventdate %><br />
-        <%= f.text_field :eventdate, :class => "date_select_jquery" %>
-      </div>
-      <div class="field">
-        <%= f.label :eventtime %><br />
-        <%= f.time_select :eventtime %>
-      </div>
-      
+<div class="field">
+	<%= f.label :event_type %><br />
+	<%# f.text_field :event_type %>
+	<select id="event_type" name="event_type">
+		<option value="கிரியை.">கிரியை</option>
+		<option value="திருப்பலி">திருப்பலி</option>
+		<option value="நல்லடக்கம்">நல்லடக்கம்</option>
+		<option value="பார்வைக்கு">பார்வைக்கு</option>
+	</select>
+</div>
+<h4>இடம்</h4>
+<hr>
+<div class="field">
+	<%= f.label :country, "Country", :class => "pull-left span2" %>
+	<%= f.country_select :country %>
+</div>
+<div class="field">
+	<%= f.label :address1, :class => "pull-left span2" %>
+	<%= f.text_field :address1 %>
+</div>
+<div class="field">
+	<%= f.label :address2, :class => "pull-left span2" %>
+	<%= f.text_field :address2 %>
+</div>
+<div class="field">
+	<%= f.label :city, :class => "pull-left span2" %>
+	<%= f.text_field :city %>
+</div>
+<div class="field">
+	<%= f.label :county, :class => "pull-left span2" %>
+	<%= f.text_field :county %>
+</div>
+<div class="field">
+	<%= f.label :postcode, :class => "pull-left span2" %>
+	<%= f.text_field :postcode %>
+</div>
+<div class="field">
+	<%= f.label :eventdate, :class => "pull-left span2" %>
+	<%= f.text_field :eventdate, :class => "date_select_jquery" %>
+	<div id="datetimepicker3" class="input-append">
+		<%= f.text_field :eventtime, :data => {:format => "hh:mm:ss"} %>
+		<span class="add-on">
+			<i class="icon-time" data-date-icon="icon-calendar">
+			</i>
+		</span>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+			$('#datetimepicker3').datetimepicker({
+				pickDate: false
+});
+			});
+</script>

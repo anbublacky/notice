@@ -81,9 +81,10 @@ class CondolencesController < ApplicationController
   def destroy
     @condolence = Condolence.find(params[:id])
     @condolence.destroy
+    @orbituarysite = @condolence.orbituarysite
 
     respond_to do |format|
-      format.html { redirect_to condolences_url }
+      format.html { redirect_to @orbituarysite }
       format.json { head :no_content }
     end
   end

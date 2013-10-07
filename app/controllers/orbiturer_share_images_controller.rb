@@ -81,9 +81,10 @@ class OrbiturerShareImagesController < ApplicationController
   def destroy
     @orbiturer_share_image = OrbiturerShareImage.find(params[:id])
     @orbiturer_share_image.destroy
+    @orbituarysite = @orbiturer_share_image.orbituarysite
 
     respond_to do |format|
-      format.html { redirect_to orbiturer_share_images_url }
+      format.html { redirect_to @orbituarysite }
       format.json { head :no_content }
     end
   end

@@ -82,9 +82,10 @@ class HistoriesController < ApplicationController
   def destroy
     @history = History.find(params[:id])
     @history.destroy
+    @orbituarysite = @history.orbituarysite
 
     respond_to do |format|
-      format.html { redirect_to histories_url }
+      format.html { redirect_to @orbituarysite }
       format.json { head :no_content }
     end
   end

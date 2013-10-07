@@ -11,6 +11,7 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require datepicker
+ *= require bootstrap-datetimepicker.min.css
  *= require colorbox-rails
  *= require timelineJS/timeline
  *= require gmaps4rails

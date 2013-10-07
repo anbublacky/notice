@@ -13,9 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-inputmask.js
 //= require ckeditor/init
 //= require ckeditor/config
 //= require bootstrap-datepicker
+//= require bootstrap-datetimepicker.min.js
 //= require colorbox-rails
 //= require leaflet
 //= require timelineJS/embed
@@ -33,6 +35,11 @@ $('#dob').datepicker({
 $('.date_select_jquery').datepicker({
   format: 'd-M-yyyy'  
 });
+
+  $('#datetimepicker').timepicker();
+$("#notice_display_notice_event_contacts_attributes_0_mobile").inputmask({"mask": "99-9999999"});
+
+$("#notice_display_notice_event_contacts_attributes_0_telephone").inputmask({"mask": "99-9999999"});
 
 var hash = document.location.hash;
 var prefix = "tab_";
@@ -68,10 +75,7 @@ $('.nav-tabs a').on('shown', function (e) {
   }  
     
 
-$('article').readmore({
-  speed: 75,
-  maxHeight: 50
-});
+$('article').readmore();
 
    $('#timelinetab').bind('change', function (e) {
         // e.target is the new active tab according to docs

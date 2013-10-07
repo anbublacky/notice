@@ -12,10 +12,14 @@
 			  <p>பெயர்:<%= link_to f.name, f %></p>
 			  <p>பிறந்த இடம்: <%= f.birth_place %></p>
 			  <p>வாழ்ந்த இடம்: <%= f.living_place %></p>
-			  <p>இறைவனடி சேர்ந்த இடம்: <%= f.death_place %></p>
+        <p>இறைவனடி சேர்ந்த இடம்: <%= f.death_place %></p>
+        <p>Posted at: <%= f.created_at.strftime("%d-%b-%Y") %></p>
+			  <p><%= link_to 'Show', orbituarysite_path(f), :class => "btn btn-primary pull-right color_black" %></p>
 			  <p><%= link_to 'Edit', edit_orbituarysite_path(f), :class => "btn btn-default pull-right color_black" %></p>
-			  <p> <%= link_to 'Destroy',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+			  <p> <%= link_to 'Delete',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %> </p>
 			</div>
 		</div>
   </div>
-<% end %>	
+<% end %>
+
+<%= will_paginate @orbituarysites %>

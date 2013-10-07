@@ -1,21 +1,21 @@
         <div class="field">
-          <%= f.label :name %><br />
+					<%= f.label :name, :class => "pull-left span2" %>
           <%= f.text_field :name %>
         </div>
         <div class="field">
-          <%= f.label :country %><br />
+					<%= f.label :country, :class => "pull-left span2" %>
           <%= f.country_select :country %>
         </div>
         <div class="field">
-          <%= f.label :mobile %><br />
-          <%= f.text_field :mobile %>
+					<%= f.label :mobile, :class => "pull-left span2" %>
+					<%= f.text_field :mobile, :placeholder => "04487654321" %>
         </div>
         <div class="field">
-          <%= f.label :telephone %><br />
-          <%= f.text_field :telephone %>
+					<%= f.label :telephone, :class => "pull-left span2" %>
+					<%= f.text_field :telephone, :placeholder => "91987654321" %>
         </div>
         <div class="field">
-          <%# f.label :notice_display_id %><br />
+          <%# f.label :notice_display_id %>
           <%= f.hidden_field :notice_display_id %>
         </div>
         <div class="field">

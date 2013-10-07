@@ -9,6 +9,6 @@ class HomeController < ApplicationController
   end
   
   def account
-    @orbituarysites = current_user.orbituarysites.all
+    @orbituarysites = current_user.orbituarysites.paginate(:page => params[:page], :per_page => 5)
   end
 end

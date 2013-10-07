@@ -108,9 +108,10 @@ class TimelinesController < ApplicationController
   def destroy
     @timeline = Timeline.find(params[:id])
     @timeline.destroy
+    @orbituarysite = @timeline.orbituarysite
 
     respond_to do |format|
-      format.html { redirect_to timelines_url }
+      format.html { redirect_to @orbituarysite }
       format.json { head :no_content }
     end
   end

@@ -49,7 +49,7 @@
 <% if user_signed_in? %>
   <% if current_user.id == @orbituarysite.user_id %>
     <%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite), :class => "btn btn-default pull-right color_black" %> 
-    <%= link_to 'Destroy', @orbituarysite, :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', @orbituarysite, :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>
 </p>
@@ -125,8 +125,8 @@
 						 <% b = a.first %>
 						 <h6><%= b.event_type %></h6>
               <span class="events">
-							<span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= b.eventdate %>
-                   <%= b.eventtime %></span>
+                <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= b.eventdate.strftime("%d-%b-%Y") %> - 
+                  <%= b.eventtime.to_s(:time) %></span>
               <span class="eventtitle">  இடம்: </span> <span class="eventaction">
                 <%= b.country %>
                 <%= b.address1 %>
@@ -140,7 +140,8 @@
 						<%= map(:center => {:latlng => [b.latitude, b.longitude], :zoom => 15 },
 										:markers => [{ :latlng => [b.latitude, b.longitude] }]) %>
 
-							<% c = a.second %>
+                    <% c = a.second %>
+              <% if c %>
 							<h6><%= c.event_type %></h6>
               <span class="events">
               <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%=  c.eventdate %>
@@ -158,7 +159,8 @@
 							<%= map(:container_id => c.id, :center => {:latlng => [c.latitude, c.longitude], :zoom => 15 }, 
 											:markers => [{ :latlng => [c.latitude, c.longitude] }]) %>
 
-                <%# plac.to_gmaps4rails %>
+                      <%# plac.to_gmaps4rails %>
+                    <% end %>
 
             <% end %>
         </div>
@@ -279,17 +281,17 @@
               <% if user_signed_in? %>
                 <% if f.user.id == current_user.id %>
                   <%= link_to 'Edit', edit_memory_path(f), :class => "btn btn-default pull-right" %>
-                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+                  <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
                 <% end %>
               <% end %>
               <h5><%= f.title %></h5>
               <article>
-                           <% if f.body.length > 250 %>
-              <%= truncate(f.body, length: 250) %>
-              <%= link_to_function '...Read more', "$(this).parent().html('#{escape_javascript f.body}')" %>
-            <% else %>
+                           <%# if f.body.length > 250 %>
+              <%# truncate(f.body, length: 250) %>
+              <%# link_to_function '...Read more', "$(this).parent().html('#{escape_javascript f.body}')" %>
+            <%# else %>
               <%= f.body %>
-            <% end %>
+            <%# end %>
                 <%# raw(f.body) %>
                 <%# link_to 'read more', '#', :class => "readmore-js-toggle" %> 
               </article>
@@ -338,17 +340,18 @@
               <% if user_signed_in? %>
                 <% if f.user.id == current_user.id %>
                   <%= link_to 'Edit', edit_condolence_path(f), :class => "btn btn-default pull-right" %>
-                  <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+                  <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
                 <% end %>
               <% end %>
-              <P>Condolence by <%= f.name %></p>
-              <%= raw(f.share_content) %>
+							<P>Condolence by <%= f.name %></p>
+              <p>Posted on: <%= f.created_at.strftime("%d-%b-%Y") %></p>
               <% if f.flower == 1 %>
                  <%= image_tag('flower1.png') %>
               <% else %>
                  <%= image_tag('lamp1.png') %>
-              <% end %>
-              <p>Posted on: <%= f.created_at.strftime("%d-%b-%Y") %></p>
+							 <% end %>
+							 <p></p>
+              <%= raw(f.share_content) %>
             </div>
           <% end %>
         <% end %>
@@ -384,16 +387,19 @@
               <div class="well pull-left span11">
                 <div class="span12 margin">
                   <div class="span3">
-                      <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
+										<%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
+										<p><%= current_user.name %></p>
+										<%= f.created_at.strftime("%d-%b-%Y") %>
                   </div>
                   <div class="span9">
                     <b><%= f.title %></b><br />
                     <span class="line-break">
                       <%= f.description %>
-                    </span>
-                    <%= link_to 'Edit', edit_orbiturer_share_image_path(f), :class => "btn btn-default pull-right color_black" %>
-                    <%= link_to 'Destroy',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
-
+										</span>
+										<% if user_signed_in? %>
+	                    <%= link_to 'Edit', edit_orbiturer_share_image_path(f), :class => "btn btn-default pull-right color_black" %>
+  	                  <%= link_to 'Delete',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
+										<% end %>
                   </div>
                 </div>
               </div>

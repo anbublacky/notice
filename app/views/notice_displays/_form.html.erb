@@ -35,14 +35,14 @@
   <div class="well">  
     <h3>நிகழ்வுகள்</h3>
     <hr>
-    <%= f.fields_for :notice_event_places do |builder1| %>
+		<%= f.fields_for :notice_event_places, :class => "form-horizontal" do |builder1| %>
       <%= render 'notice_event_place_fields', f: builder1 %>
     <% end %>
-    <%= link_to_add_fields "Add place", f, :notice_event_places %>
+		<%= link_to_add_fields "Add place", f, :notice_event_places %>
   </div>
     
   <div class="well">
-    <h3>நிகழ்வுகள்</h3>
+    <h3>தொடர்புகளுக்கு</h3>
     <hr>
       <%= f.fields_for :notice_event_contacts do |builder| %>
       <fieldset>
