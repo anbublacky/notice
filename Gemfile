@@ -15,10 +15,17 @@ gem 'will_paginate', '~> 3.0'
 #gem 'sqlite3'
 gem 'colorbox-rails'
 gem 'quiet_assets', :group => :development
+
 #gem 'turbolinks'
 
 # Gems used only for assets and not required
 # in production environments by default.
+group :development do
+gem "better_errors", "~> 1.0.1"
+  gem 'guard'
+  gem 'guard-livereload', require: false
+end
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
