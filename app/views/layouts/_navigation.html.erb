@@ -9,7 +9,7 @@
       <a class="brand" href="http://ninaivu.7zero.com:3000"><%= image_tag('ninaivu_logo.png') %></a>
       <div class="container-fluid nav-collapse">
         <ul class="nav">
-          <li class="navbar-text brand"><%# link_to "Create Orbituary site", new_orbituarysite_path :data-toggle => "modal" href="#myModal2"  %>
+          <li class="brand"><%# link_to "Create Orbituary site", new_orbituarysite_path :data-toggle => "modal" href="#myModal2"  %>
             <% if user_signed_in? %>                
             <%= link_to "Create Orbituary Site", '/orbituarysites/new', :class => "btn btn-default" %>
             <% end %>

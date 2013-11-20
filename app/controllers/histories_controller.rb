@@ -42,7 +42,15 @@ class HistoriesController < ApplicationController
     @hist = Orbituarysite.find(params[:id])    
     @history = History.find_by(:orbituarysite_id => @hist.id)
     @orbituarysite = current_user.orbituarysites.new
-    
+    #respond_to do |format|
+      #if @history.save
+        #format.html{ redirect_to @orbituarysite, notice: "History was updated successfully"}
+        #format.json { render json: @orbituarysite, status: :created, location: @history } 
+      #else
+        #format.html { render action: "new"}
+        #format.json { render json: @history.errors, status: :unprocessable_entity}
+      #end
+    #end
   end
 
   # POST /histories
