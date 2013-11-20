@@ -1,119 +1,112 @@
 <div class="section hero">
-    <div class="w-row">
-      <div class="w-col w-col-6 call-to-action">
-<h1 class="hero-header">Tribute to those are dear to heart but far from this world</h1>
+  <div class="w-row">
+    <div class="w-col w-col-6 call-to-action">
+      <h1 class="hero-header">Tribute to those are dear to heart but far from this world</h1>
 
-<p class="hero-subtitle">An iPhone app that lets you create beautiful photo albums with your favorite photos.</p>
+      <p class="hero-subtitle">An iPhone app that lets you create beautiful photo albums with your favorite photos.</p>
 
-<% if user_signed_in? %>                
-            <%= link_to "Create Site", '/orbituarysites/new', :class => "button" %>
-            <% else %>
-            <a data-toggle="modal" href="#myModal6" href="/condolences/new"><button class="button">Create site</button></a>
-            <% end %>
-            <div class="modal fade hide" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Please Sign in</h4>
+      <% if user_signed_in? %>                
+      <%= link_to "Create Site", '/orbituarysites/new', :class => "button" %>
+      <% else %>
+      <a data-toggle="modal" href="#myModal6" href="/condolences/new"><button class="button">Create site</button></a>
+      <% end %>
+      <div class="modal fade hide" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Please Sign in</h4>
+            </div>
+            <div class="modal-body">
+              <div class="span3 social_button">
+                <p><strong>Please sign in to to create a new site</p></strong>
+                <p><%= link_to raw("<i class=\"icon-facebook\"> | Sign in with Facebook</i>"), user_omniauth_authorize_path(:facebook),:class => "btn btn-facebook"%></p>
+                <p><%= link_to raw("<i class=\"icon-twitter\"> | Sign in with Twitter</i>"), user_omniauth_authorize_path(:twitter),:class => "btn btn-twitter"%></p>
+                <p><%= link_to raw("<i class=\"icon-google-plus\"> | Sign in with Google</i>"), user_omniauth_authorize_path(:google_oauth2),:class => "btn btn-google-plus" %></p>
               </div>
-              <div class="modal-body">
-                <div class="span3 social_button">
-                  <p><strong>Please sign in to to create a new site</p></strong>
-                  <p><%= link_to raw("<i class=\"icon-facebook\"> | Sign in with Facebook</i>"), user_omniauth_authorize_path(:facebook),:class => "btn btn-facebook"%></p>
-                  <p><%= link_to raw("<i class=\"icon-twitter\"> | Sign in with Twitter</i>"), user_omniauth_authorize_path(:twitter),:class => "btn btn-twitter"%></p>
-                  <p><%= link_to raw("<i class=\"icon-google-plus\"> | Sign in with Google</i>"), user_omniauth_authorize_path(:google_oauth2),:class => "btn btn-google-plus" %></p>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    </div>
+    <div class="w-col w-col-6 call-to-action"></div>
+  </div>
+  <div>
+    <h1>Latest Obituary</h1>
+    <div>
+      <div class="w-row">
+        <% @orbituarysites.each do |f| %>
+        <div class="w-col w-col-2">
+          <div>
+            <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
+          </div>
+          <div>
+            <%= link_to f.name, f %>
+          </div>
 
+          <div>
+            <b>பிறந்த இடம்:</b>
+            <%= f.birth_place %>
+          </div>
 
-</div>
-<div class="w-col w-col-6 call-to-action"></div>
-</div>
-<div>
-<h1>Latest Obituary</h1>
-<div>
-        <div class="w-row">
-<% @orbituarysites.each do |f| %>
-<div class="w-col w-col-2">
+          <div>
+            <b>வாழ்ந்த இடம்:</b>
+            <%= f.living_place %>
+          </div>
 
+          <div>
+            <b>இறைவனடி சேர்ந்த இடம்:</b>
+            <%= f.death_place %>
+          </div>
+          <div>
+            <b>Posted on: </b>
+            <%= f.created_at.strftime("%d-%b-%Y")%>
+          </div>
+        </div>
 
-<div>
-  <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
-</div>
-<div>
-  <%= link_to f.name, f %>
-</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1>Rememberances</h1>
+    <div>
+      <div class="w-row">
+        <% @orbituarysites.each do |f| %>
+        <div class="w-col w-col-2">
+          <div>
+            <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
+          </div>
+          <div>
+            <%= link_to f.name, f %>
+          </div>
 
-<div>
-  <b>பிறந்த இடம்:</b>
-  <%= f.birth_place %>
-</div>
+          <div>
+            <b>பிறந்த இடம்:</b>
+            <%= f.birth_place %>
+          </div>
 
-<div>
-  <b>வாழ்ந்த இடம்:</b>
-  <%= f.living_place %>
-</div>
+          <div>
+            <b>வாழ்ந்த இடம்:</b>
+            <%= f.living_place %>
+          </div>
 
-<div>
-  <b>இறைவனடி சேர்ந்த இடம்:</b>
-  <%= f.death_place %>
-</div>
-<div>
-  <b>Posted on: </b>
-  <%= f.created_at.strftime("%d-%b-%Y")%>
-</div>
-</div>
+          <div>
+            <b>இறைவனடி சேர்ந்த இடம்:</b>
+            <%= f.death_place %>
+          </div>
+          <div>
+            <b>Posted on: </b>
+            <%= f.created_at.strftime("%d-%b-%Y")%>
+          </div>
+        </div>
 
-<% end %>
-</div>
-</div>
-</div>
-<div>
-<h1>Rememberances</h1>
-<div>
-        <div class="w-row">
-<% @orbituarysites.each do |f| %>
-<div class="w-col w-col-2">
-
-
-<div>
-  <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
-</div>
-<div>
-  <%= link_to f.name, f %>
-</div>
-
-<div>
-  <b>பிறந்த இடம்:</b>
-  <%= f.birth_place %>
-</div>
-
-<div>
-  <b>வாழ்ந்த இடம்:</b>
-  <%= f.living_place %>
-</div>
-
-<div>
-  <b>இறைவனடி சேர்ந்த இடம்:</b>
-  <%= f.death_place %>
-</div>
-<div>
-  <b>Posted on: </b>
-  <%= f.created_at.strftime("%d-%b-%Y")%>
-</div>
-</div>
-
-<% end %>
-</div>
-<%= will_paginate @orbituarysites %>
-</div>
-</div>
-
+        <% end %>
+      </div>
+      <%= will_paginate @orbituarysites %>
+    </div>
+  </div>
 </div>

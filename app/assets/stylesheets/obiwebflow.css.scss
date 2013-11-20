@@ -3,7 +3,6 @@ body {
   color: #333;
   font-size: 12px;
   line-height: 20px;
-  background-image: image-url("Image_bck_copy.png") !important;
 }
 h1 {
   display: block;
@@ -117,7 +116,7 @@ p {
 .section.hero {
   margin-bottom: 116px;
   padding-bottom: 0px;
-  background-image: image-url("Image_bck_copy.png");
+  /*background-image: image-url("Image_bck_copy.png");*/
   background-size: contain;
   background-repeat: no-repeat repeat;
   background-attachment: fixed;
