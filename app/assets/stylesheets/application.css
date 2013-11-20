@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require bootstrap_and_overrides 
- *= require bootstrap.css
+ * require bootstrap.css
  *= require datepicker
  *= require bootstrap-datetimepicker.min.css
  *= require colorbox-rails
