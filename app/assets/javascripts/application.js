@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+// require twitter/bootstrap
+//= require bootstrap.min.js
 //= require bootstrap-inputmask.js
 //= require ckeditor/init
 //= require ckeditor/config

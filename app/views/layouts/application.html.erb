@@ -38,7 +38,18 @@
     <body>
      <%= render "/layouts/navigation" %>
      <div class="row">
-      <%= bootstrap_flash %>
+       <%# bootstrap_flash %>
+       <% if notice %>
+         <div class="alert alert-info">
+           <%= notice%>
+         </div>
+       <% end %>
+       <% if alert %>
+         <div class="alert alert-danger">
+           <%= alert %>
+         </div>
+       <% end %>
+     
       <%= yield %>
     </div><!--/row-->
     <%= yield :scripts %>

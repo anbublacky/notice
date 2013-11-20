@@ -40,11 +40,9 @@
         </div><!-- /.modal -->
 
 
-        <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
         <%= link_to 'Account', home_account_path, :class => "btn btn-default color_black" %>
         <%= link_to 'Logout', destroy_user_session_path, :class => "btn btn-default color_black" %>        
-        <% end %>
         <% end %>
       </div><!--/.nav-collapse -->
     </div>
