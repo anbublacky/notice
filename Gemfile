@@ -31,6 +31,7 @@ group :assets do
 end
   gem "less-rails"
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+#  gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails',  :branch => '3.0.0'
 
 gem 'jquery-rails'
 

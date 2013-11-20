@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 40ffd567ee6bea9974710c58646d309d6a95faaf
+  revision: 8fd0cc8b5b68165c7336feeb98ca0b622bf92bfb
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -72,14 +72,14 @@ GEM
       currencies (>= 0.4.0)
     country_select (1.2.0)
     currencies (0.4.2)
-    devise (3.1.0)
+    devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    execjs (2.0.1)
+    execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     geocoder (1.1.8)
@@ -109,7 +109,7 @@ GEM
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     minitest (4.7.5)
-    multi_json (1.8.0)
+    multi_json (1.8.1)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -139,7 +139,7 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    omniauth-twitter (1.0.0)
+    omniauth-twitter (1.0.1)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
@@ -169,7 +169,7 @@ GEM
     rake (10.1.0)
     ref (1.0.5)
     rmagick (2.13.2)
-    sass (3.2.10)
+    sass (3.2.12)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)

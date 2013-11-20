@@ -68,7 +68,7 @@
     <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
     <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
     <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
-    <li id="timelinetab"><a href="#tab0" data-toggle="tab">Timeline</a></li>    
+    <li id="timelinetab"><a href="#tab0" id="timelinetab_a" data-toggle="tab">Timeline</a></li>    
   </ul>
   <div class="tab-content">
     <div class="tab-pane  active" id="tab1">
@@ -427,7 +427,7 @@
   </div><!-- /.modal -->
     </div>
   
-      <div class="tab-pane active" id="tab0">
+      <div class="tab-pane" id="tab0">
 
         <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
         <br />

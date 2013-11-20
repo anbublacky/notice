@@ -51,8 +51,15 @@ if (hash) {
 $('.nav-tabs a').on('shown', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
-
-
+//$(document).on('click', '#timelinetab_a', function(){
+//	alert('asdasdasdasd');
+//	$('#my-timeline').html('data');
+//});
+$('#timelinetab_a').on('click', function(){
+	timeline = $('#timeline_script').html();
+	$('#timeline_show').html(timeline);
+});
+//  $('#timeline_script').hide();
  $('[data-toggle="tab"]').click(function(e) {
 //        alert('click working');
         localStorage.setItem('lastTab1', $(e.target).attr('href'));    
