@@ -16,7 +16,7 @@
  *= require timelineJS/timeline
  *= require gmaps4rails
  *= require leaflet
- *= require obi.webflow
+ *= require obiwebflow
  *= require webflow
  *= require home
  */
