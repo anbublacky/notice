@@ -8,7 +8,7 @@
 <% if user_signed_in? %>                
             <%= link_to "Create Site", '/orbituarysites/new', :class => "button" %>
             <% else %>
-            <a data-toggle="modal" href="#myModal6" href="/condolences/new"><button class="btn btn-default">Create site</button></a>
+            <a data-toggle="modal" href="#myModal6" href="/condolences/new"><button class="button">Create site</button></a>
             <% end %>
             <div class="modal fade hide" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
