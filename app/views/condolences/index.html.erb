@@ -1,33 +1,35 @@
-<h1>Listing condolences</h1>
+<div class="container">
+  <h1>Listing condolences</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Country</th>
-    <th>Address</th>
-    <th>Flower</th>
-    <th>Share content</th>
-    <th>Orbituarysite</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Flower</th>
+      <th>Share content</th>
+      <th>Orbituarysite</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @condolences.each do |condolence| %>
-  <tr>
-    <td><%= condolence.name %></td>
-    <td><%= condolence.country %></td>
-    <td><%= condolence.address %></td>
-    <td><%= condolence.flower %></td>
-    <td><%= condolence.share_content %></td>
-    <td><%= condolence.orbituarysite_id %></td>
-    <td><%= link_to 'Show', condolence %></td>
-    <td><%= link_to 'Edit', edit_condolence_path(condolence) %></td>
-    <td><%= link_to 'Destroy', condolence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <% @condolences.each do |condolence| %>
+    <tr>
+      <td><%= condolence.name %></td>
+      <td><%= condolence.country %></td>
+      <td><%= condolence.address %></td>
+      <td><%= condolence.flower %></td>
+      <td><%= condolence.share_content %></td>
+      <td><%= condolence.orbituarysite_id %></td>
+      <td><%= link_to 'Show', condolence %></td>
+      <td><%= link_to 'Edit', edit_condolence_path(condolence) %></td>
+      <td><%= link_to 'Destroy', condolence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Condolence', new_condolence_path %>
+  <%= link_to 'New Condolence', new_condolence_path %>
+</div>

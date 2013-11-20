@@ -1,460 +1,460 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
-
-<div class="span12">
-  <div class="span5 notice">
-    <h3 class="center">அமரர்</h3>
-<h1 class="center">
-  <%= @orbituarysite.name %>
-</h1>
-<p></p>
 <div class="row">
-<p>
-  <a href="#">
-  <%= image_tag(@orbituarysite.orbiturerimage_url, :class => "image_left_side") if @orbituarysite.orbiturerimage? %>
-  <%# if @orbituarysite.frame == '1' %>
-    <%# image_tag('flower_frames_1.png', :class => "left_side_frame") %>
-  <%# elsif @orbituarysite.frame == '2' %>
-    <%# image_tag('flower_frames_5.png', :class => "left_side_frame") %>
-  <%# else %>
-    <%# image_tag('flower_frames_5.png', :class => "left_side_frame") %>
-  <%# end %>
-  </a>
-</p>
-</div>
-<h4 class="center"><%= @orbituarysite.slogan %></h4>
-<h4 class="center">
-  <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
-  <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
-</h4>
-<h4 class="center">
-பிறந்த இடம்: 
-</h4>
-
-<h4 class="center">
-  <%= @orbituarysite.birth_place %>
-</h4>
-<h4 class="center">
-வாழ்ந்த இடம்: 
-</h4>
-<h4 class="center">
-  <%= @orbituarysite.living_place %>
-</h4>
-<h4 class="center">
-இறைவனடி சேர்ந்த இடம்: 
-</h4>
-
-<h4 class="center">
-  <%= @orbituarysite.death_place %>
-</h4>
-<p>
-<% if user_signed_in? %>
-  <% if current_user.id == @orbituarysite.user_id %>
-    <%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite), :class => "btn btn-default pull-right color_black" %> 
-    <%= link_to 'Delete', @orbituarysite, :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-<% end %>
-</p>
-<br />
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:3000/orbituarysites/1" data-text=<%= @orbituarysite.name %> data-via="anbublacky">Tweet</a>
-<script>/*!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');*/</script>
-
-<div class="fb-like" data-href="http://notice.tamil.com" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
-
-</div>
-<div class="span7">
- <div class="tabbable">
-  <ul class="nav nav-tabs" id="noticetabs">
-    <li  class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
-    <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
-    <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
-    <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
-    <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
-    <li id="timelinetab"><a href="#tab0" id="timelinetab_a" data-toggle="tab">Timeline</a></li>    
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane  active" id="tab1">
-    <p><%= image_tag('arivithalkal.png') %></p>
-    <p>
-    <% if user_signed_in? %>
-      <% if current_user.id == @orbituarysite.user_id %>
-        <% if @orbituarysite.notice_displays.count == 1 %>
-          <%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-        <% end %>
-        <% if  @orbituarysite.notice_displays.count < 1 %>
-          <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-        <% end %>
-      <% end %>
-    <% end %>
-    </p>
-    
-    <% if @orbituarysite.notice_displays.count > 0 %>
-      <div class="well">          
-        <h5><center>மரண அறிவித்தல் </center></h5>
-        <% @orbituarysite.notice_displays.each do |f| %>
-          <%= raw(f.message) %>
-          <% if f.posted_by? %>
-                    தகவல்:
-                    <%= f.posted_by %>
-          <% end %>
-        <% end %>
+  <div class="col-md-12">
+    <div class="col-md-5 notice pull-left">
+      <h3 class="center">அமரர்</h3>
+      <h1 class="center">
+        <%= @orbituarysite.name %>
+      </h1>
+      <p></p>
+      <div class="row">
+        <p>
+          <a href="#">
+            <%= image_tag(@orbituarysite.orbiturerimage_url, :class => "image_left_side") if @orbituarysite.orbiturerimage? %>
+            <%# if @orbituarysite.frame == '1' %>
+            <%# image_tag('flower_frames_1.png', :class => "left_side_frame") %>
+            <%# elsif @orbituarysite.frame == '2' %>
+            <%# image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+            <%# else %>
+            <%# image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+            <%# end %>
+          </a>
+        </p>
       </div>
-      
-      <div class="well">
-        <div class="notice_contacts">
-          <h4>தொடர்புகளுக்கு: </h4>
-          <hr>
-          <% @orbituarysite.notice_displays.each do |f| %>
-              <% f.notice_event_contacts.each do |cont| %>
+      <h4 class="center"><%= @orbituarysite.slogan %></h4>
+      <h4 class="center">
+        <%= @orbituarysite.dob.strftime("%d-%b-%Y") %>-
+        <%= @orbituarysite.dod.strftime("%d-%b-%Y") %>
+      </h4>
+      <h4 class="center">
+        பிறந்த இடம்: 
+      </h4>
+
+      <h4 class="center">
+        <%= @orbituarysite.birth_place %>
+      </h4>
+      <h4 class="center">
+        வாழ்ந்த இடம்: 
+      </h4>
+      <h4 class="center">
+        <%= @orbituarysite.living_place %>
+      </h4>
+      <h4 class="center">
+        இறைவனடி சேர்ந்த இடம்: 
+      </h4>
+
+      <h4 class="center">
+        <%= @orbituarysite.death_place %>
+      </h4>
+      <p>
+        <% if user_signed_in? %>
+        <% if current_user.id == @orbituarysite.user_id %>
+        <%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite), :class => "btn btn-default pull-right color_black" %> 
+        <%= link_to 'Delete', @orbituarysite, :class => "btn btn-danger pull-right color_white btn_margin", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% end %>
+      </p>
+      <br />
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:3000/orbituarysites/1" data-text=<%= @orbituarysite.name %> data-via="anbublacky">Tweet</a>
+      <script>/*!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');*/</script>
+
+      <div class="fb-like" data-href="http://notice.tamil.com" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+
+    </div>
+    <div class="col-md-7">
+      <div class="tabbable">
+        <ul class="nav nav-tabs" id="noticetabs">
+          <li  class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
+          <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
+          <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
+          <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
+          <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
+          <li id="timelinetab"><a href="#tab0" id="timelinetab_a" data-toggle="tab">Timeline</a></li>    
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane  active" id="tab1">
+            <p><%= image_tag('arivithalkal.png') %></p>
+            <p>
+              <% if user_signed_in? %>
+              <% if current_user.id == @orbituarysite.user_id %>
+              <% if @orbituarysite.notice_displays.count == 1 %>
+              <%= link_to "Edit Notice", { :controller => "notice_displays", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% end %>
+              <% if  @orbituarysite.notice_displays.count < 1 %>
+              <%= link_to "Post Notice", { :controller => "notice_displays", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% end %>
+              <% end %>
+              <% end %>
+            </p>
+
+            <% if @orbituarysite.notice_displays.count > 0 %>
+            <div class="well">          
+              <h5><center>மரண அறிவித்தல் </center></h5>
+              <% @orbituarysite.notice_displays.each do |f| %>
+              <%= raw(f.message) %>
+              <% if f.posted_by? %>
+              தகவல்:
+              <%= f.posted_by %>
+              <% end %>
+              <% end %>
+            </div>
+
+            <div class="well">
+              <div class="notice_contacts">
+                <h4>தொடர்புகளுக்கு: </h4>
+                <hr>
+                <% @orbituarysite.notice_displays.each do |f| %>
+                <% f.notice_event_contacts.each do |cont| %>
                 <h5><%= cont.name %>    <%= cont.country %></h5>
                 <% if cont.mobile? %>
-              <span class="events">
-              <span class="eventtitle"> கைத் தொலைபேசி: </span> <span class="eventaction"><%= cont.mobile %></span>
-              <span class="eventtitle"> தொலைபேசி எண்: </span> <span class="eventaction"><%= cont.telephone %></span>
-            </span>
+                <span class="events">
+                  <span class="eventtitle"> கைத் தொலைபேசி: </span> <span class="eventaction"><%= cont.mobile %></span>
+                  <span class="eventtitle"> தொலைபேசி எண்: </span> <span class="eventaction"><%= cont.telephone %></span>
+                </span>
                 <% end %>
-              <% end %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="well">
+              <div class="notice_places">
+                <h4>நிகழ்வுகள்: </h4>
+                <hr>
+                <% @orbituarysite.notice_displays.each do |f| %>
+                <% a = NoticeEventPlace.where(:notice_display_id => f.id)%>
+                <% b = a.first %>
+                <h6><%= b.event_type %></h6>
+                <span class="events">
+                  <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= b.eventdate.strftime("%d-%b-%Y") %> - 
+                    <%= b.eventtime.to_s(:time) %></span>
+                  <span class="eventtitle">  இடம்: </span> <span class="eventaction">
+                    <%= b.country %>
+                    <%= b.address1 %>
+                    <%= b.address2 %>
+                    <%= b.city %>
+                    <%= b.county %>
+                    <% b.latitude %>
+                    <% b.longitude %></span>
+                </span>
+
+                <%= map(:center => {:latlng => [b.latitude, b.longitude], :zoom => 15 },
+                :markers => [{ :latlng => [b.latitude, b.longitude] }]) %>
+
+                <% c = a.second %>
+                <% if c %>
+                <h6><%= c.event_type %></h6>
+                <span class="events">
+                  <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%=  c.eventdate %>
+                    <%= c.eventtime %></span>
+                  <span class="eventtitle">  இடம்: </span> <span class="eventaction">
+                    <%= c.country %>
+                    <%= c.address1 %>
+                    <%= c.address2 %>
+                    <%= c.city %>
+                    <%= c.county %>
+                    <% c.latitude %>
+                    <% c.longitude %></span>
+                </span>
+
+                <%= map(:container_id => c.id, :center => {:latlng => [c.latitude, c.longitude], :zoom => 15 }, 
+                :markers => [{ :latlng => [c.latitude, c.longitude] }]) %>
+
+                <%# plac.to_gmaps4rails %>
+                <% end %>
+
+                <% end %>
+              </div>
+            </div>
             <% end %>
-        </div>
-      </div>
 
-      <div class="well">
-        <div class="notice_places">
-          <h4>நிகழ்வுகள்: </h4>
-          <hr>
-          <% @orbituarysite.notice_displays.each do |f| %>
-             <% a = NoticeEventPlace.where(:notice_display_id => f.id)%>
-						 <% b = a.first %>
-						 <h6><%= b.event_type %></h6>
-              <span class="events">
-                <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%= b.eventdate.strftime("%d-%b-%Y") %> - 
-                  <%= b.eventtime.to_s(:time) %></span>
-              <span class="eventtitle">  இடம்: </span> <span class="eventaction">
-                <%= b.country %>
-                <%= b.address1 %>
-                <%= b.address2 %>
-                <%= b.city %>
-                <%= b.county %>
-                <% b.latitude %>
-                <% b.longitude %></span>
-						</span>
+            <!-- Modal -->
+            <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">அறிவித்தல்கள்</h4>
+                  </div>
+                  <div class="modal-body">
 
-						<%= map(:center => {:latlng => [b.latitude, b.longitude], :zoom => 15 },
-										:markers => [{ :latlng => [b.latitude, b.longitude] }]) %>
+                    <%# render 'notice_displays/form' %>
 
-                    <% c = a.second %>
-              <% if c %>
-							<h6><%= c.event_type %></h6>
-              <span class="events">
-              <span class="eventtitle"> திகதி:</span> <span class="eventaction"><%=  c.eventdate %>
-                   <%= c.eventtime %></span>
-              <span class="eventtitle">  இடம்: </span> <span class="eventaction">
-                <%= c.country %>
-                <%= c.address1 %>
-                <%= c.address2 %>
-                <%= c.city %>
-                <%= c.county %>
-                <% c.latitude %>
-                <% c.longitude %></span>
-              </span>
-
-							<%= map(:container_id => c.id, :center => {:latlng => [c.latitude, c.longitude], :zoom => 15 }, 
-											:markers => [{ :latlng => [c.latitude, c.longitude] }]) %>
-
-                      <%# plac.to_gmaps4rails %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div class="modal fade hide" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">அறிவித்தல்கள்</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%# @orbituarysite.notice_display %>
+                    <% if @orbituarysite.notice_displays.count > 1 %>
+                    <%# render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
                     <% end %>
+                    <%# gmaps4rails(@notice_event_place_maps) %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
-            <% end %>
-        </div>
-      </div>
-    <% end %>
-    
-       <!-- Modal -->
-  <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">அறிவித்தல்கள்</h4>
-        </div>
-        <div class="modal-body">
-
-            <%# render 'notice_displays/form' %>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-    <div class="modal fade hide" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">அறிவித்தல்கள்</h4>
-        </div>
-        <div class="modal-body">
-          <%# @orbituarysite.notice_display %>
-          <% if @orbituarysite.notice_displays.count > 1 %>
-            <%# render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
-          <% end %>
-          <%# gmaps4rails(@notice_event_place_maps) %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-    </div>
-    <div class="tab-pane" id="tab2">
-      <p><%= image_tag('vaalkai_varalaaru.png') %></p>
-      <p>
-       <% if @orbituarysite.histories.count < 1 %>
-         <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a> -->
-         <%= link_to "Post History", { :controller => "histories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-       <% end%>
-       <% if @orbituarysite.histories.count == 1 %>
-       <!--  <a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a> -->
-        <%= link_to "Edit History", { :controller => "histories", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-       <% end %>
-
-      <% if @orbituarysite.histories.count > 0 %>
-        <div class="well">
-          <% @orbituarysite.histories.each do |f| %>
-             <%= raw(f.body) %>
-          <% end %>
-        </div>
-      <% end %>
-      </p>
-             <!-- Modal -->
-  <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
-        </div>
-        <div class="modal-body">
-         <%# render 'histories/form' , :remote => true %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-             <!-- Modal -->
-  <div class="modal fade hide" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
-        </div>
-        <div class="modal-body">
-        <% if @orbituarysite.histories.count > 1 %>
-         <%# render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.histories.count > 1  %>
-        <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>            <%= image_tag('ninaivalaikal.png') %></p>
-      <p>
-      <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-      <% if @orbituarysite.memories.count > 0 %>
-          <% @orbituarysite.memories.each do |f| %>
-            <% if f.body? %>
-            <div class="well">
-              <% if user_signed_in? %>
-                <% if f.user.id == current_user.id %>
-                  <%= link_to 'Edit', edit_memory_path(f), :class => "btn btn-default pull-right" %>
-                  <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
-                <% end %>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <p><%= image_tag('vaalkai_varalaaru.png') %></p>
+            <p>
+              <% if @orbituarysite.histories.count < 1 %>
+              <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a> -->
+              <%= link_to "Post History", { :controller => "histories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% end%>
+              <% if @orbituarysite.histories.count == 1 %>
+              <!--  <a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a> -->
+              <%= link_to "Edit History", { :controller => "histories", :action => "edit", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
               <% end %>
-              <h5><%= f.title %></h5>
-              <article>
-                           <%# if f.body.length > 250 %>
-              <%# truncate(f.body, length: 250) %>
-              <%# link_to_function '...Read more', "$(this).parent().html('#{escape_javascript f.body}')" %>
-            <%# else %>
-              <%= f.body %>
-            <%# end %>
-                <%# raw(f.body) %>
-                <%# link_to 'read more', '#', :class => "readmore-js-toggle" %> 
-              </article>
-            <h6>Memory shared by <%= f.user.name %></h6>
-            Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
-            <p></p>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= f.title %> data-url=<%= "http://nabthat.com:3000/memories/"+f.id.to_s %> data-via="anbublacky">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            <div class="fb-like" data-href="http://notice.tamil.com" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>
-            </div>
-          <% end %>              
-         <% end %>
-      <% end %>
-      
-      
-      </p>
-        <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">நினைவலைகள்</h4>
-        </div>
-        <div class="modal-body">
-         <%= render 'memories/form' , :remote => true %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
-    </div>
-    <div class="tab-pane" id="tab4">
-      <p><%= image_tag('aaruthalkal.png') %></p>
-      
-    <p>
-    <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-    <% if @orbituarysite.condolences.count > 0 %>
-
-        <% @orbituarysite.condolences.each do |f| %>
-          <% if f.name? %>
-            <div class="well">
-              <% if user_signed_in? %>
-                <% if f.user.id == current_user.id %>
-                  <%= link_to 'Edit', edit_condolence_path(f), :class => "btn btn-default pull-right" %>
-                  <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+              <% if @orbituarysite.histories.count > 0 %>
+              <div class="well">
+                <% @orbituarysite.histories.each do |f| %>
+                <%= raw(f.body) %>
                 <% end %>
+              </div>
               <% end %>
-							<P>Condolence by <%= f.name %></p>
-              <p>Posted on: <%= f.created_at.strftime("%d-%b-%Y") %></p>
-              <% if f.flower == 1 %>
-                 <%= image_tag('flower1.png') %>
-              <% else %>
-                 <%= image_tag('lamp1.png') %>
-							 <% end %>
-							 <p></p>
-              <%= raw(f.share_content) %>
-            </div>
-          <% end %>
-        <% end %>
+            </p>
+            <!-- Modal -->
+            <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%# render 'histories/form' , :remote => true %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!-- Modal -->
+            <div class="modal fade hide" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
+                  </div>
+                  <div class="modal-body">
+                    <% if @orbituarysite.histories.count > 1 %>
+                    <%# render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.histories.count > 1  %>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
-    <% end %>
-   </p>
-              <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">ஆறுதல்கள்</h4>
-        </div>
-        <div class="modal-body">
-         <%= render 'condolences/form' , :remote => true %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+          </div>
+          <div class="tab-pane" id="tab3">
+            <p>            <%= image_tag('ninaivalaikal.png') %></p>
+            <p>
+              <%= link_to "Post Memory", { :controller => "memories", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% if @orbituarysite.memories.count > 0 %>
+              <% @orbituarysite.memories.each do |f| %>
+              <% if f.body? %>
+              <div class="well">
+                <% if user_signed_in? %>
+                <% if f.user.id == current_user.id %>
+                <%= link_to 'Edit', edit_memory_path(f), :class => "btn btn-default pull-right" %>
+                <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+                <% end %>
+                <% end %>
+                <h5><%= f.title %></h5>
+                <article>
+                  <%# if f.body.length > 250 %>
+                  <%# truncate(f.body, length: 250) %>
+                  <%# link_to_function '...Read more', "$(this).parent().html('#{escape_javascript f.body}')" %>
+                  <%# else %>
+                  <%= f.body %>
+                  <%# end %>
+                  <%# raw(f.body) %>
+                  <%# link_to 'read more', '#', :class => "readmore-js-toggle" %> 
+                </article>
+                <h6>Memory shared by <%= f.user.name %></h6>
+                Posted on: <%= f.created_at.strftime("%d-%b-%Y") %>
+                <p></p>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= f.title %> data-url=<%= "http://nabthat.com:3000/memories/"+f.id.to_s %> data-via="anbublacky">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <div class="fb-like" data-href="http://notice.tamil.com" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+              </div>
+              <% end %>              
+              <% end %>
+              <% end %>
 
-    </div>
-    <div class="tab-pane" id="tab5">
-      <p><%= image_tag('padankal.png') %></p>
-      <p>
-      <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-      <% if @orbituarysite.orbiturer_share_images.count > 0 %> 
-            <% @orbituarysite.orbiturer_share_images.each do |f| %> 
+
+            </p>
+            <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">நினைவலைகள்</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'memories/form' , :remote => true %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+          </div>
+          <div class="tab-pane" id="tab4">
+            <p><%= image_tag('aaruthalkal.png') %></p>
+
+            <p>
+              <%= link_to "Post Condolences", { :controller => "condolences", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% if @orbituarysite.condolences.count > 0 %>
+
+              <% @orbituarysite.condolences.each do |f| %>
+              <% if f.name? %>
+              <div class="well">
+                <% if user_signed_in? %>
+                <% if f.user.id == current_user.id %>
+                <%= link_to 'Edit', edit_condolence_path(f), :class => "btn btn-default pull-right" %>
+                <%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" %>
+                <% end %>
+                <% end %>
+                <P>Condolence by <%= f.name %></p>
+                <p>Posted on: <%= f.created_at.strftime("%d-%b-%Y") %></p>
+                <% if f.flower == 1 %>
+                <%= image_tag('flower1.png') %>
+                <% else %>
+                <%= image_tag('lamp1.png') %>
+                <% end %>
+                <p></p>
+                <%= raw(f.share_content) %>
+              </div>
+              <% end %>
+              <% end %>
+
+              <% end %>
+            </p>
+            <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ஆறுதல்கள்</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'condolences/form' , :remote => true %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+          </div>
+          <div class="tab-pane" id="tab5">
+            <p><%= image_tag('padankal.png') %></p>
+            <p>
+              <%= link_to "Share Photos", { :controller => "orbiturer_share_images", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+              <% if @orbituarysite.orbiturer_share_images.count > 0 %> 
+              <% @orbituarysite.orbiturer_share_images.each do |f| %> 
               <% if f.title? %>
               <div class="well pull-left span11">
                 <div class="span12 margin">
                   <div class="span3">
-										<%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
-										<p><%= current_user.name %></p>
-										<%= f.created_at.strftime("%d-%b-%Y") %>
+                    <%= link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
+                    <p><%= current_user.name %></p>
+                    <%= f.created_at.strftime("%d-%b-%Y") %>
                   </div>
                   <div class="span9">
                     <b><%= f.title %></b><br />
                     <span class="line-break">
                       <%= f.description %>
-										</span>
-										<% if user_signed_in? %>
-	                    <%= link_to 'Edit', edit_orbiturer_share_image_path(f), :class => "btn btn-default pull-right color_black" %>
-  	                  <%= link_to 'Delete',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
-										<% end %>
+                    </span>
+                    <% if user_signed_in? %>
+                    <%= link_to 'Edit', edit_orbiturer_share_image_path(f), :class => "btn btn-default pull-right color_black" %>
+                    <%= link_to 'Delete',f , :class => "btn btn-danger pull-right color_white", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
                   </div>
                 </div>
               </div>
-                <% end %>
               <% end %>
-          
-      <% end %>
-      </p>
-  <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">படங்கள்</h4>
+              <% end %>
+
+              <% end %>
+            </p>
+            <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">படங்கள்</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'orbiturer_share_images/form' , :remote => true %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+          </div>
+
+          <div class="tab-pane" id="tab0">
+
+            <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+            <br />
+            <br />
+            <br />
+            <%= render 'timeline' %>
+            <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Timeline</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%# render 'timelines/form' , :remote => true %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+          </div>
         </div>
-        <div class="modal-body">
-         <%= render 'orbiturer_share_images/form' , :remote => true %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
     </div>
-  
-      <div class="tab-pane" id="tab0">
 
-        <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
-        <br />
-        <br />
-        <br />
-        <%= render 'timeline' %>
-  <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Timeline</h4>
-        </div>
-        <div class="modal-body">
-          <%# render 'timelines/form' , :remote => true %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</div>
   </div>
- </div>
-</div>
-
 </div>

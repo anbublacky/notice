@@ -37,12 +37,9 @@
     </head>
     <body>
      <%= render "/layouts/navigation" %>
-
-     <div class="row-fluid">
-
+     <div class="row">
       <%= bootstrap_flash %>
       <%= yield %>
-
     </div><!--/row-->
     <%= yield :scripts %>
     <div class = "row">

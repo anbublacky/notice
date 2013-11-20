@@ -1,58 +1,58 @@
 <%= form_for(@notice_display) do |f| %>
-  <% if @notice_display.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@notice_display.errors.count, "error") %> prohibited this notice_display from being saved:</h2>
+<% if @notice_display.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@notice_display.errors.count, "error") %> prohibited this notice_display from being saved:</h2>
 
-      <ul>
-      <% @notice_display.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <ul>
+    <% @notice_display.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :notice_type %><br />
+  <select id="notice_type" name="notice_type">
+    <option value="மரண அறிவித்தல்">மரண அறிவித்தல்</option>
+    <option value="நினைவு கூரல்">நினைவு கூரல்</option>
+  </select>
+</div>
+<div class="field">
+  <%= f.label "செய்தி" %><br />
+  <%= f.cktext_area :message, :ckeditor => {:language => "en", :toolbar => "mini"} %>
+</div>
+<div class="field">
+  <%= f.label :posted_by %><br />
+  <%= f.text_field :posted_by %>
+</div>
+<div class="field">
+  <% f.label :orbituarysite_id %><br />
+  <%= f.hidden_field :orbituarysite_id %>
+</div>
+
+<%# render 'notice_event_contacts/form' %>
+<div class="well">  
+  <h3>நிகழ்வுகள்</h3>
+  <hr>
+  <%= f.fields_for :notice_event_places, :class => "form-horizontal" do |builder1| %>
+  <%= render 'notice_event_place_fields', f: builder1 %>
   <% end %>
+  <%= link_to_add_fields "Add place", f, :notice_event_places %>
+</div>
 
-  <div class="field">
-    <%= f.label :notice_type %><br />
-    <select id="notice_type" name="notice_type">
-      <option value="மரண அறிவித்தல்">மரண அறிவித்தல்</option>
-      <option value="நினைவு கூரல்">நினைவு கூரல்</option>
-    </select>
-  </div>
-  <div class="field">
-    <%= f.label "செய்தி" %><br />
-    <%= f.cktext_area :message, :ckeditor => {:language => "en", :toolbar => "mini"} %>
-  </div>
-  <div class="field">
-    <%= f.label :posted_by %><br />
-    <%= f.text_field :posted_by %>
-  </div>
-  <div class="field">
-    <% f.label :orbituarysite_id %><br />
-    <%= f.hidden_field :orbituarysite_id %>
-  </div>
-  
-     <%# render 'notice_event_contacts/form' %>
-  <div class="well">  
-    <h3>நிகழ்வுகள்</h3>
-    <hr>
-		<%= f.fields_for :notice_event_places, :class => "form-horizontal" do |builder1| %>
-      <%= render 'notice_event_place_fields', f: builder1 %>
-    <% end %>
-		<%= link_to_add_fields "Add place", f, :notice_event_places %>
-  </div>
-    
-  <div class="well">
-    <h3>தொடர்புகளுக்கு</h3>
-    <hr>
-      <%= f.fields_for :notice_event_contacts do |builder| %>
-      <fieldset>
-        <%= render 'notice_event_contact_fields', f: builder %>
-      </fieldset>
-    <% end %>
-    <%= link_to_add_fields "Add contact", f, :notice_event_contacts %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="well">
+  <h3>தொடர்புகளுக்கு</h3>
+  <hr>
+  <%= f.fields_for :notice_event_contacts do |builder| %>
+  <fieldset>
+    <%= render 'notice_event_contact_fields', f: builder %>
+  </fieldset>
+  <% end %>
+  <%= link_to_add_fields "Add contact", f, :notice_event_contacts %>
+</div>
+
+<div class="actions">
+  <%= f.submit :class => "btn btn-primary" %>
+</div>
 <% end %>
