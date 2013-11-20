@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ * require bootstrap
  *= require bootstrap_and_overrides 
- * require bootstrap.css
  *= require datepicker
  *= require bootstrap-datetimepicker.min.css
  *= require colorbox-rails
