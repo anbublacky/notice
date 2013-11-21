@@ -17,7 +17,7 @@ gem 'colorbox-rails'
 gem 'quiet_assets', :group => :development
 gem 'bootstrap-sass'
 #gem 'turbolinks'
-
+gem 'shareable'
 # Gems used only for assets and not required
 # in production environments by default.
 group :development do
