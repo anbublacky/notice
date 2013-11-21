@@ -1,0 +1,7 @@
+
+<%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => params[:orbituary_id] }, :class => "btn btn-primary left_65" %>
+<%= link_to "back", orbituarysites_path + "/" + params[:orbituary_id], :class => "btn btn-primary left_65" %>
+<br />
+<br />
+<br />
+<%= render 'timeline' %>

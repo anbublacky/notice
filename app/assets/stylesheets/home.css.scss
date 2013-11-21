@@ -146,6 +146,8 @@ background-color: #01538d \9;
 
 #my-timeline {
   float: left;
+  width: 90% !important;
+  margin-left: 65px !important;
 }
 #account_table
 {
@@ -217,4 +219,14 @@ width: 70%;
 }
 .nav-tabs > li > a{
   background-color: #F3F3F3;
+}
+
+.height_45 {
+height: 45px;
+text-align: right;
+padding-top: 8px;
+}
+
+.left_65 {
+margin-left: 65px;
 }

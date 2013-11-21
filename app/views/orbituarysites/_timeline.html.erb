@@ -5,7 +5,7 @@
                     type:       'timeline',
                     width:      '600',
                     height:     '700',
-                    source:     '<%= @orbituarysite.id %>',
+                    source:     '<%= params[:orbituary_id] %>',
                     embed_id:   'my-timeline'
                 });
             });
@@ -14,4 +14,3 @@
 				<div id="my-timeline"></div>
 			</div>
 
-			<div id="timeline_show"></div>

@@ -23,12 +23,15 @@ Notice::Application.routes.draw do
   resources :notice_displays
 
 
+  get "orbituarysites/timeline"
   resources :orbituarysites
 
 
   mount Ckeditor::Engine => '/ckeditor'
 
   get "home/index"
+  get "home/list_all_orbituary"
+  get "home/list_all_rememberance"
   
   get "home/account"
 

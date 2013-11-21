@@ -36,7 +36,7 @@
       <div class="w-col w-col-6 call-to-action"></div>
     </div>
     <div>
-			<div><h1 class="span6 pull-left">Latest Obituary</h1><span class="span5 pull-right height_45"><h3><%= link_to "view all", home_list_all_orbituary_path %></h3></span></div>
+      <h1>Latest Obituary</h1>
       <div>
         <div class="w-row">
           <% @orbituarysites.each do |f| %>
@@ -72,43 +72,6 @@
         </div>
       </div>
     </div>
-    <div>
-			<div><h1 class="span6 pull-left">Rememberances</h1><span class="span5 pull-right height_45"><h3><%= link_to "view all", home_list_all_rememberance_path %></h3></span></div>
-      <div>
-        <div class="w-row">
-          <% @orbituarysites.each do |f| %>
-          <div class="w-col w-col-2">
-            <div>
-              <%= link_to image_tag(f.orbiturerimage_url(:thumb)), f if f.orbiturerimage? %>
-            </div>
-            <div>
-              <%= link_to f.name, f %>
-            </div>
-
-            <div>
-              <b>பிறந்த இடம்:</b>
-              <%= f.birth_place %>
-            </div>
-
-            <div>
-              <b>வாழ்ந்த இடம்:</b>
-              <%= f.living_place %>
-            </div>
-
-            <div>
-              <b>இறைவனடி சேர்ந்த இடம்:</b>
-              <%= f.death_place %>
-            </div>
-            <div>
-              <b>Posted on: </b>
-              <%= f.created_at.strftime("%d-%b-%Y")%>
-            </div>
-          </div>
-
-          <% end %>
-        </div>
-        <%#= will_paginate @orbituarysites %>
-      </div>
-    </div>
+        <%= will_paginate @orbituarysites %>
   </div>
 </div>

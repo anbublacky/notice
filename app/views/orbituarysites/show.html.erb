@@ -47,6 +47,7 @@
         <%= @orbituarysite.death_place %>
       </h4>
       <p>
+			<%= link_to 'View Timeline', orbituarysites_timeline_path + '?orbituary_id=' + @orbituarysite.id.to_s, :class => "btn btn-default pull-right color_black" %> 
         <% if user_signed_in? %>
         <% if current_user.id == @orbituarysite.user_id %>
         <%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite), :class => "btn btn-default pull-right color_black" %> 
@@ -69,7 +70,7 @@
           <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
           <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
           <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
-          <li id="timelinetab"><a href="#tab0" id="timelinetab_a" data-toggle="tab">Timeline</a></li>    
+					<!-- <li id="timelinetab"><a href="#tab0" id="timelinetab_a" data-toggle="tab">Timeline</a></li> -->
         </ul>
         <div class="tab-content">
           <div class="tab-pane  active" id="tab1">
@@ -428,13 +429,13 @@
             </div><!-- /.modal -->
           </div>
 
-          <div class="tab-pane" id="tab0">
+					<!-- <div class="tab-pane" id="tab0">
 
-            <%= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
+            <%#= link_to "Share Timeline", { :controller => "timelines", :action => "new", :id => @orbituarysite.id }, :class => "btn btn-primary" %>
             <br />
             <br />
             <br />
-            <%= render 'timeline' %>
+            <%#= render 'timeline' %>
             <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -448,10 +449,14 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-          </div>
+                </div
+              </div
+            </div
+					</div>-->
+
+					<!-- End of tab 0 -->
+
+
         </div>
       </div>
     </div>
