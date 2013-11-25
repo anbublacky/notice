@@ -1,0 +1,335 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<p id="notice"><%= notice %></p>
+<div class="span12">
+  <div class="span5 notice">
+    <h3 class="center">அமரர்</h3>
+<h1 class="center">
+  <%= @orbituarysite.name %>
+</h1>
+<p></p>
+<p>
+  <a href="#">
+  <%= image_tag(@orbituarysite.orbiturerimage_url, :class => "image_left_side") if @orbituarysite.orbiturerimage? %>
+  <%= image_tag('flower_frames_5.png', :class => "left_side_frame") %>
+  </a>
+</p>
+<h4 class="center">மண்ணில் - விண்ணில்</h4>
+<h4 class="center">
+  <%= @orbituarysite.dob %>-
+  <%= @orbituarysite.dod %>
+</h4>
+<h4 class="center">
+பிறந்த இடம்: 
+</h4>
+
+<h4 class="center">
+  <%= @orbituarysite.birth_place %>
+</h4>
+<h4 class="center">
+வாழ்ந்த இடம்: 
+</h4>
+<h4 class="center">
+  <%= @orbituarysite.living_place %>
+</h4>
+<h4 class="center">
+இறைவனடி சேர்ந்த இடம்: 
+</h4>
+
+<h4 class="center">
+  <%= @orbituarysite.death_place %>
+</h4>
+<p>
+<%= link_to 'Edit', edit_orbituarysite_path(@orbituarysite) %> |
+<%= link_to 'Back', orbituarysites_path %>
+</p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:3000/orbituarysites/1" data-text=<%= @orbituarysite.name %> data-via="anbublacky">Tweet</a>
+<script>/*!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');*/</script>
+
+<div class="fb-like" data-href="http://notice.tamil.com" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+
+</div>
+<div class="span7">
+ <div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">அறிவித்தல்கள்</a></li>
+    <li><a href="#tab2" data-toggle="tab">வாழ்க்கை வரலாறு</a></li>
+    <li><a href="#tab3" data-toggle="tab">நினைவலைகள்</a></li>
+    <li><a href="#tab4" data-toggle="tab">ஆறுதல்கள்</a></li>
+    <li><a href="#tab5" data-toggle="tab">படங்கள்</a></li>
+    <li><a href="#tab6" data-toggle="tab">Timeline</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+    <p><%= image_tag('arivithalkal.png') %></p>
+    <p>
+      <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal11" class="btn btn-primary" href="/notice_displays/new">Edit Notice</a><% end %>
+    </p>
+    <% if !@orbituarysite.notice_display.nil? %><div class="well">
+      <% @orbituarysite.notice_display.each do |f| %>
+      <%= raw(f.message) %>
+      <% end %>
+      <% end %></div>
+        <p><div class="well"><% if !@orbituarysite.notice_display.nil? %>
+          <% @orbituarysite.notice_display.each do |f| %>
+          <%= raw(f.message) %>
+          <% f.notice_event_places.each do |plac| %>
+          <%= plac.event_type %>
+          <%= plac.country %>
+          <%= plac.address1 %>
+          <%= plac.address2 %>
+          <%= plac.city %>
+          <%= plac.county %>
+          <%= plac.eventdate %>
+          <%= plac.eventtime %>
+          <%= plac.latitude %>
+          <%= plac.longitude %>
+          <%# @notice_event_place_maps = f.to_gmaps4rails %>
+          <%# plac.to_gmaps4rails %>
+          <div id="map-canvas"></div>
+          
+          
+          <script>
+            var map;
+            function initialize() {
+              var mapOptions = {
+                zoom: 8,
+                center: new google.maps.LatLng(<%= plac.latitude.to_f %>, <%= plac.longitude.to_f %>),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+              map = new google.maps.Map(document.getElementById('map-canvas'),
+                  mapOptions);
+            }
+            
+            google.maps.event.addDomListener(window, 'load', initialize);      
+          </script>
+          <%# gmaps4rails(plac.to_gmaps4rails) %>
+
+          <% end %>
+          </div>
+          <% end %>
+          <% end %></p>
+       <!-- Modal -->
+  <div class="modal fade hide" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">அறிவித்தல்கள்</h4>
+        </div>
+        <div class="modal-body">
+
+            <%= render 'notice_displays/form' %>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+    <div class="modal fade hide" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">அறிவித்தல்கள்</h4>
+        </div>
+        <div class="modal-body">
+          <%# @orbituarysite.notice_display %>
+          <% if @orbituarysite.notice_display.nil? %>
+            <%= render 'notice_displays/form', :action => "edit", :@notice_display => current_user.orbituarysites.first.notice_display.first  %>
+          <% end %>
+          <%= gmaps4rails(@notice_event_place_maps) %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p>            <%= image_tag('vaalkai_varalaaru.png') %></p>
+      <p>
+      <% if !@orbituarysite.history.nil? %><% @orbituarysite.history.each do |f| %><div class="well"><%= raw(f.body) %></div><% end %><% end %>
+      <% if @orbituarysite.history.count < 1 %>
+      <a data-toggle="modal" href="#myModal2" class="btn btn-primary" href="/histories/new">Post history</a><% end%>
+       <% if @orbituarysite.notice_display.count == 1 %><a data-toggle="modal" href="#myModal21" class="btn btn-primary" href="/notice_displays/new">Edit History</a><% end %>
+      </p>
+             <!-- Modal -->
+  <div class="modal fade hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'histories/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+             <!-- Modal -->
+  <div class="modal fade hide" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">வாழ்க்கை வரலாறு</h4>
+        </div>
+        <div class="modal-body">
+        <% if @orbituarysite.history.nil? %>
+         <%= render 'histories/form' , :remote => true, :@history => current_user.orbituarysites.first.history.first unless @orbituarysite.history.nil?  %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+    </div>
+    <div class="tab-pane" id="tab3">
+      <p>            <%= image_tag('ninaivalaikal.png') %></p>
+      <p>
+      <% if !@orbituarysite.memories.nil? %><% @orbituarysite.memories.each do |f| %><div class="well"><h2>Memory shared by <%= current_user.name %></h2><%= raw(f.body) %></div><% end %><% end %>
+      <a data-toggle="modal" href="#myModal3" class="btn btn-primary" href="/memories/new">Post Notice</a>
+      </p>
+        <div class="modal fade hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">நினைவலைகள்</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'memories/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+    </div>
+    <div class="tab-pane" id="tab4">
+      <p>            <%= image_tag('aaruthalkal.png') %></p>
+    <p>
+    <% if !@orbituarysite.condolences.nil? %><% @orbituarysite.condolences.each do |f| %><div class="well"><P>Condolence by <%= f.name %></p><% if f.flower == 1 %><%= image_tag('flower1.png') %><% else %><%= image_tag('lamp1.png') %><% end %><%= raw(f.share_content) %></div><% end %><% end %>
+
+              <a data-toggle="modal" href="#myModal4" class="btn btn-primary" href="/condolences/new">Post Notice</a>
+      </p>
+              <div class="modal fade hide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">ஆறுதல்கள்</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'condolences/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+    </div>
+    <div class="tab-pane" id="tab5">
+      <p><%= image_tag('padankal.png') %></p>
+      <p>
+      <% if !@orbituarysite.orbiturer_share_images.nil? %> 
+        <div class="well pull-left span11">
+            <% @orbituarysite.orbiturer_share_images.each do |f| %> 
+              <div class="span5 margin">
+              <div class="span4">
+                  <%# link_to image_tag(f.orbiturer_other_images_url(:thumb)), f.orbiturer_other_images_url, :data => { :colorbox => true, :id => f.id } %>
+                </div>
+                <div class="span7">
+                  <b><%= f.title %></b><br />
+                  <span class="line-break">
+                    <%= f.description %>
+                  </span>
+                </div>
+              </div>
+                <% end %>
+              
+          </div>
+      <% end %>
+        <a data-toggle="modal" href="#myModal5" class="btn btn-primary" href="/orbiturer_share_images/new">Post Notice</a>
+      </p>
+  <div class="modal fade hide" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">படங்கள்</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'orbiturer_share_images/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+    </div>
+  
+      <div class="tab-pane" id="tab6">
+      <p>Timeline</p>
+        <script>
+            $(document).ready(function() {
+                createStoryJS({
+                    type:       'timeline',
+                    width:      '800',
+                    height:     '600',
+                    source:     '<%= @orbituarysite.id %>',
+                    embed_id:   'my-timeline'
+                });
+            });
+        </script>
+        <br />
+         <div id="my-timeline"></div>
+      <p>
+        <a data-toggle="modal" href="#myModal7" class="btn btn-primary" href="/timelines/new">Post Notice</a>
+      </p>
+  <div class="modal fade hide" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Timeline</h4>
+        </div>
+        <div class="modal-body">
+         <%= render 'timelines/form' , :remote => true %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+  </div>
+ </div>
+</div>
+
+</div>
