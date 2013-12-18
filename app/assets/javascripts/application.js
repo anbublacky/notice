@@ -27,6 +27,12 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+setTimeout( function() {
+  $('.alert').fadeToggle(1000);        // toggle div visibility over 1 second
+},1500);
+
+
 $('#dod').datepicker({
   format: 'd-M-yyyy'
 });
